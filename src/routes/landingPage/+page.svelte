@@ -1,8 +1,8 @@
 <script>
-    import LandingNavbar from '../components/LandingNavbar.svelte';
-    import About from '../components/About.svelte';
-    import Contact from '../components/Contact.svelte';
-    import Footer from '../components/Footer.svelte';
+    import LandingNavbar from '../../components/LandingNavbar.svelte';
+    import About from '../../components/About.svelte';
+    import Contact from '../../components/Contact.svelte';
+    import Footer from '../../components/Footer.svelte';
 </script>
 
 
