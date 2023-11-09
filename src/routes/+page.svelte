@@ -3,12 +3,14 @@
     import About from '../components/About.svelte';
     import Contact from '../components/Contact.svelte';
     import Footer from '../components/Footer.svelte';
-</script>
 
+
+</script>
 
 
 <div class="main-page">
     <section>
+        
             
         <div class="bg-slate-500">
             <LandingNavbar/>

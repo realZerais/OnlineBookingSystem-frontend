@@ -1,6 +1,6 @@
 <script>
   import DashboardHeader from "../../components/DashboardHeader.svelte";
-  import DashboardNav from "../../components/AdminDashboardNav.svelte"
+  import DashboardNav from "../../components/UserDashboardNav.svelte"
   import DashboardUpdates from "../../components/DashboardUpdates.svelte";
 </script>
 
