@@ -10,23 +10,23 @@
 
         <div class="overflow-auto w-[100%] px-4">
         <form class="flex flex-col">
-            <input placeholder="First Name" class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" type="text">
-            <input placeholder="Last Name" class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" type="text">
-            <input placeholder="Email" class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" type="email">
-            <input placeholder="Confirm Email" class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" type="email">
-            <input placeholder="Password" class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" type="password">
-            <input placeholder="Confirm Password" class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" type="password">
+            <input placeholder="FIRST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="text">
+            <input placeholder="LAST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="text">
+            <input placeholder="EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="email">
+            <input placeholder="CONFIRM EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="email">
+            <input placeholder="PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="password">
+            <input placeholder="CONFIRM PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="password">
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="gender">Gender</label>
-            <select class="bg-black text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150" id="gender">
-                <option disabled selected value="">Gender</option>
-                <option class="bg-black text-white" value="male">Male</option>
-                <option class="bg-black text-white" value="female">Female</option>
-                <option class="bg-black text-white" value="other">Other</option>
+            <select class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" id="gender">
+                <option disabled selected value="" class="text-sm">GENDER</option>
+                <option class="bg-black text-center text-white text-sm" value="male">MALE</option>
+                <option class="bg-black text-center text-white" value="female">FEMALE</option>
+                <option class="bg-black text-center text-white" value="other">OTHER</option>
             </select>
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="birthdate">
-                Birthdate
+                BIRTHDAY
             </label>
-            <input class="bg-black text-white border border-gray-500 rounded-xl p-2" placeholder="day/month/year" id="age" type="date">
+            <input class="bg-black text-center text-white border border-gray-500 rounded-xl p-2" placeholder="day/month/year" id="age" type="date">
            
             
             </form>

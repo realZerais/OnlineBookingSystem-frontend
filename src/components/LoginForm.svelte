@@ -21,7 +21,7 @@
             <div>
                 <!-- <a class="text-sm text-[#7747ff]" href="/adminDashboardPage">Forgot your password?</a> -->
             </div>
-            <a href="/userDashboardPage" type="submit" class="bg-neon w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal">Log In</a>
+            <a href="/userDashboardPage" type="submit" class="bg-neon w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal hover:bg-neonHover">Log In</a>
     
         </form>
 
@@ -32,7 +32,7 @@
 
     
 
-    <div class=" text-sm text-center mt-[1.6rem] "><a class="text-center text-3xl text-white font-bold" href="/register"><u>SIGN UP</u></a></div>
+    <div class=" text-sm text-center mt-[1.6rem] "><a class="text-center text-3xl text-white font-bold hover:text-neon" href="/register"><u>SIGN UP</u></a></div>
 
 
 

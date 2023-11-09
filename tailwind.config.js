@@ -8,6 +8,7 @@ export default {
 			},
 			colors: {
 				neon: '#4DF100',
+				neonHover: 'rgba(0, 180, 0)',
 				navColor: '#303032',
 				buttonColorAccent: '#91f263'
 			}
