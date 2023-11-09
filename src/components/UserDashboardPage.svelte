@@ -4,10 +4,9 @@
     import DashboardUpdates from "../components/DashboardUpdates.svelte";
   </script>
   
-  <main class="grid grid-cols-2 grid-rows-2 gap-y-5 gap-x-10">
+  <main class="grid gap-y-5 gap-x-10">
     <DashboardNav/>
       <DashboardHeader/>
-      
       <DashboardUpdates/>
   </main>
   
