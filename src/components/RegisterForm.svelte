@@ -1,23 +1,27 @@
 <script></script>
 
-    <div class="w-[80%] h-[80vh] relative flex flex-col p-4 text-black gap-y-5" >
+    <div class="flex w-[80%] h-[80vh] relative flex flex-col p-4 text-black gap-y-4" >
+      <a href="/"><svg class="w-7 h-7 absolute top-[-3%] left-[-10%]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+        <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+    </svg>
+    </a>
 
         <div class="flex justify-center">
-            <img class="w-20 h-20" src="../../public/logo.png" alt=""/>
+            <img class="w-20 h-20" src="../../public/logo-white.png" alt=""/>
         </div>
 
         <div class="text-center text-3xl text-white font-bold">REGISTER</div>
 
         <div class="overflow-auto w-[100%] px-4">
-        <form class="flex flex-col">
-            <input placeholder="FIRST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="text">
-            <input placeholder="LAST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="text">
-            <input placeholder="EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="email">
-            <input placeholder="CONFIRM EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="email">
-            <input placeholder="PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="password">
-            <input placeholder="CONFIRM PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" type="password">
+        <form class="flex flex-col py-1">
+            <input placeholder="FIRST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+            <input placeholder="LAST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+            <input placeholder="EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
+            <input placeholder="CONFIRM EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
+            <input placeholder="PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
+            <input placeholder="CONFIRM PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="gender">Gender</label>
-            <select class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-neon transition ease-in-out duration-150 text-sm" id="gender">
+            <select class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" id="gender">
                 <option disabled selected value="" class="text-sm">GENDER</option>
                 <option class="bg-black text-center text-white text-sm" value="male">MALE</option>
                 <option class="bg-black text-center text-white" value="female">FEMALE</option>
@@ -34,7 +38,7 @@
         </div>
         
         
-        <a href="/userDashboardPage" type="submit" class="bg-neon w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm ">CREATE ACCOUNT</a>
+        <a href="/DashboardPage/userDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]">CREATE ACCOUNT</a>
         <div class="flex justify-center items-center text-white py-7">Already have an account?</div>
         
     </div>
@@ -52,7 +56,7 @@
 
 /* Customize the scrollbar thumb (the draggable part) */
 ::-webkit-scrollbar-thumb {
-  background-color: #4DF100; /* Change the color of the thumb */
+  background-color: #F9BC60; /* Change the color of the thumb */
   border-radius: 5px; /* Rounded corners for the thumb */
 }
 

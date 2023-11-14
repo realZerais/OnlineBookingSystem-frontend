@@ -1,10 +1,9 @@
 <script>
-import LoginForm from "../../components/LoginForm.svelte";
+import RegisterForm from "../../../components/RegisterForm.svelte";
 </script>
 
-
 <div class="small flex flex-col justify-start items-center py-5 w-[100%] h-[100vh] bg-main">
-    <LoginForm/>
+    <RegisterForm/>
 </div>
 
-    
+        
