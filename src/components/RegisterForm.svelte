@@ -1,6 +1,6 @@
 <script></script>
 
-    <div class="flex w-[80%] h-[80vh] relative flex flex-col p-4 text-black gap-y-5" >
+    <div class="w-[80%] h-[80vh] relative flex flex-col p-4 text-black gap-y-5" >
 
         <div class="flex justify-center">
             <img class="w-20 h-20" src="../../public/logo.png" alt=""/>
@@ -34,7 +34,7 @@
         </div>
         
         
-        <a href="/userDashboardPage" type="submit" class="bg-neon w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal">CREATE ACCOUNT</a>
+        <a href="/userDashboardPage" type="submit" class="bg-neon w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm ">CREATE ACCOUNT</a>
         <div class="flex justify-center items-center text-white py-7">Already have an account?</div>
         
     </div>
