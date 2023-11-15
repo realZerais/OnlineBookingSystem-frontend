@@ -1,38 +1,43 @@
 <script></script>
 
-    <div class="w-[80%] h-[80vh] relative flex flex-col p-4 text-black  gap-y-5" >
+    <div class="flex w-[80%] h-[80vh] relative flex flex-col p-4 text-black  gap-y-4" >
+        <a href="/"><svg class="w-7 h-7 absolute top-[-3%] left-[-10%] fill-mainParagraph hover:fill-accent" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+            <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
+        </svg>
+        </a>
+
         <div class="flex justify-center">
-            <img class="w-20 h-20" src="../../public/logo.png" alt=""/>
+            <img class="w-20 h-20" src="../../public/logo-white.png" alt=""/>
         </div>
 
-        <div class="text-center text-3xl text-white font-bold">LOGIN</div>
+        <div class="text-center text-3xl text-mainParagraph font-bold">LOGIN</div>
 
         <form class="flex flex-col gap-3 mt-10">
             <div class="block relative"> 
                 <label for="email" class="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"></label>
-                <input type="text" id="email" placeholder="EMAIL" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-neon outline-0">
+                <input type="text" id="email" placeholder="EMAIL" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
                 
             </div>
             <div class="block relative"> 
                 <label for="password" class="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"></label>
-                <input type="password" id="password" placeholder="PASSWORD" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-neon outline-0">
+                <input type="password" id="password" placeholder="PASSWORD" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
                 
             </div>
             <div>
                 <!-- <a class="text-sm text-[#7747ff]" href="/adminDashboardPage">Forgot your password?</a> -->
             </div>
-            <a href="/userDashboardPage" type="submit" class="bg-neon w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm  hover:bg-neonHover">Log In</a>
+            <a href="DashboardPage/adminDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-main font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]">Log In</a>
     
         </form>
 
         
-        <div class="flex justify-center items-center text-white py-7">or</div>
+        <div class="flex absolute justify-center items-center text-white bottom-0 left-[47%]">or</div>
         
     </div>
 
     
 
-    <div class=" text-sm text-center mt-[1.6rem] "><a class="text-center text-3xl text-white font-bold hover:text-neon" href="/register"><u>SIGN UP</u></a></div>
+    <div class=" text-sm text-center mt-[1.6rem] "><a class="text-center text-3xl text-mainParagraph font-bold hover:text-accent    " href="/login/register"><u>SIGN UP</u></a></div>
 
 
 
