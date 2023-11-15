@@ -8,7 +8,7 @@
 </script>
 
 
-<div class="main-page bg-lightBG">
+<div class="main-page bg-lightBG w-[100%] h-[100vh]">
     <section class="bg-main">
  
         <LandingNavbar/>

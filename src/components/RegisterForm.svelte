@@ -13,7 +13,7 @@
         <div class="text-center text-3xl text-white font-bold">REGISTER</div>
 
         <div class="overflow-auto w-[100%] px-4">
-        <form class="flex flex-col py-1">
+        <form class="flex flex-col py-1 ">
             <input placeholder="FIRST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
             <input placeholder="LAST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
             <input placeholder="EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
@@ -21,7 +21,7 @@
             <input placeholder="PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
             <input placeholder="CONFIRM PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="gender">Gender</label>
-            <select class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" id="gender">
+            <select class="bg-black cursor-pointer text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" id="gender">
                 <option disabled selected value="" class="text-sm">GENDER</option>
                 <option class="bg-black text-center text-white text-sm" value="male">MALE</option>
                 <option class="bg-black text-center text-white" value="female">FEMALE</option>
@@ -30,7 +30,7 @@
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="birthdate">
                 BIRTHDAY
             </label>
-            <input class="bg-black text-center text-white border border-gray-500 rounded-xl p-2" placeholder="day/month/year" id="age" type="date">
+            <input class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 cursor-pointer" id="age" type="date">
            
             
             </form>
@@ -38,7 +38,7 @@
         </div>
         
         
-        <a href="/DashboardPage/userDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]">CREATE ACCOUNT</a>
+        <a href="/DashboardPage/userDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">CREATE ACCOUNT</a>
         <div class="flex justify-center items-center text-white py-7">Already have an account?</div>
         
     </div>
@@ -51,7 +51,8 @@
 
 <style>
     ::-webkit-scrollbar {
-  width: 10px;
+  width: 10px;  
+  
 }
 
 /* Customize the scrollbar thumb (the draggable part) */

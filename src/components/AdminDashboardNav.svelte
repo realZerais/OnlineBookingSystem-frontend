@@ -113,7 +113,7 @@
      }
  
      .container:hover{ 
-       width: 17%;
+       width: 16%;
        position: absolute;
      }
  
