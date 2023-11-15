@@ -71,7 +71,7 @@
              </div>     
              
              <div class="self-center">
-               <p class="text-xs text-mainParagraph">ADMIN@gmail.com</p>
+               <p class="text-xs text-mainParagraph">USER@gmail.com</p>
              </div>        
            </div>
        
