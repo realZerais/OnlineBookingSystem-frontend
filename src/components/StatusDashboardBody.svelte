@@ -5,14 +5,34 @@
 
 <div class="body">
 
-    <div class="flex flex-col self-start rounded-3xl w-[100%] h-[100%] p-6 justify-center gap-y-5 ">
-        <strong class="text-4xl text-mainParagraph tracking-widest">STATUS</strong>
-        <hr class="border-t-2 border-accent w-6/12"> 
+    <div class="header flex flex-col self-start rounded-3xl w-[100%] h-[100%] p-8 pb-14 justify-center gap-y-5 ">
+        <strong class="text-6xl text-mainParagraph tracking-widest ml-[9%]">STATUS</strong>
+        <hr class="border-t-2 border-accent w-6/12 ml-[9%]">  
     </div>
 
-    <div class="flex justify-center items-center row-span-2 w-[100%]">
-        <div class="flex gap-x-10 justify-center items-center w-[80%] h-[90%] bg-mainProfile bg-mainParagraph  border-black border-2 shadow-leftbottom">
-            <div class="flex flex-col justify-center items-center">
+    <div class="content flex justify-center items-center row-span-2 w-[100%]">
+
+
+
+        
+
+
+
+        <div class="flex gap-x-10 justify-center items-center w-[80%] h-[90%] bg-mainProfile bg-mainParagraph  border-black border-2 shadow-leftbottom ml-[3%]">
+
+                <!-----------------------------------BOOKING = FALSE ------------------------------------------>
+
+            <div class="flex flex-col w-[100%] h-[100%] items-center justify-center gap-y-7">
+                <div class="flex bg-accent w-[50%] h-[45%] items-center justify-center border-4 border-black">
+                    <p class="text-4xl font-bakbak">You haven't booked yet.</p>
+                </div>
+            </div>
+               
+
+        
+                <!-----------------------------------BOOKING = TRUE ------------------------------------------>
+            
+            <!-- <div class="flex flex-col justify-center items-center">
                 <svg class="w-20 h-20" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512">
                     <path d="M32 0C14.3 0 0 14.3 0 32S14.3 64 32 64V75c0 42.4 16.9 83.1 46.9 113.1L146.7 256 78.9 323.9C48.9 353.9 32 394.6 32 437v11c-17.7 0-32 14.3-32 32s14.3 32 32 32H64 320h32c17.7 0 32-14.3 32-32s-14.3-32-32-32V437c0-42.4-16.9-83.1-46.9-113.1L237.3 256l67.9-67.9c30-30 46.9-70.7 46.9-113.1V64c17.7 0 32-14.3 32-32s-14.3-32-32-32H320 64 32zM96 75V64H288V75c0 19-5.6 37.4-16 53H112c-10.3-15.6-16-34-16-53zm16 309c3.5-5.3 7.6-10.3 12.1-14.9L192 301.3l67.9 67.9c4.6 4.6 8.6 9.6 12.1 14.9H112z"/>
                 </svg>
@@ -39,9 +59,9 @@
                     <path d="M256 512A256 256 0 1 0 256 0a256 256 0 1 0 0 512zM369 209L241 337c-9.4 9.4-24.6 9.4-33.9 0l-64-64c-9.4-9.4-9.4-24.6 0-33.9s24.6-9.4 33.9 0l47 47L335 175c9.4-9.4 24.6-9.4 33.9 0s9.4 24.6 0 33.9z"/>
                 </svg>
                 <p>Done</p>
-            </div>
+            </div> -->
         </div>
-</div>
+    </div>
 </div>
 
 
@@ -55,6 +75,28 @@
       grid-template-columns: 1fr;
       grid-template-rows: 120px 1fr;
     }
+
+    .header{
+        visibility: hidden;
+        margin-left: -20%;
+        animation: to-right .5s linear forwards;
+    }
+
+    .content{
+        visibility: hidden;
+        margin-left: -20%;
+        animation: to-right .7s linear forwards;
+    }
+
+    @keyframes to-right {
+       0% {
+         visibility: hidden; /* Start with opacity 0 */
+       }
+       100% {
+         visibility: visible;
+         margin-left: 0%;
+       }
+     }
 
 
 </style>
