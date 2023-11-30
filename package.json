@@ -10,8 +10,8 @@
 		"format": "prettier --plugin-search-dir . --write ."
 	},
 	"devDependencies": {
-		"@sveltejs/adapter-auto": "^2.0.0",
-		"@sveltejs/kit": "^1.20.4",
+		"@sveltejs/adapter-auto": "^2.1.1",
+		"@sveltejs/kit": "^1.27.6",
 		"autoprefixer": "^10.4.16",
 		"eslint": "^8.28.0",
 		"eslint-config-prettier": "^8.5.0",
@@ -23,5 +23,18 @@
 		"tailwindcss": "^3.3.5",
 		"vite": "^4.4.2"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"@radix-ui/react-slot": "^1.0.2",
+		"@sveltejs/adapter-static": "^2.0.3",
+		"class-variance-authority": "^0.7.0",
+		"clsx": "^2.0.0",
+		"date-fns": "^2.30.0",
+		"lucide-react": "^0.294.0",
+		"react-day-picker": "^8.9.1",
+		"svelte-calendar": "^3.1.6",
+		"svelte-preprocess": "^5.1.1",
+		"tailwind-merge": "^2.0.0",
+		"tailwindcss-animate": "^1.0.7"
+	}
 }

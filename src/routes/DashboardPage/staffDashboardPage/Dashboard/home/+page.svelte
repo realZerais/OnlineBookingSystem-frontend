@@ -1,5 +1,5 @@
 <script>
-    import HomeDashboardBody from "../../../../../components/HomeDashboardBody.svelte";
+    import HomeDashboardBody from "$components/HomeDashboardBody.svelte";
     
 </script>  
 

@@ -13,7 +13,7 @@
        </div>      
        <hr class="text self-center border-t-2 border-accent w-[80%] opacity-0"> 
  
-       <div class="btn_container flex flex-col w-[100%] h-[45%] gap-y-1 pt-10">
+       <div class="btn_container flex flex-col w-[100%] h-[auto] gap-y-5 pt-10">
  
          <a class="unhover" href="/DashboardPage/staffDashboardPage/Dashboard/home">
            <button class="btn ml-5 flex flex-wrap group hover:bg-accent text-base text-black items-center rounded-3xl w-[40%] h-10 px-4">
@@ -42,6 +42,14 @@
              <p class="text text-mainParagraph self-center hidden group-hover:text-main">Status</p>
          </button>
        </a>
+
+       <a class="unhover" href="/DashboardPage/staffDashboardPage/Dashboard/receipt">
+        <button class="btn  ml-5 flex flex-wrap group hover:bg-accent text-base text-black items-center gap-x-5 rounded-3xl w-[40%] h-10 px-4">
+          <svg class="icon mt-1 flex absolute fill-mainParagraph w-5 h-5 mr-5 group-hover:fill-main" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 384 512"><!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. --><path d="M14 2.2C22.5-1.7 32.5-.3 39.6 5.8L80 40.4 120.4 5.8c9-7.7 22.3-7.7 31.2 0L192 40.4 232.4 5.8c9-7.7 22.3-7.7 31.2 0L304 40.4 344.4 5.8c7.1-6.1 17.1-7.5 25.6-3.6s14 12.4 14 21.8V488c0 9.4-5.5 17.9-14 21.8s-18.5 2.5-25.6-3.6L304 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L192 471.6l-40.4 34.6c-9 7.7-22.3 7.7-31.2 0L80 471.6 39.6 506.2c-7.1 6.1-17.1 7.5-25.6 3.6S0 497.4 0 488V24C0 14.6 5.5 6.1 14 2.2zM96 144c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96zM80 352c0 8.8 7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96c-8.8 0-16 7.2-16 16zM96 240c-8.8 0-16 7.2-16 16s7.2 16 16 16H288c8.8 0 16-7.2 16-16s-7.2-16-16-16H96z"/>
+          </svg>
+            <p class="text text-mainParagraph self-center hidden group-hover:text-main">Receipt</p>
+        </button>
+      </a>
  
        <a class="unhover" href="/DashboardPage/staffDashboardPage/Dashboard/profile">
          <button class="btn  ml-5 flex flex-wrap group hover:bg-accent text-base text-black items-center gap-x-5 rounded-3xl w-[40%] h-10 px-4">
@@ -63,7 +71,7 @@
  
        <div class="account relative flex flex-col justify-center items-center justify-end h-[100%] mb-5 opacity-0">
          <div class="flex h-[100%] ">
-               <img class="rounded-full w-16 h-16 bg-zinc-400 self-end mt-20 mb-3 border border-accent border-2" src={userImage} alt="">
+               <img class="rounded-full w-16 h-16 bg-zinc-400 self-end border border-accent border-2" src={userImage} alt="">
          </div>
    
              <div class="self-center justify-self-center mb-1">
