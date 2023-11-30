@@ -10,8 +10,8 @@
     </div>
 
     <div class="content flex justify-center items-center row-span-2 w-[100%]">
-        <div class="flex justify-center items-center w-[80%] h-[90%] bg-mainParagraph  border-black border-2 shadow-leftbottom ml-[3%]">
-                <h1 class="text-4xl">THIS IS BOOKING</h1>
+        <div class="flex justify-center  items-center w-[80%] h-[90%] bg-mainParagraph  border-black border-2 shadow-leftbottom ml-[3%]">
+               
         </div>
     </div>
 
@@ -32,13 +32,13 @@
     .header{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .5s linear forwards;
+        animation: to-right .4s linear forwards;
     }
 
     .content{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .7s linear forwards;
+        animation: to-right .5s linear forwards;
     }
 
     @keyframes to-right {

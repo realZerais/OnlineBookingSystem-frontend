@@ -1,12 +1,11 @@
 <script>
-    
 </script>
 
 <div class="body">
 
     <div class="header flex flex-col self-start rounded-3xl w-[100%] h-[100%] p-8 pb-14 justify-center gap-y-5 ">
         <strong class="text-6xl text-mainParagraph tracking-widest ml-[9%]">PROFILE</strong>
-        <hr class="border-t-2 border-accent w-6/12 ml-[9%]">  
+        <hr class="border-t-2 border-accent w-6/12 ml-[9%]"> 
     </div>
 
     <div class="content flex justify-center items-center row-span-2 w-[100%]">
@@ -26,19 +25,20 @@
       width: 100%;
       height: 100%;
       grid-template-columns: 1fr;
-      grid-template-rows: 120px 1fr;
+      grid-template-rows: 120px 1fr ;   
+      
     }
 
     .header{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .5s linear forwards;
+        animation: to-right .4s linear forwards;
     }
 
     .content{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .7s linear forwards;
+        animation: to-right .5s linear forwards;
     }
 
     @keyframes to-right {

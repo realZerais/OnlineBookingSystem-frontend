@@ -1,8 +1,8 @@
 <script>
-    import LandingNavbar from '../components/LandingNavbar.svelte';
-    // import About from '../components/About.svelte';
-    import Contact from '../components/Contact.svelte';
-    import Footer from '../components/Footer.svelte';
+    import LandingNavbar from '$components/LandingNavbar.svelte';
+    // import About from '$components/About.svelte';
+    import Contact from '$components/Contact.svelte';
+    import Footer from '$components/Footer.svelte';
 
 
 </script>
@@ -15,8 +15,8 @@
         <hr>
 
         <div class="h-[100vh] w-[100%] flex flex-row justify-around items-center ">
-            <div class="w-[50%] flex flex-col justify-evenly items-center gap-10">
-                <h1 class="text-4xl font-bold text-mainHeadline">CORE1 Cellphone and Acessories</h1>
+            <div class="w-[50%] flex flex-col justify-evenly items-center gap-5 mb-[10%] ">
+                <h1 class="w-[100%] text-[77px] font-bold text-mainHeadline tracking-normal ml-[20%]">CORE1 Cellphone and Acessories</h1>
                 <p class="text-xl  text-mainParagraph">Some Details Here</p>
                 
                 <div class="flex flex-row gap-6" >

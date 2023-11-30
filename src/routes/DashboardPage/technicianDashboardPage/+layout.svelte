@@ -1,11 +1,11 @@
 <script>
-import AdminDashboardNav from "$components/AdminDashboardNav.svelte";
+import TechnicianDashboardNav from "$components/TechnicianDashboardNav.svelte";
 </script>
 
 
 <main class="grid grid-cols-2 grid-rows-2 gap-y-5 gap-x-10">
 
-    <AdminDashboardNav/>
+    <TechnicianDashboardNav/>
     <slot/>
   
     </main>

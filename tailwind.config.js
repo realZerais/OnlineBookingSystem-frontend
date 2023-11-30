@@ -21,6 +21,7 @@ export default {
 				main: '#004643',
 				mainHeadline: '#fffffe',
 				mainParagraph: '#e8e4e6',
+				dashboardBody: '#bbbbbd',
 
 				secondary: '#abd1c6',
 				secondaryHeadline: '#001e1d',
@@ -28,6 +29,9 @@ export default {
 
 				accent: '#f9bc60',
 				accentParagrah: '#0f3433'
+			},
+			letterSpacing: {
+				tightest: '-.010em'
 			}
 		}
 	},

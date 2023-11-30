@@ -32,13 +32,13 @@
     .header{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .5s linear forwards;
+        animation: to-right .4s linear forwards;
     }
 
     .content{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .7s linear forwards;
+        animation: to-right .5s linear forwards;
     }
 
     @keyframes to-right {

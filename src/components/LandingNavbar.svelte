@@ -15,7 +15,7 @@
 
 
 <nav class=" bg-main flex justify-between items-center h-[20vh] w-[100%] opacity-90 p-6">
-    <img src="public\logo.png" alt="Company Logo" class="h-20 w-20"/>
+    <img src="public\logo-white.png" alt="Company Logo" class="h-20 w-20"/>
     <ul class="flex justify-start items-center gap-4 text-mainParagraph ">
         
         <li class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a href="#" class="text-lg font-bold hover:brightness-100">Home</a></li>
