@@ -1,5 +1,5 @@
 <script>
-       import AdminBookButton from '$components/AdminBookButton.svelte';
+       import AdminBookButton from '$admin/AdminBookButton.svelte';
        const dashedLine = '<h1> - - - - -<h1>';
 
 // let isBooked = true;
@@ -80,17 +80,12 @@
 		grid-template-rows: 120px 1fr;
 	}
 
-	.header {
-		visibility: hidden;
-		margin-left: -20%;
-		animation: to-right 0.4s linear forwards;
-	}
+	.header{
+        visibility: hidden;
+        margin-left: -20%;
+        animation: to-right .3s linear forwards;
+    }
 
-	.content {
-		visibility: hidden;
-		margin-left: -20%;
-		animation: to-right 0.5s linear forwards;
-	}
 
 	@keyframes to-right {
 		0% {

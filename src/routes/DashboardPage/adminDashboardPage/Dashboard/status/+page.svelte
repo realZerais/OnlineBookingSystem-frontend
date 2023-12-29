@@ -1,5 +1,5 @@
 <script>
-   import StatusDashboardBody from "$components/StatusDashboardBody.svelte";
+   import StatusDashboardBody from "$nav/StatusDashboardBody.svelte";
    
 </script>  
 

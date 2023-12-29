@@ -1,5 +1,5 @@
 <script>
-    import TechnicianStartRepair from "$components/TechnicianStartRepair.svelte";
+    import TechnicianStartRepair from "$technician/TechnicianStartRepair.svelte";
 
     let showModal = false;
  
@@ -22,7 +22,7 @@
     <div name="start" class="flex flex-col w-[100%] h-[100%] divide-y">
        
 
-        <div class="flex w-[100%] h-[80%] p-5 divide-x">
+        <dif class="flex w-[100%] h-[80%] p-5 divide-x">
 
             <div class="flex flex-col w-[50%] h-[100%] ">
                 <h2 class="flex  justify-center font-bakbak">
@@ -49,7 +49,7 @@
                 </div>
             </div>
             
-        </div>
+        </dif>
 
         <div class="flex w-[100%] h-[20%] ">
 
@@ -100,14 +100,10 @@
     .header{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .4s linear forwards;
+        animation: to-right .3s linear forwards;
     }
 
-    .content{
-        visibility: hidden;
-        margin-left: -20%;
-        animation: to-right .5s linear forwards;
-    }
+
 
     @keyframes to-right {
        0% {
@@ -118,6 +114,5 @@
          margin-left: 0%;
        }
      }
-
 
 </style>

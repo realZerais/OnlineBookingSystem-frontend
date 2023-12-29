@@ -1,6 +1,6 @@
 <script lang="js">
-  import logo from "../../public/logo-white.png"
-  import userImage from "../../public/user-sample-image.png"
+  import logo from "$public/logo-white.png"
+  import userImage from "$public/user-sample-image.png"
  </script>
  
  <div class="flex justify-start col-span-1 row-span-2">

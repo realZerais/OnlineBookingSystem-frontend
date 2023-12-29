@@ -1,5 +1,5 @@
 <script>
-    import ReceiptDashboardBody from "$components/ReceiptDashboardBody.svelte";
+    import ReceiptDashboardBody from "$nav/ReceiptDashboardBody.svelte";
     
 </script>  
 

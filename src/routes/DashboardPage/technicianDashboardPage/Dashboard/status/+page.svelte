@@ -1,5 +1,5 @@
 <script>
-   import TechnicianStatusDashboardBody from "$components/TechnicianStatusDashboardBody.svelte";
+   import TechnicianStatusDashboardBody from "$technician/TechnicianStatusDashboardBody.svelte";
 </script>  
 
 
