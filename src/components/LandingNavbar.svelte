@@ -14,7 +14,7 @@
 
 
 
-<nav class=" bg-main flex justify-between items-center h-[20vh] w-[100%] opacity-90 p-6">
+<nav class=" bg-main flex justify-between items-center h-[120px] w-[100%] opacity-90 p-6">
     <img src="public\logo-white.png" alt="Company Logo" class="h-20 w-20"/>
     <ul class="flex justify-start items-center gap-4 text-mainParagraph ">
         
