@@ -73,7 +73,7 @@
 <style>
 	.body {
 		display: grid;
-		background-color: #004643;
+		background-color: #004647;
 		width: 100%;
 		height: 100%;
 		grid-template-columns: 1fr;

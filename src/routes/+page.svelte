@@ -8,57 +8,39 @@
 
 </script>
 
-<main class="w-[100%] h-[100vh] parent ">
+<main class="w-[100%] h-[100vh] parent overflow-x-hidden">
 
-    <section class="child bg-main h-[100vh] ">
-        <LandingNavbar/>
+    <section class="s1 grid child h-[100vh]">
+        <div class="nav w-[100%] h-[100%]">
+            <LandingNavbar/>
+        </div>
+        
 
-                
-        <div class="h-[100vh] w-[100%] flex flex-row justify-around items-center ">
-            <div class="w-[50%] flex flex-col justify-evenly items-center gap-5 mb-[10%] ">
-                <h1 class="w-[100%] text-[77px] font-bold text-mainHeadline tracking-normal ml-[20%]">CORE1 Cellphone and Acessories</h1>
-                <p class="text-xl  text-mainParagraph">Some Details Here</p>
-                
-                <div class="flex flex-row gap-6" >
-                    <button class= "inline-flex text-accentParagrah h-12 bg-accent shadow-base shadow-secondary border-secondary border-y-2 py-2 px-6 focus:outline-none 
-                    rounded-3xl text:base md:text-lg hover:brightness-110 ">asdsadasds</button>
-                    
-                    <button class="w-fit p-2 h-12 px-4 cursor-pointer border rounded-full border-white
-                    hover:bg-blue-50 hover:bg-opacity-20 text-mainHeadline">MOasdsadRE</button>
-                </div>
-               
-            </div>
+ 
+        <div class="hero flex flex-col w-[100%] h-[100%] justify-center items-center gap-5 mb-[10%] ">
+            <h1 class="w-[100%] h-[70%] text-[77px] font-bold text-mainHeadline tracking-normal ml-[30%] leading-none">Your Device's Journey to Recovery Starts Here.</h1>   
+        </div>
             
-            <div class="w-[50%]">
-                <img src="public\repair-01.png" alt="character repairing">
-            </div>
-            
+        <div class="flex justify-center items-center image w-[100%] h-[100%] ">
+            <img class=" w-[60%] h-[60%] " src="public\repair-04.png" alt="character repairing">
         </div>
            
+            
                 
                 
 
     </section>
 
-    <section class="child bg-lightBG h-[100vh]">
+    <section class="s2 child bg-lightBG h-[100vh]">
         
     
-        <!-- <h1 class="text-4xl  text-secondaryParagraph">ABOUT</h1>
-        <h1 class="text-2xl  text-secondaryHeadline">Something</h1>
-        <p>Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id aliquam beatae modi sit omnis, voluptas quidem ea, asperiores fuga, velit aperiam iure ad eaque? Dicta vel recusandae at perferendis ducimus?</p>
-
-         -->
     </section>
     
         
-    <section class="child bg-secondary h-[100vh] flex">
+    <section class="s3 child bg-secondary h-[100vh] flex">
     
 
-        <!-- <h1 class="text-4xl text-secondaryHeadline">Contact US</h1>
-        <h1 class="text-secondaryParagraph">Something</h1>
-        <p class="text-secondaryParagraph">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Id aliquam beatae modi sit omnis, voluptas quidem ea, asperiores fuga, velit aperiam iure ad eaque? Dicta vel recusandae at perferendis ducimus?</p> -->
-
-        <div class="w-[100%] h-[10%] bg-lightBG justify-self-center self-end text-center">FOOTER</div>
+       
     </section>
     
 
@@ -75,4 +57,47 @@
     .child {
         scroll-snap-align: center;
     }
+
+    .s1{
+        background-image: url('./public/s1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: 100px 1fr;
+        grid-template-areas: 
+        "nav nav"
+        "hero image";
+    }
+
+    .nav{
+        grid-area: nav;
+    }
+
+    .hero{
+        grid-area: hero;
+    }
+
+    .image{
+        grid-area: image;
+    }
+
+     
+    .s2{
+        background-image: url('./public/s2.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+    .s3{
+        background-image: url('./public/s1.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+    }
+
+   
+
+    
 </style>
