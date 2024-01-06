@@ -1,4 +1,53 @@
-<script></script>
+<script>
+
+  let fname = '';
+  let lname = '';
+  let email = '';
+  let password = '';
+  let gender = '';
+  let birthday = '';
+  
+  const handleSubmit = async () =>{
+
+    const registerData = JSON.stringify({ 
+      fname,
+      lname,
+      email,
+      password,
+      gender,
+      birthday,
+    });
+
+    console.log(registerData);
+
+    try {   
+        const response = await fetch('http://localhost:3000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: registerData,
+        }); 
+
+        console.log('Server Response:', response);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        // Handle the response from the server
+        console.log('Server Response:', data);
+
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+
+
+
+    }
+</script>
 
     <div class="flex w-[80%] h-[80vh] relative flex flex-col p-4 text-black gap-y-4" >
       <a href="/"><svg class="w-7 h-7 absolute top-[-3%] left-[-10%]" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
@@ -14,14 +63,14 @@
 
         <div class="overflow-auto w-[100%] px-4">
         <form class="flex flex-col py-1 ">
-            <input placeholder="FIRST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
-            <input placeholder="LAST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
-            <input placeholder="EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
+            <input bind:value={fname} placeholder="FIRST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+            <input bind:value={lname} placeholder="LAST NAME" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+            <input bind:value={email} placeholder="EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
             <input placeholder="CONFIRM EMAIL" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
-            <input placeholder="PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
+            <input bind:value={password} placeholder="PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
             <input placeholder="CONFIRM PASSWORD" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="gender">Gender</label>
-            <select class="bg-black cursor-pointer text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" id="gender">
+            <select bind:value={gender} class="bg-black cursor-pointer text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" id="gender">
                 <option disabled selected value="" class="text-sm">GENDER</option>
                 <option class="bg-black text-center text-white text-sm" value="male">MALE</option>
                 <option class="bg-black text-center text-white" value="female">FEMALE</option>
@@ -30,7 +79,7 @@
             <label class="text-sm mb-2 text-neutral-400 cursor-pointer" for="birthdate">
                 BIRTHDAY
             </label>
-            <input class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 cursor-pointer" id="age" type="date">
+            <input bind:value={birthday} class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 cursor-pointer" id="age" type="date">
            
             
             </form>
@@ -38,7 +87,7 @@
         </div>
         
         
-        <a href="/DashboardPage/userDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">CREATE ACCOUNT</a>
+        <a on:click={handleSubmit} href="/DashboardPage/userDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-black font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">CREATE ACCOUNT</a>
         <div class="flex justify-center items-center text-white py-7">Already have an account?</div>
         
     </div>

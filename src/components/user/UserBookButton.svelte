@@ -9,19 +9,5 @@
 </a>
 
 <style>
-    .btn{
-        visibility: hidden;
-        margin-left: -20%;
-        animation: to-right .5s linear forwards;
-    }
-
-    @keyframes to-right {
-       0% {
-         visibility: hidden; /* Start with opacity 0 */
-       }
-       100% {
-         visibility: visible;
-         margin-left: 0%;
-       }
-     }
+  
 </style>

@@ -1,5 +1,5 @@
 <script>
-import UserDashboardNav from "$components/UserDashboardNav.svelte";
+import UserDashboardNav from "$user/UserDashboardNav.svelte";
 </script>
 
 

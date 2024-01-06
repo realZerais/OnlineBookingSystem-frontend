@@ -1,6 +1,6 @@
 <script>
-   import StatusDashboardBody from "$components/StatusDashboardBody.svelte";
-    import StaffBookButton from "$components/StaffBookButton.svelte";
+   import StatusDashboardBody from "$nav/StatusDashboardBody.svelte";
+    import StaffBookButton from "$staff/StaffBookButton.svelte";
 </script>  
 
 

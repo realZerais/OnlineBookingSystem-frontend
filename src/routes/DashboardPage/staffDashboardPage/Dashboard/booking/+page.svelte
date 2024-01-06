@@ -1,5 +1,5 @@
 <script>
-    import BookingDashboardBody from "$components/BookingDashboardBody.svelte";
+    import BookingDashboardBody from "$nav/BookingDashboardBody.svelte";
     
 </script>  
 

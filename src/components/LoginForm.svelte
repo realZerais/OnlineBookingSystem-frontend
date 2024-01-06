@@ -1,4 +1,45 @@
-<script></script>
+<script>
+
+  let email = '';
+  let password = '';
+  
+  const handleSubmit = async () =>{
+
+    const loginData = JSON.stringify({ 
+      email,
+      password,
+    });
+
+    console.log(loginData);
+
+    try {   
+        const response = await fetch('http://localhost:3000', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: loginData,
+        }); 
+
+        console.log('Server Response:', response);
+
+        if (!response.ok) {
+            throw new Error('Network response was not ok');
+        }
+
+        const data = await response.json();
+        // Handle the response from the server
+        console.log('Server Response:', data);
+
+        
+    } catch (error) {
+        console.error('Error:', error);
+    }
+
+
+
+    }
+</script>
 
     <div class="flex w-[80%] h-[80vh] relative flex flex-col p-4 text-black  gap-y-4" >
         <a href="/"><svg class="w-7 h-7 absolute top-[-3%] left-[-10%] fill-mainParagraph hover:fill-accent" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
@@ -15,18 +56,18 @@
         <form class="flex flex-col gap-3 mt-10">
             <div class="block relative"> 
                 <label for="email" class="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"></label>
-                <input type="text" id="email" placeholder="EMAIL" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
+                <input bind:value={email} type="text" id="email" placeholder="EMAIL" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
                 
             </div>
             <div class="block relative"> 
                 <label for="password" class="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"></label>
-                <input type="password" id="password" placeholder="PASSWORD" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
+                <input bind:value={password} type="password" id="password" placeholder="PASSWORD" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
                 
             </div>
             <div>
                 <!-- <a class="text-sm text-[#7747ff]" href="/adminDashboardPage">Forgot your password?</a> -->
             </div>
-            <a href="DashboardPage/adminDashboardPage/Dashboard/home" type="submit" class="bg-accent w-max m-auto px-6 py-2 rounded text-main font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Log In</a>
+            <a on:click={handleSubmit} href="DashboardPage/adminDashboardPage/Dashboard/home" class="bg-accent w-max m-auto px-6 py-2 rounded text-main font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Log In</a>
     
         </form>
 

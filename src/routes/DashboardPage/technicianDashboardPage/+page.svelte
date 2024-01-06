@@ -1,7 +1,7 @@
 <script>
   import '$public/logo.png'
-  import StaffDashboardNav from "$components/StaffDashboardNav.svelte"
+  import TechnicianDashboardNav from "$technician/TechnicianDashboardNav.svelte"
 </script>
 
-  <StaffDashboardNav/>
+  <TechnicianDashboardNav/>
   

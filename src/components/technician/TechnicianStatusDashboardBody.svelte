@@ -1,6 +1,6 @@
 <script>
     import { onMount } from 'svelte';
-    import TechnicianDoneRepair from "$components/TechnicianDoneRepair.svelte";
+    import TechnicianDoneRepair from "$technician/TechnicianDoneRepair.svelte";
 
     let showModal = false;
  
@@ -192,25 +192,21 @@
      grid-template-rows: 120px 1fr;
  }
 
- .header {
-     visibility: hidden;
-     margin-left: -20%;
-     animation: to-right 0.4s linear forwards;
- }
+ .header{
+        visibility: hidden;
+        margin-left: -20%;
+        animation: to-right .3s linear forwards;
+    }
 
- .content {
-     visibility: hidden;
-     margin-left: -20%;
-     animation: to-right 0.5s linear forwards;
- }
 
- @keyframes to-right {
-     0% {
-         visibility: hidden;
-     }
-     100% {
+
+    @keyframes to-right {
+       0% {
+         visibility: hidden; /* Start with opacity 0 */
+       }
+       100% {
          visibility: visible;
          margin-left: 0%;
+       }
      }
- }
 </style>

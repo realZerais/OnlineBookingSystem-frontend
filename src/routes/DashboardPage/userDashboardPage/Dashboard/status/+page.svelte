@@ -1,6 +1,6 @@
 <script>
-   import StatusDashboardBody from "$components/StatusDashboardBody.svelte";
-    import UserBookButton from "$components/UserBookButton.svelte";
+   import StatusDashboardBody from "$nav/StatusDashboardBody.svelte";
+    import UserBookButton from "$user/UserBookButton.svelte";
 </script>  
 
 

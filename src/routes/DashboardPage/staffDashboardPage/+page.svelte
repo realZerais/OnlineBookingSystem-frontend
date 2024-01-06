@@ -1,6 +1,6 @@
 <script>
   import '$public/logo.png'
-  import StaffDashboardNav from "$components/StaffDashboardNav.svelte"
+  import StaffDashboardNav from "$staff/StaffDashboardNav.svelte"
 </script>
 
   <StaffDashboardNav/>

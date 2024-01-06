@@ -1,5 +1,5 @@
 <script>
-    import ProfileDashboardBody from "$components/ProfileDashboardBody.svelte";
+    import ProfileDashboardBody from "$nav/ProfileDashboardBody.svelte";
     
 </script>  
 

@@ -1,5 +1,5 @@
 <script>
-    import TechnicianBookDashboardBody from "$components/TechnicianBookDashboardBody.svelte";
+    import TechnicianBookDashboardBody from "$technician/TechnicianBookDashboardBody.svelte";
     
 </script>  
 

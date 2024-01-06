@@ -1,5 +1,5 @@
 <script>
-import AdminDashboardNav from "$components/AdminDashboardNav.svelte";
+import AdminDashboardNav from "$admin/AdminDashboardNav.svelte";
 </script>
 
 

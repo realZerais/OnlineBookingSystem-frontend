@@ -1,5 +1,5 @@
 <script>
-import TechnicianDashboardNav from "$components/TechnicianDashboardNav.svelte";
+import TechnicianDashboardNav from "$technician/TechnicianDashboardNav.svelte";
 </script>
 
 

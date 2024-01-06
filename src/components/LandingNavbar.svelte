@@ -14,8 +14,12 @@
 
 
 
-<nav class=" bg-main flex justify-between items-center h-[20vh] w-[100%] opacity-90 p-6">
-    <img src="public\logo-white.png" alt="Company Logo" class="h-20 w-20"/>
+<nav class=" bg-main flex justify-between items-center h-[100px] w-[100%] opacity-90 p-6 ">
+    <div class="flex justify-center items-center gap-x-[20px] font-bakbak text-4xl text-mainParagraph">
+    <img src="public\logo-white.png" alt="Company Logo" class="h-14 w-14"/>
+    <h1>CORE1</h1>
+    </div>
+
     <ul class="flex justify-start items-center gap-4 text-mainParagraph ">
         
         <li class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a href="#" class="text-lg font-bold hover:brightness-100">Home</a></li>
