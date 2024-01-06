@@ -18,7 +18,7 @@ export default {
 
 				lightBG: '#fffffe',
 
-				main: '#004647',
+				main: '#014447',
 				mainHeadline: '#fffffe',
 				mainParagraph: '#e8e4e6',
 				dashboardBody: '#bbbbbd',
