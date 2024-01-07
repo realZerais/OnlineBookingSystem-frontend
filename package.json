@@ -20,14 +20,8 @@
 	},
 	"type": "module",
 	"dependencies": {
-		"@radix-ui/react-slot": "^1.0.2",
 		"@sveltejs/adapter-static": "^2.0.3",
-		"class-variance-authority": "^0.7.0",
 		"clsx": "^2.0.0",
-		"date-fns": "^2.30.0",
-		"lucide-react": "^0.294.0",
-		"react-day-picker": "^8.9.1",
-		"svelte-calendar": "^3.1.6",
 		"svelte-preprocess": "^5.1.1",
 		"tailwind-merge": "^2.0.0",
 		"tailwindcss-animate": "^1.0.7"
