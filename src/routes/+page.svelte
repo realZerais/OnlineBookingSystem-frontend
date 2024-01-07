@@ -5,41 +5,48 @@
     import Footer from '$components/Footer.svelte';
     import { onMount } from 'svelte';
 
-
 </script>
 
 <main class="w-[100%] h-[100vh] parent overflow-x-hidden">
 
-    <section class="s1 grid child h-[100vh]">
+    <section id="s1" class="s1 grid child h-[100vh]">
         <div class="nav w-[100%] h-[100%]">
             <LandingNavbar/>
         </div>
-        
-
  
         <div class="hero flex flex-col w-[100%] h-[100%] justify-center items-center gap-5 mb-[10%] ">
             <h1 class="w-[100%] h-[70%] text-[77px] font-bold text-mainHeadline tracking-normal ml-[30%] leading-none">Your Device's Journey to Recovery Starts Here.</h1>   
         </div>
             
-        <div class="flex justify-center items-center image w-[100%] h-[100%] ">
-            <img class=" w-[60%] h-[60%] " src="public\repair-04.png" alt="character repairing">
+        <div class="flex justify-center items-start image w-[100%] h-[100%] ">
+            <img class=" w-[80%] h-[80%] " src="public\repair-04.png" alt="character repairing">
         </div>
-           
-            
-                
-                
-
+ 
     </section>
 
-    <section class="s2 child bg-lightBG h-[100vh]">
+    <section id="s2" class="s2 flex justify-center items-center  child h-[100vh]">
         
+        <h1 class="text-accent text-9xl">ABOUT</h1>
     
     </section>
     
         
-    <section class="s3 child bg-secondary h-[100vh] flex">
+    <section id="s3" class="s3 flex justify-center items-center  child h-[100vh] flex">
     
+        <h1 class="text-accent text-9xl">ABOUT</h1>
+       
+    </section>
 
+    <section id="s4" class="s4 child h-[100vh] w-[100%] flex">
+
+        <div class="flex justify-center items-center contactBody w-[100%] h-[100%]">
+            <p class="text-main text-9xl">CONTACTS</p>
+        </div>
+        
+        <div class="flex justify-center items-center footer w-[100%] h-[100%]">
+            <p class="text-accent text-2xl">FOOTER</p>
+        </div>
+        
        
     </section>
     
@@ -47,7 +54,7 @@
 </main>
     
 
-<style>
+<style module>
     .parent {
         scroll-snap-type: y mandatory;
         overflow-y: scroll;
@@ -59,7 +66,7 @@
     }
 
     .s1{
-        background-image: url('./public/s1.png');
+        background-image: url('./public/s1.1.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -84,20 +91,51 @@
 
      
     .s2{
-        background-image: url('./public/s2.png');
+        background-image: url('./public/s2.1.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
     }
 
     .s3{
-        background-image: url('./public/s1.png');
+        background-image: url('./public/s1.1.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
     }
+    .s4{
+        background-image: url('./public/s4.png');
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+        display: grid;
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 70px;
+        grid-template-areas: 
+        "contactBody"
+        "footer";
+    }
+    .contactBody{
+        grid-area: contactBody;
+    }
+    .footer{
+        grid-area: footer;
+    }
+    ::-webkit-scrollbar {
+        width: 7px; /* Set the width of the scrollbar */
+       
+    }
 
-   
+    ::-webkit-scrollbar-thumb {
+        background-color: #f9bc60; /* Set the color of the thumb (the draggable part) */
+        border-radius: 5px; /* Optional: Add rounded corners to the thumb */
+        outline: 1px solid #014447;
+    }
+
+    ::-webkit-scrollbar-track {
+        background-color: #014447;
+       
+    }
 
     
 </style>
