@@ -1,26 +1,25 @@
 <script>
-
-  let fullname = '';
   let username = '';
+  let full_name = '';
   let email = '';
-  let phoneNumber = '';
+  let phone_number = '';
   let password = '';
 
   
   const handleSubmit = async () =>{
 
     const registerData = JSON.stringify({ 
-      fullname,
+      full_name,
       username,
       email,
-      phoneNumber,
+      phone_number,
       password,
     });
 
     console.log(registerData);
 
     try {   
-        const response = await fetch('http://localhost:9000', {
+        const response = await fetch('http://localhost:9000/user/signup', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
@@ -64,9 +63,9 @@
       <form class="flex flex-col py-1 ">
         <input bind:value={username} placeholder="Username" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
 
-        <input bind:value={fullname} placeholder="Full Name" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+        <input bind:value={full_name} placeholder="Full Name" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
         <input bind:value={email} placeholder="Email" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
-        <input bind:value={phoneNumber} placeholder="Phone Number" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="number">
+        <input bind:value={phone_number} placeholder="Phone Number" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="number">
 
         <input bind:value={password} placeholder="Password" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
         <input placeholder="Confirm Password" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
