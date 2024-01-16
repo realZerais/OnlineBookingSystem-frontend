@@ -51,7 +51,7 @@
     </a>
 
     <div class="flex justify-center">
-        <img class="w-20 h-20" src="../../public/logo-white.png" alt=""/>
+        <img class="w-14 h-14" src="../../public/logo-white.png" alt=""/>
     </div>
 
     <div class="text-center text-3xl text-mainParagraph font-bold">LOGIN</div>
@@ -70,7 +70,7 @@
         <div>
             <!-- <a class="text-sm text-[#7747ff]" href="/adminDashboardPage">Forgot your password?</a> -->
         </div>
-        <button on:click={handleSubmit} class="bg-accent w-max m-auto px-6 py-2 rounded text-main font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">Log In</button>
+        <button on:click={handleSubmit} class="bg-accent w-max m-auto px-6 py-2 rounded text-main font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">LOGIN</button>
         
 
     </form>
@@ -82,7 +82,7 @@
 
 
 
-<div class=" text-sm text-center mt-[1.6rem] "><a class="text-center text-3xl text-mainParagraph font-bold hover:text-accent    " href="/login/register"><u>SIGN UP</u></a></div>
+<div class=" text-sm text-center mt-[1.6rem] "><a class="text-center text-3xl text-accent font-bold hover:brightness-110" href="/login/register">SIGN UP</a></div>
 
 
 
