@@ -1,5 +1,5 @@
 <script>
-    import AdminBookButton from '$admin/AdminBookButton.svelte';
+   
     const dashedLine = '<h1> - - - - -<h1>';
 
 // let isBooked = true;
@@ -32,7 +32,7 @@
              <div class="flex bg-accent w-[50%] h-[45%] items-center justify-center border-4 border-black" >
                  <p class="text-4xl font-bakbak">You haven't booked yet.</p>
              </div>
-             <AdminBookButton />
+            
          </div>
 
          <!-----------------------------------BOOKING = TRUE ------------------------------------------>

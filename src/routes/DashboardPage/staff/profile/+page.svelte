@@ -1,10 +1,10 @@
 <script>
-    import ProfileDashboardBody from "$nav/ProfileDashboardBody.svelte";
+    import Profile from "$components/staff/Profile.svelte";
     
 </script>  
 
 
-                <ProfileDashboardBody/>
+<Profile/>
 
 
 <style>

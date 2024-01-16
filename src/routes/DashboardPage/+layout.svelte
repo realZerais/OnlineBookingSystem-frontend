@@ -5,7 +5,7 @@ import AdminNav from "$components/nav/AdminNav.svelte"
 import StaffNav from "$components/nav/StaffNav.svelte"
 import TechnicianNav from "$components/nav/TechnicianNav.svelte"
 
-let role = 'admin';
+let role = 'technician';
 </script>
 
 
@@ -15,9 +15,9 @@ let role = 'admin';
     <UserNav></UserNav>
   {:else if role == 'admin'}
     <AdminNav></AdminNav>
-  {:else if role == 'technician'}
-    <StaffNav></StaffNav>
   {:else if role == 'staff'}
+    <StaffNav></StaffNav>
+  {:else if role == 'technician'}
     <TechnicianNav></TechnicianNav>
   {/if}
 

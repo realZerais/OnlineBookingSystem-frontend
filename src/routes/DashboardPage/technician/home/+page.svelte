@@ -1,10 +1,10 @@
 <script>
-    import HomeDashboardBody from "$nav/HomeDashboardBody.svelte";
+    import Home from "$components/technician/Home.svelte";
     
 </script>  
 
 
-                <HomeDashboardBody/>
+<Home/>
 
 
 <style>

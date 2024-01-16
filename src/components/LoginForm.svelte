@@ -31,7 +31,7 @@
             const { token } = await response.json();
         
             console.log('token', token);
-            goto('/DashboardPage/userDashboardPage/Dashboard/home');
+            goto('/DashboardPage/user/home');
         }
 
         

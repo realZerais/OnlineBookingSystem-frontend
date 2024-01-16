@@ -1,10 +1,10 @@
 <script>
-    import BookingDashboardBody from "$nav/BookingDashboardBody.svelte";
+    import Booking from "$components/staff/Booking.svelte";
     
 </script>  
 
-<BookingDashboardBody/>
 
+<Booking/>
 
 
 <style>
