@@ -1,13 +1,32 @@
 <script>
+  import { goto } from '$app/navigation';
   let username = '';
   let full_name = '';
   let email = '';
   let phone_number = '';
   let password = '';
+  let confirmPassword = '';
 
-  
+  let validate = false;
+  const validateForm = () => {
+    if(password !== confirmPassword){
+      alert("Password did not matched");
+      return false;
+    }
+    else if (!username || !full_name || !email || !phone_number ||!password || password !== confirmPassword) {
+      errorMessage = 'Please fill in all fields and ensure passwords match.';
+      return false;
+    }
+    else{
+      return true
+    }
+  };
   const handleSubmit = async () =>{
-
+    const validate = validateForm();
+    if(!validate){
+      return false;
+    }
+    
     const registerData = JSON.stringify({ 
       full_name,
       username,
@@ -19,27 +38,31 @@
     console.log(registerData);
 
     try {   
-        const response = await fetch('http://localhost:9000/user/signup', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: registerData,
-        }); 
+      const response = await fetch('http://localhost:9000/user/signup', {
+          method: 'POST',
+          headers: {
+              'Content-Type': 'application/json',
+          },
+          body: registerData,
+      }); 
 
-        console.log('Server Response:', response);
+      if (!response.ok) {
+        const errorData = await response.json();
+        const {message} = errorData;
+        console.log(message);
+        alert(message);
+      }else{
+        const { token } = await response.json();
+      
+        console.log('token', token);
+        goto('/DashboardPage/userDashboardPage/Dashboard/home');
+      }
 
-        if (!response.ok) {
-          throw new Error('Network response was not ok');
-        }
-
-        const data = await response.json();
-        // Handle the response from the server
-        console.log('Server Response:', data);
+    
 
         
     } catch (error) {
-        console.error('Error:', error);
+      console.error('Error:', error);
     }
 
 
@@ -61,15 +84,15 @@
 
     <div class=" w-[100%] px-4">
       <form class="flex flex-col py-1 ">
-        <input bind:value={username} placeholder="Username" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+        <input bind:value={username} required placeholder="Username" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
 
-        <input bind:value={full_name} placeholder="Full Name" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
-        <input bind:value={email} placeholder="Email" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
-        <input bind:value={phone_number} placeholder="Phone Number" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="number">
+        <input bind:value={full_name} required placeholder="Full Name" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="text">
+        <input bind:value={email} required placeholder="Email" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="email">
+        <input bind:value={phone_number} required placeholder="Phone Number" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="number">
 
-        <input bind:value={password} placeholder="Password" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
-        <input placeholder="Confirm Password" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
-        <button on:click={handleSubmit} class="mt-3 bg-accent w-max m-auto px-6 py-2 rounded text-black font-semibold text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">CREATE ACCOUNT</button>
+        <input bind:value={password} required placeholder="Password" class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
+        <input bind:value={confirmPassword} placeholder="Confirm Password" required class="bg-black text-center text-white border border-gray-500 rounded-xl p-2 mb-4 focus:bg-black focus:outline-none focus:ring-1 focus:ring-accent transition ease-in-out duration-150 text-sm" type="password">
+        <button on:click={handleSubmit} required class="mt-3 bg-accent w-max m-auto px-6 py-2 rounded text-black text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">CREATE ACCOUNT</button>
       </form>
         
     </div>

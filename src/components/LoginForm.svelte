@@ -1,6 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-
+    
   let username = '';
   let password = '';
   
@@ -22,17 +22,19 @@
             body: loginData,
         }); 
 
-        console.log('Server Response:', response);
-
         if (!response.ok) {
-            console.log(JSON.stringify(response))
-            throw new Error('Login failed');
+            const errorData = await response.json();
+            const {message} = errorData;
+            console.log(message);
+            alert(message);
+        }else{
+            const { token } = await response.json();
+        
+            console.log('token', token);
+            goto('/DashboardPage/userDashboardPage/Dashboard/home');
         }
 
-        const { token } = await response.json();
         
-        console.log('token', token);
-        goto('/DashboardPage/userDashboardPage/Dashboard/home');
 
         
     } catch (error) {
@@ -44,7 +46,7 @@
     }
 </script>
 
-<div class="flex w-[80%] h-[80vh] relative flex flex-col p-4 text-black  gap-y-4" >
+<div class="flex w-[80%] h-[80vh] relative flex-col p-4 text-black  gap-y-4" >
     <a href="/"><svg class="w-7 h-7 absolute top-[-3%] left-[-10%] fill-mainParagraph hover:fill-accent" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
     </svg>
@@ -70,7 +72,7 @@
         <div>
             <!-- <a class="text-sm text-[#7747ff]" href="/adminDashboardPage">Forgot your password?</a> -->
         </div>
-        <button on:click={handleSubmit} class="bg-accent w-max m-auto px-6 py-2 rounded text-main font-semibold outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">LOGIN</button>
+        <button on:click={handleSubmit} class="bg-accent w-max m-auto px-6 py-2 rounded text-main outline text-sm font-normal border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">LOGIN</button>
         
 
     </form>

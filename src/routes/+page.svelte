@@ -4,14 +4,17 @@
     import Contact from '$components/Contact.svelte';
     import Footer from '$components/Footer.svelte';
     import { onMount } from 'svelte';
+    
+    import { isAuthenticated } from '../hooks/auth';
 
 </script>
 
 <main class="w-[100%] h-[100vh] parent overflow-x-hidden">
-
+    
     <section id="s1" class="s1 grid child h-[100vh]">
         <div class="nav w-[100%] h-[100%]">
             <LandingNavbar/>
+            {$isAuthenticated}
         </div>
  
         <div class="hero relative flex flex-col w-[100%] h-[100%] justify-center items-center mb-[10%] ml-[15%] leading-none">
