@@ -61,12 +61,12 @@
     <form class="flex flex-col gap-3 mt-10">
         <div class="block relative"> 
             <label for="email" class="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"></label>
-            <input bind:value={username} type="text" id="email" placeholder="Username" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
+            <input bind:value={username} required type="text" id="email" placeholder="Username" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
             
         </div>
         <div class="block relative"> 
             <label for="password" class="block text-gray-600 cursor-text text-sm leading-[140%] font-normal mb-2"></label>
-            <input bind:value={password} type="password" id="password" placeholder="Password" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
+            <input bind:value={password} required type="password" id="password" placeholder="Password" class="rounded-xl border-2 bg-black text-center border-gray-500 text-sm w-full font-normal leading-[18px] text-white tracking-[0px] appearance-none block h-11 m-0 p-[11px] focus:ring-2 ring-accent outline-0">
             
         </div>
         <div>
