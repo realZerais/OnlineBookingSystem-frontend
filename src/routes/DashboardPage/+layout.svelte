@@ -5,7 +5,7 @@ import AdminNav from "$components/nav/AdminNav.svelte"
 import StaffNav from "$components/nav/StaffNav.svelte"
 import TechnicianNav from "$components/nav/TechnicianNav.svelte"
 
-let role = 'technician';
+let role = 'user';
 </script>
 
 

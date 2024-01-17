@@ -1,19 +1,7 @@
 <script>
+import { isAuthenticated } from "../hooks/auth"
 
 
-    let isLoginComponentVisible = false;
-    let isSignUpComponentVisible = false;
-
-    
-    
-
-    function toggleLoginComponent() {
-        isLoginComponentVisible = !isLoginComponentVisible;
-    }
-
-    function toggleSignUpComponent() {
-        isSignUpComponentVisible = !isSignUpComponentVisible;
-    }
 
 </script>
 
@@ -30,11 +18,18 @@
         <li onclick="window.location.href='#s1'" class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a  href="#" class="text-xl font-bold hover:brightness-100">Home</a></li>
         <li onclick="window.location.href='#s2'" class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a  href="#" class="text-xl font-bold hover:brightness-100">About</a></li>
         <li onclick="window.location.href='#s4'" class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a  href="#" class="text-xl font-bold hover:brightness-100">Contacts</a></li>
-        <a href="/login" on:click={toggleLoginComponent} class="cursor-pointer transition-all bg-accent text-accentParagrah text-lg font-bold px-6 py-2 rounded-lg
-        border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
-        active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
-            Log in
-        </a>
+        
+        {#if !$isAuthenticated}
+            <a href="/login" class="cursor-pointer transition-all bg-accent text-accentParagrah text-lg font-bold px-6 py-2 rounded-lg border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                Log in
+            </a>
+            {:else}
+            <a href="/DashboardPage/user/home" class="cursor-pointer transition-all bg-accent text-accentParagrah text-lg font-bold px-6 py-2 rounded-lg border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                Go To Dashboard
+            </a>
+        {/if}
+
+        
     </ul>
 
     

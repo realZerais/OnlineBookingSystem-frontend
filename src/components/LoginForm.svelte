@@ -1,6 +1,8 @@
 <script>
     import { goto } from '$app/navigation';
-    
+    import { writable } from 'svelte/store';
+    import {isAuthenticated} from '../hooks/auth'
+
   let username = '';
   let password = '';
   
@@ -28,9 +30,13 @@
             console.log(message);
             alert(message);
         }else{
-            const { token } = await response.json();
-        
-            console.log('token', token);
+            const { accessToken } = await response.json();
+
+            document.cookie = `accessToken=${accessToken}; path=/`; //put the accessToken to the cookie
+
+            isAuthenticated.set(document.cookie.includes('accessToken'));
+
+            console.log('accessToken', accessToken);
             goto('/DashboardPage/user/home');
         }
 
