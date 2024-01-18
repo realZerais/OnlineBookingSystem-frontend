@@ -1,5 +1,6 @@
 <script>
   import { goto } from '$app/navigation';
+  import { fetchUser } from '../hooks/auth';
   let username = '';
   let full_name = '';
   let email = '';
@@ -7,14 +8,13 @@
   let password = '';
   let confirmPassword = '';
 
-  let validate = false;
   const validateForm = () => {
     if(password !== confirmPassword){
       alert("Password did not matched");
       return false;
     }
     else if (!username || !full_name || !email || !phone_number ||!password || password !== confirmPassword) {
-      errorMessage = 'Please fill in all fields and ensure passwords match.';
+      alert('Please fill in all fields and ensure passwords match.');
       return false;
     }
     else{
@@ -52,10 +52,14 @@
         console.log(message);
         alert(message);
       }else{
-        const { token } = await response.json();
+        const { accessToken, username, role } = await response.json();
+
+        document.cookie = `accessToken=${accessToken}; path=/`; //put the accessToken to the cookie
+        document.cookie = `username=${username}; path=/`; //put the username to the cookie
+        document.cookie = `role=${role}; path=/`; //put the role to the cookie
       
-        console.log('token', token);
-        goto('/DashboardPage/userDashboardPage/Dashboard/home');
+        fetchUser();
+        goto('/DashboardPage/user/home');
       }
 
     

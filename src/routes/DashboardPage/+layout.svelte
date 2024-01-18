@@ -1,23 +1,24 @@
 <script>
-
+import { userRole  } from "../../hooks/auth";
 import UserNav from "$components/nav/UserNav.svelte"
 import AdminNav from "$components/nav/AdminNav.svelte"
 import StaffNav from "$components/nav/StaffNav.svelte"
 import TechnicianNav from "$components/nav/TechnicianNav.svelte"
 
-let role = 'user';
+
+
 </script>
 
 
 <main class="grid grid-cols-2 grid-rows-2 gap-y-5 gap-x-10">
 
-  {#if role == 'user'}
+  {#if $userRole == 'user'}
     <UserNav></UserNav>
-  {:else if role == 'admin'}
+  {:else if $userRole == 'admin'}
     <AdminNav></AdminNav>
-  {:else if role == 'staff'}
+  {:else if $userRole == 'staff'}
     <StaffNav></StaffNav>
-  {:else if role == 'technician'}
+  {:else if $userRole == 'technician'}
     <TechnicianNav></TechnicianNav>
   {/if}
 

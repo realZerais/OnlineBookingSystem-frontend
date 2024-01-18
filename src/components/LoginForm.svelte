@@ -1,7 +1,6 @@
 <script>
     import { goto } from '$app/navigation';
-    import { writable } from 'svelte/store';
-    import {isAuthenticated} from '../hooks/auth'
+    import { fetchUser } from '../hooks/auth';
 
   let username = '';
   let password = '';
@@ -30,13 +29,14 @@
             console.log(message);
             alert(message);
         }else{
-            const { accessToken } = await response.json();
+            const { accessToken, username, role } = await response.json();
 
             document.cookie = `accessToken=${accessToken}; path=/`; //put the accessToken to the cookie
+            document.cookie = `username=${username}; path=/`; //put the username to the cookie
+            document.cookie = `role=${role}; path=/`; //put the role to the cookie
 
-            isAuthenticated.set(document.cookie.includes('accessToken'));
-
-            console.log('accessToken', accessToken);
+            fetchUser();
+            
             goto('/DashboardPage/user/home');
         }
 

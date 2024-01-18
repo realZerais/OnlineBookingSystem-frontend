@@ -1,14 +1,17 @@
 <script>
   import "../app.css";
-  import {isAuthenticated} from "../hooks/auth";
+  import {isAuthenticated, userName, userRole, fetchUser  } from "../hooks/auth";
   import { onMount } from 'svelte';
+
 
 
   onMount(()=>{
     
-    isAuthenticated.set(document.cookie.includes('accessToken'));//check if there's an access token on every page load
+    fetchUser();
   })
 
 </script>
-{$isAuthenticated}
+<!-- {$isAuthenticated}
+{$userName}
+{$userRole} -->
 <slot /> 
