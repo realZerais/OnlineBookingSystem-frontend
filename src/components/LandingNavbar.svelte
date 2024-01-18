@@ -1,50 +1,46 @@
 <script>
-    import LoginForm from "./LoginForm.svelte";
-    import SignUpForm from "./SignUpForm.svelte";
+import { isAuthenticated } from "../hooks/auth"
 
-    let isLoginComponentVisible = false;
-    let isSignUpComponentVisible = false;
 
-    function toggleLoginComponent() {
-        isLoginComponentVisible = !isLoginComponentVisible;
-    }
-
-    function toggleSignUpComponent() {
-        isSignUpComponentVisible = !isSignUpComponentVisible;
-    }
 
 </script>
 
 
 
-<nav class="flex justify-between items-center h-[20vh] w-[100%] opacity-90 p-6">
-    <ul class="flex justify-start items-center gap-7 text-white">
-        <img src="public\logo.png" alt="Company Logo" class="h-20 w-20"/>
-        <li><a href="#" class="text-xl font-bold hover:text-green-400">Home</a></li>
-        <li><a href="#" class="text-xl font-bold hover:text-green-400">About</a></li>
-        <li><a href="#" class="text-xl font-bold hover:text-green-400">Contact</a></li>
+<nav class=" bg-main flex justify-between items-center h-[100px] w-[100%] opacity-90 p-6 ">
+    <div class="flex justify-center items-center gap-x-[20px] font-bakbak text-4xl text-mainParagraph ">
+    <img src="public\logo-white.png" alt="Company Logo" class="h-14 w-14"/>
+    <h1>CORE1</h1>
+    </div>
+
+    <ul class="flex justify-start items-center gap-4 text-mainParagraph">
+        
+        <li onclick="window.location.href='#s1'" class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a  href="#" class="text-xl font-bold hover:brightness-100">Home</a></li>
+        <li onclick="window.location.href='#s2'" class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a  href="#" class="text-xl font-bold hover:brightness-100">About</a></li>
+        <li onclick="window.location.href='#s4'" class="cursor-pointer transition-all hover:text-secondaryParagraph hover:bg-accent px-6 py-2 rounded-lg"><a  href="#" class="text-xl font-bold hover:brightness-100">Contacts</a></li>
+        
+        {#if !$isAuthenticated}
+            <a href="/login" class="cursor-pointer transition-all bg-accent text-accentParagrah text-lg font-bold px-6 py-2 rounded-lg border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                Log in
+            </a>
+            {:else}
+            <a href="/DashboardPage/user/home" class="cursor-pointer transition-all bg-accent text-accentParagrah text-lg font-bold px-6 py-2 rounded-lg border-secondary border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px] active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                Go To Dashboard
+            </a>
+        {/if}
+
+        
     </ul>
-    <ul class="flex justify-start items-center gap-7">
-        <button on:click={toggleLoginComponent} class="cursor-pointer transition-all bg-buttonColor text-white px-6 py-2 rounded-lg
-        border-buttonColorAccent border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
-        active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
-        Log In
-        </button>
-        <button on:click={toggleSignUpComponent} class="cursor-pointer transition-all bg-buttonColor text-white px-6 py-2 rounded-lg
-        border-buttonColorAccent marker:border-b-[4px] hover:brightness-110 hover:-translate-y-[1px] hover:border-b-[6px]
-        active:border-b-[2px] active:brightness-90 active:translate-y-[2px]">
-        Sign Up
-        </button>
-    </ul>
+
+    
 </nav>
 
-{#if isLoginComponentVisible}
-<LoginForm/>
-{:else if isSignUpComponentVisible}
-<SignUpForm/>
-{/if}
 
+<style>
 
+    
+    
+</style>
 
 
 
