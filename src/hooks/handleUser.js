@@ -1,16 +1,14 @@
 import { getCookieValue } from '../hooks/auth'
 
-export const fetchData = async () => {
+export const fetchUserData = async () => {
     try {
-        // Assume you have a cookie named "accessToken"
         const accessToken = getCookieValue('accessToken');
-        // const accessToken = getCookie('accessToken');
-        // const accessToken = getCookie('accessToken');
 
-        if (accessToken == null) {
-            console.log("no token");
-            return
-        }
+
+        // if (accessToken == null) {
+        //     console.log("no token");
+        //     return
+        // }
         const apiUrl = 'http://localhost:9000/user/info';
 
         const response = await fetch(apiUrl, {
@@ -24,15 +22,15 @@ export const fetchData = async () => {
 
         if (!response.ok) {
             const errorData = await response.json();
-            const { message } = errorData;
-            console.log(message);
-            alert(message);
+            const { error } = errorData;
+            console.log(error);
+            alert(error);
             // throw new Error('Network response was not ok');
         }
 
         // Handle the data
-
-        return await response.json();
+        const data = await response.json();
+        return data;
 
     } catch (error) {
         // Handle errors
