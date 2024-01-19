@@ -2,32 +2,36 @@
   import { onMount } from "svelte";
   import {fetchUserData} from "../hooks/handleUser"
 
-  let data = ''
+  let data = '';
+
   onMount(async ()=>{
     data = await fetchUserData();
     console.log(data)
   })
 </script>
 
-<div class="body">
+<div class="flex flex-col justify-start items-center p-2 ml-10 mt-4 gap-5">
   
-    <div class="header flex flex-col self-start rounded-3xl w-[100%] h-[100%] p-8 pb-14 justify-center gap-y-5 ">
-        <strong class="text-6xl text-mainParagraph tracking-widest ml-[9%]">PROFILE</strong>
+    <div class="header flex flex-col items-center justify-center h-[10vh] w-[95%] rounded-sm   text-4xl">
+        <strong class="text-4xl text-mainParagraph tracking-widest ml-[9%]">PROFILE</strong>
         <hr class="border-t-2 border-accent w-6/12 ml-[9%]"> 
-        
     </div>
-
-    <div class="content flex justify-center items-center row-span-2 w-[100%]">
+<!-- 
+    <div class="flex flex-col  items-start justify-start p-5  w-[95%] rounded-xl  bg-white text-4xl gap-2 ">
         <div class="flex flex-col justify-around items-center w-[80%] h-[90%] bg-mainParagraph  border-black border-2 shadow-leftbottom ml-[3%]">
                 <h1 class="text-4xl">THIS IS PROFILE</h1>
                 <h1>Username: {data.username}</h1>
                 <h1>Full Name: {data.full_name}</h1>
                 <h1>Email: {data.email}</h1>
                 <h1>Contact Number: {data.phone_number}</h1>
-                <h1>Registered On: {data.registration_date}</h1>
-            
-                
+                <h1>Registered On: {data.registration_date}</h1> 
         </div>
+    </div> -->
+
+    <div class="flex flex-col  items-start justify-start p-5  w-[90%] rounded-xl  bg-white text-4xl gap-2 ml-5">
+      <div class="h-[100vh]">
+
+      </div>
     </div>
 
 </div>
@@ -35,15 +39,7 @@
 
 <style>
 
-.body{
-  display: grid;
-  background-color: #004647;
-  width: 100%;
-  height: 100%;
-  grid-template-columns: 1fr;
-  grid-template-rows: 120px 1fr ;   
-  
-}
+
 
 .header{
   visibility: hidden;
