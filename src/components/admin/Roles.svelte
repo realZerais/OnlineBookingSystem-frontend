@@ -1,38 +1,124 @@
 <script>
+  import { onMount } from "svelte";
+  
+  let username = 'test';
+
+  const editRole = () =>{
+    
+  }
+  
+  onMount(async() =>{
+
+  })
 </script>
 
-<div class="body">
+<div class="flex flex-col justify-start items-center p-2 ml-10 mt-4 gap-4">
 
-    <div class="header flex flex-col self-start rounded-3xl w-[100%] h-[100%] p-8 pb-14 justify-center gap-y-5 ">
-        <strong class="text-6xl text-mainParagraph tracking-widest ml-[9%]">Manage Roles</strong>
-        <hr class="border-t-2 border-accent w-6/12 ml-[9%]"> 
+  <div class="header flex items-center justify-center h-[10vh] w-[95%] rounded-sm  bg-slate-100 text-4xl">
+    <h1>MANAGE ROLES</h1>
+  </div>
+
+  
+
+  <div class="flex flex-col  items-start justify-start p-5  w-[95%] rounded-xl  bg-white text-4xl gap-5">
+   
+    <div class="flex items-center justify-between w-[100%] gap-2 p-6">
+      <h1 class=" text-left">USERS:</h1>
+      <button on:click={editRole}>save changes</button>
     </div>
+  
 
-    <div class="content flex justify-center items-center row-span-2 w-[100%]">
-        <div class="flex justify-center items-center w-[80%] h-[90%] bg-mainParagraph  border-black border-2 shadow-leftbottom ml-[3%]">
-                <h1>ROLES GOES HERE</h1>
-            <h1 class="text-4xl">THIS IS HOME</h1>
-        </div>
-    </div>
-</div>
+    
+    <div class="flex items-center justify-around h-[20vh] w-[100%] bg-amber-200">
+      <p>username: {username} </p>
 
-
-<style>
-
-    .body{
-        display: grid;
-        background-color: #004647;
-      width: 100%;
-      height: 100%;
-      grid-template-columns: 1fr;
-      grid-template-rows: 120px 1fr ;   
+      <div>
+        <label for="cars">Role:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">admin</option>
+          <option value="saab">user</option>
+          <option value="technician">Mercedes</option>
+          <option value="staff">Audi</option>
+        </select>
+      </div>
       
-    }
+    </div>
+ 
+    <div class="flex items-center justify-around h-[20vh] w-[100%] bg-amber-200">
+      <p>username: {username} </p>
+
+      <div>
+        <label for="cars">Role:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">admin</option>
+          <option value="saab">user</option>
+          <option value="technician">Mercedes</option>
+          <option value="staff">Audi</option>
+        </select>
+      </div>
+      
+    </div>
+
+    <div class="flex items-center justify-around h-[20vh] w-[100%] bg-amber-200">
+      <p>username: {username} </p>
+
+      <div>
+        <label for="cars">Role:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">admin</option>
+          <option value="saab">user</option>
+          <option value="technician">Mercedes</option>
+          <option value="staff">Audi</option>
+        </select>
+      </div>
+      
+    </div>
+
+    <div class="flex items-center justify-around h-[20vh] w-[100%] bg-amber-200">
+      <p>username: {username} </p>
+
+      <div>
+        <label for="cars">Role:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">admin</option>
+          <option value="saab">user</option>
+          <option value="technician">Mercedes</option>
+          <option value="staff">Audi</option>
+        </select>
+      </div>
+      
+    </div>
+
+    <div class="flex items-center justify-around h-[20vh] w-[100%] bg-amber-200">
+      <p>username: {username} </p>
+
+      <div>
+        <label for="cars">Role:</label>
+        <select name="cars" id="cars">
+          <option value="volvo">admin</option>
+          <option value="saab">user</option>
+          <option value="technician">Mercedes</option>
+          <option value="staff">Audi</option>
+        </select>
+      </div>
+      
+    </div>
+    
+    
+
+    
+
+    
+    
+  </div>
+
+</div>
+<style>
 
     .header{
         visibility: hidden;
         margin-left: -20%;
-        animation: to-right .3s linear forwards;
+        animation: to-right .5s linear forwards;
     }
 
 

@@ -11,12 +11,13 @@
 </script>
 
 <main class="w-[100%] h-[100vh] parent overflow-x-hidden">
-    
+    <div class="nav w-[100%] h-[100%] sticky left-0 top-0">
+        <LandingNavbar/>
+    </div>
     <section id="s1" class="s1 grid child h-[100vh]">
-        <div class="nav w-[100%] h-[100%]">
-            <LandingNavbar/>
-        </div>
- 
+        
+        
+
         <div class="hero relative flex flex-col w-[100%] h-[100%] justify-center items-center mb-[10%] ml-[15%] leading-none">
             <div class="flex flex-col justify-end w-[100%] h-[70%] text-[3.8rem] font-bold text-mainHeadline tracking-normal leading-none pb-5">      
                 <p>Your Device's</p>
@@ -108,7 +109,7 @@
         <div class="flex contacts justify-center items-center contactBody w-[100%] h-[100%] gap-y-10">
             <div class="contact-head flex flex-col justify-center items-center w-[100%] gap-4">
                 <p class="text-main font-bold text-6xl">Contact Us</p>
-                <p  class="w-[50%] text-center text-main text-xl">Welcome to our contacts page, where connecting with us is just a message away. Whether you have questions, need assistance, or want to learn more about our services, we're here for you. Feel free to contact us through any of the channels below:</p>
+                <p class="w-[50%] text-center text-main text-xl">Welcome to our contacts page, where connecting with us is just a message away. Whether you have questions, need assistance, or want to learn more about our services, we're here for you. Feel free to contact us through any of the channels below:</p>
             </div>
 
             <div class="general w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
@@ -237,21 +238,7 @@
     .footer{
         grid-area: footer;
     }
-    ::-webkit-scrollbar {
-        width: 7px; /* Set the width of the scrollbar */
-       
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #f9bc60; /* Set the color of the thumb (the draggable part) */
-        border-radius: 5px; /* Optional: Add rounded corners to the thumb */
-        outline: 1px solid #014447;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: #014447;
-       
-    }
+    
     
 
     
