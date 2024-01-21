@@ -7,7 +7,7 @@ import { isAuthenticated } from "../hooks/auth"
 
 
 
-<nav class=" bg-main flex justify-between items-center h-[100px] w-[100%] opacity-90 p-6 ">
+<nav class=" bg-main flex justify-between items-center h-[75px] w-[100%] opacity-[.98] p-6 absolute top-0 left-0 z-10">
     <div class="flex justify-center items-center gap-x-[20px] font-bakbak text-4xl text-mainParagraph ">
     <img src="public\logo-white.png" alt="Company Logo" class="h-14 w-14"/>
     <h1>CORE1</h1>
@@ -37,6 +37,7 @@ import { isAuthenticated } from "../hooks/auth"
 
 
 <style>
+
 
     
     
