@@ -7,47 +7,45 @@
   
   const handleSubmit = async () =>{
 
-    goto('/DashboardPage/user/home');
+    const loginData = JSON.stringify({ 
+        username,
+        password,
+    });
 
-    // const loginData = JSON.stringify({ 
-    //     username,
-    //     password,
-    // });
+    console.log(loginData);
 
-    // console.log(loginData);
+    try {   
+        const response = await fetch('http://localhost:9000/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: loginData,
+        }); 
 
-    // try {   
-    //     const response = await fetch('http://localhost:9000/user/login', {
-    //         method: 'POST',
-    //         headers: {
-    //             'Content-Type': 'application/json',
-    //         },
-    //         body: loginData,
-    //     }); 
+        if (!response.ok) {
+            const errorData = await response.json();
+            const {message} = errorData;
+            console.log(message);
+            alert(message);
+        }else{
+            const { accessToken, username, role } = await response.json();
 
-    //     if (!response.ok) {
-    //         const errorData = await response.json();
-    //         const {message} = errorData;
-    //         console.log(message);
-    //         alert(message);
-    //     }else{
-    //         const { accessToken, username, role } = await response.json();
+            document.cookie = `accessToken=${accessToken}; path=/`; //put the accessToken to the cookie
+            document.cookie = `username=${username}; path=/`; //put the username to the cookie
+            document.cookie = `role=${role}; path=/`; //put the role to the cookie
 
-    //         document.cookie = `accessToken=${accessToken}; path=/`; //put the accessToken to the cookie
-    //         document.cookie = `username=${username}; path=/`; //put the username to the cookie
-    //         document.cookie = `role=${role}; path=/`; //put the role to the cookie
-
-    //         fetchUser();
+            fetchUser();
             
-    //         goto('/DashboardPage/user/home');
-    //     }
+            goto('/DashboardPage/user/home');
+        }
 
         
 
         
-    // } catch (error) {
-    //     console.error('Error:', error);
-    // }
+    } catch (error) {
+        console.error('Error:', error);
+    }
 
 
 
