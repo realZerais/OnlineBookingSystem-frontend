@@ -1,4 +1,7 @@
 import { getCookieValue } from '../hooks/auth'
+import { writable } from 'svelte/store';
+
+export const userStore = writable('');
 
 export const fetchUserData = async () => {
     try {
@@ -25,12 +28,11 @@ export const fetchUserData = async () => {
             const { error } = errorData;
             console.log(error);
             alert(error);
-            // throw new Error('Network response was not ok');
+            // throw new Error('Network response was not ok'); 
         }
 
         // Handle the data
         const data = await response.json();
-        console.log(data);
         return data;
 
     } catch (error) {
@@ -65,7 +67,6 @@ export const fetchAllUser = async () => {
 
         // Handle the data
         const data = await response.json();
-        console.log(data);
         return data;
 
     } catch (error) {

@@ -7,18 +7,15 @@
 
   onMount(async ()=>{
     data = await fetchUserData();
-    console.log(data);
-  
     const date = new Date(data.registration_date);
     longDate = date.toLocaleDateString();
-    console.log(longDate)
   })
 </script>
 
 <div class="flex flex-col justify-start items-center ml-12 gap-5 h-[100vh]">
   
     <div class="header flex flex-col items-center justify-center h-[10%] w-[100%] rounded-sm text-4xl gap-2">
-        <strong class="text-4xl text-mainParagraph tracking-widest ml-[10%]">PROFILE</strong>
+        <strong class="text-4xl text-mainParagraph tracking-widest ">PROFILE</strong>
         <hr class="border-t-2 border-accent w-6/12 ml-[10%]"> 
     </div>
     
@@ -41,21 +38,22 @@
         <div class="flex h-[100%] w-[100%] justify-around items-center gap-4 ">
           <div class="flex flex-col gap-4 ">
             <button  disabled class="bg-accent h-[75px] w-[200px]  text-2xl font-medium text-center rounded-md">EMAIL</button>
-            <p class=" text-3xl text-center text-main">{data.email}</p>
+            <p class=" text-xl text-center text-main">{data.email}</p>
+            
           </div>
           <div class="flex flex-col gap-4 ">
             <button  disabled class="bg-accent h-[75px] w-[200px] text-2xl font-medium text-center rounded-md">PHONE</button>
-            <p class=" text-3xl text-center text-main">{data.phone_number}</p>
+            <p class=" text-xl text-center text-main">{data.phone_number}</p>
           </div>
           <div class="flex flex-col gap-4 ">
             <button  disabled class="bg-accent h-[75px] w-[200px] text-2xl font-medium text-center rounded-md">ROLE</button>
-            <p class="  text-3xl text-center text-main">{data.user_role}</p>
+            <p class="  text-xl text-center text-main">{data.user_role}</p>
           </div>
           
         </div>
 
         <div class="flex w-[100%] justify-end  mr-[10%]">
-          <p class="text-2xl text-main"> Date Created: {longDate}</p>
+          <p class="text-xl text-main"> Date Created: {longDate}</p>
         </div>
         
     

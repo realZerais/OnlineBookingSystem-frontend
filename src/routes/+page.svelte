@@ -161,9 +161,6 @@
         scroll-snap-align: center;
     }
 
-    .nav{
-        grid-area: nav;
-    }
 
     .hero{
         grid-area: hero;
