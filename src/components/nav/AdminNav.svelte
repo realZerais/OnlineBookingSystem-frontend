@@ -4,8 +4,8 @@
     import {logout} from "../../hooks/auth"
 </script>
    
-<div class="flex justify-start col-span-1 row-span-2">
-    <div class="container absolute flex flex-col w-[7%] h-[100%] bg-main border-r-2 border-r-white ">
+<div class="flex justify-start col-span-1 row-span-2 ">
+    <div class="container absolute flex flex-col w-[7%] h-[100vh] bg-main border-r-2 border-r-white ">
 
       <div class="flex flex-wrap justify-start px-2 py-4 items-center gap-x-4 mr-3.5">
         <img src={logo} alt="" class="w-14 h-14 ml-2"/>
@@ -48,6 +48,14 @@
                   <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
                 </svg>
                 <p class="text text-mainParagraph self-center hidden group-hover:text-main ">Reports</p>
+            </button>
+          </a>  
+          <a class="unhover" href="/DashboardPage/admin/profile">
+            <button class="btn ml-5 flex flex-wrap group hover:bg-accent text-base text-black items-center rounded-3xl w-[40%] h-10 px-4">
+                <svg class="icon mt-1 flex absolute fill-mainParagraph w-5 h-5 mr-5 group-hover:fill-main" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 576 512">
+                  <path d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z"/>
+                </svg>
+                <p class="text text-mainParagraph self-center hidden group-hover:text-main ">Profile</p>
             </button>
           </a>  
 
