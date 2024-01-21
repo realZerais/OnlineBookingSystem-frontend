@@ -4,10 +4,6 @@
   import { onMount } from 'svelte';
   import { goto } from '$app/navigation'; 
 
-
-
-
-
   onMount(()=>{
     
     fetchUser();
@@ -17,6 +13,7 @@
   })
 
 </script>
+
 
 <!-- {$isAuthenticated}
 {$userName}

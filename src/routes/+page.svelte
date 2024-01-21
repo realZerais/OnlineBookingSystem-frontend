@@ -10,14 +10,11 @@
 
 </script>
 
-<main class="w-[100%] h-[100vh] parent overflow-x-hidden">
-    <div class="nav w-[100%] h-[100%] sticky left-0 top-0">
-        <LandingNavbar/>
-    </div>
-    <section id="s1" class="s1 grid child h-[100vh]">
-        
-        
+<main class="w-[100%]  parent overflow-x-hidden">
 
+    <LandingNavbar/>
+
+    <section id="s1" class="s1 h-[100vh] grid child">
         <div class="hero relative flex flex-col w-[100%] h-[100%] justify-center items-center mb-[10%] ml-[15%] leading-none">
             <div class="flex flex-col justify-end w-[100%] h-[70%] text-[3.8rem] font-bold text-mainHeadline tracking-normal leading-none pb-5">      
                 <p>Your Device's</p>
