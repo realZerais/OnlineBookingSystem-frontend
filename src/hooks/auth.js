@@ -7,7 +7,7 @@ export const userName = writable('no user');
 export const userRole = writable('no role');
 
 
-function getCookieValue(cookieName) {
+export function getCookieValue(cookieName) {
   const name = cookieName + "=";
   const decodedCookie = decodeURIComponent(document.cookie);
   const cookieArray = decodedCookie.split(';');

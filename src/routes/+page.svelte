@@ -4,14 +4,12 @@
     import Contact from '$components/Contact.svelte';
     import Footer from '$components/Footer.svelte';
     import { onMount } from 'svelte';
-    
-
 
 </script>
 
 <main class="w-[100%] h-[100vh] parent overflow-x-hidden">
-    
-    <section id="s1" class="s1 grid child h-[100vh]">
+
+    <section id="s1" class="s1 grid child h-[100vh] ">
         <div class="nav w-[100%] h-[100%]">
             <LandingNavbar/>
         </div>
@@ -37,64 +35,66 @@
 
     <section id="s2" class="s2 flex justify-center items-center  child h-[100vh] p-12">
 
-        <div class="flex justify-center pt-[13%] pr-[5%]">
+        <div class="flex justify-start pt-[5%] pr-[5%]">
             <img class="w-[90%]" alt="" src="./public/about.png" />
         </div>
 
-        <div class="flex welcome flex-col items-start w-[100%] h-[100%] gap-y-5 justify-center">
-            <p class="text-accent self-start text-5xl font-bold mb-[3%]">Welcome To Our Website</p>
-            <p class="text-white text-xl mb-[5%]">At CORE1, we lead your devices on a transformative journey with a commitment to innovation and personalized care. Standing at the forefront of technology wellness, our seasoned professionals leverage cutting-edge solutions to restore optimal functionality and guide your devices toward flourishing in their continued use. Our personalized care philosophy sets us apart, redefining device recovery for an elevated technology experience.</p>
-            <button onclick="window.location.href='#s3'" class="text-xl font-bold p-3 hover:brightness-110  cursor-pointer transition-all bg-accent text-accentParagrah rounded-lg">Learn More</button>
+        <div class="flex welcome flex-col items-start w-[100%] h-[100%] justify-center">
+            <p class="text-accent self-start text-5xl font-bold mb-[5%]">Welcome To Our Website</p>
+            <p class="text-white text-lg mb-[3%]">At CORE1, we lead your devices on a transformative journey with a commitment to innovation and personalized care. Standing at the forefront of technology wellness, our seasoned professionals leverage cutting-edge solutions to restore optimal functionality and guide your devices toward flourishing in their continued use. Our personalized care philosophy sets us apart, redefining device recovery for an elevated technology experience.</p>
+            <div class="border border-[3px] border-solid border-white">
+                <p class="text-lg p-3 text-accent text-center font-bold">Discover a new standard of care at CORE1—where your devices receive the attention they deserve, and you embark on a seamless journey of technological empowerment.</p>
+            </div>
         </div>
 
     </section>
     
         
-    <section id="s3" class="s3 flex items-center  child h-[100vh]">
+    <section id="s3" class="s3 flex items-center  child h-[100vh] gap-y-[7%]">
     
-        <div class="w-[100%] head flex justify-center">
+        <div class="w-[100%] head flex justify-center mt-[5%]">
             <p class="text-white justify items-center text-5xl font-bold">Why Choose CORE1?</p>
         </div>
 
-        <div class="flex justify-between w-[100%] h-[100%] gap-x-7 p-5 pb-14">
+        <div class="flex justify-between w-[100%] h-[100%] gap-x-7 p-5">
             
-            <div class="flex flex-col justify-center items-center w-[80%] h-[90%] border  border-accent rounded-xl p-5">
+            <div class="flex flex-col justify-center items-center w-[80%] h-[70%] border  border-accent rounded-xl p-5">
 
-                <div class="w-[70%] bg-red-400 rounded-full ">
+                <div class="w-[50%] bg-red-400 rounded-full ">
                     <img alt="" src="./public/expertise.png"/>
                 </div>
-                <p class="text-xl text-accent front-bakbak font-bold mb-[15%]">EXPERTISE</p>
-                <p class="text-center text-lg text-white">Our team comprises seasoned professionals passionate about technology.</p> 
+                <p class="text-lg text-accent front-bakbak font-bold mb-[15%]">EXPERTISE</p>
+                <p class="text-center text-base text-white">Our team comprises seasoned professionals passionate about technology.</p> 
                 
             </div>
 
-            <div class="flex bg-accent flex-col justify-center items-center w-[80%] h-[90%] border border-accent rounded-xl p-5">
+            <div class="flex bg-accent flex-col justify-center items-center w-[80%] h-[70%] border border-accent rounded-xl p-5">
                 
-                <div class="w-[70%] bg-blue-400 rounded-full ">
+                <div class="w-[50%] bg-blue-400 rounded-full ">
                     <img class="w-[100%]" alt="" src="./public/innovation.png"/>
                 </div>
-                <p class="text-xl text-main front-bakbak font-bold mb-[15%]">INNOVATION</p>
-                <p class="text-center text-lg text-black">Stay ahead with state-of-the-art diagnostics and cutting-edge rehabilitation.</p>
+                <p class="text-lg text-main front-bakbak font-bold mb-[15%]">INNOVATION</p>
+                <p class="text-center text-base text-black">Stay ahead with state-of-the-art diagnostics and cutting-edge rehabilitation.</p>
                 
             </div>
 
-            <div class="flex flex-col justify-center items-center w-[80%] h-[90%] border  border-accent rounded-xl p-5">
+            <div class="flex flex-col justify-center items-center w-[80%] h-[70%] border  border-accent rounded-xl p-5">
                 
-                <div class="w-[70%] bg-yellow-400 rounded-full ">
+                <div class="w-[50%] bg-yellow-400 rounded-full ">
                     <img alt="" src="./public/care.png"/>
                 </div>
-                <p class="text-xl text-accent front-bakbak font-bold mb-[15%]">PERSONALIZED CARE</p>
-                <p class="text-center text-lg text-white">Every recovery plan is uniquely crafted to meet your device's specific needs.</p>
+                <p class="text-lg text-accent front-bakbak font-bold mb-[15%]">PERSONALIZED CARE</p>
+                <p class="text-center text-base text-white">Every recovery plan is uniquely crafted to meet your device's specific needs.</p>
                 
             </div>
 
-            <div class="flex bg-accent flex-col justify-center items-center w-[80%] h-[90%] border  border-accent rounded-xl p-5">
+            <div class="flex bg-accent flex-col justify-center items-center w-[80%] h-[70%] border  border-accent rounded-xl p-5">
                 
-                <div class="w-[70%] bg-green-400 rounded-full ">
+                <div class="w-[50%] bg-green-400 rounded-full ">
                     <img alt="" src="./public/customer.png"/>
                 </div>
-                <p class="text-enter text-xl text-main front-bakbak font-bold mb-[15%]">CUSTOMER-CENTERED</p>
-                <p class="text-center text-lg text-black">Your satisfaction is our top priority; we're here for you at every step.</p>
+                <p class="text-center text-lg text-main front-bakbak font-bold mb-[15%]">CUSTOMER-CENTERED</p>
+                <p class="text-center text-base text-black">Your satisfaction is our top priority; we're here for you at every step.</p>
                 
             </div>
 
@@ -104,9 +104,10 @@
 
     <section id="s4" class="s4 child h-[100vh] w-[100%] flex">
 
-        <div class="flex contacts justify-center items-center contactBody w-[100%] h-[100%] gap-y-10">
-            <div class="contact-head flex flex-col justify-center items-center w-[100%] gap-4">
-                <p class="text-main font-bold text-6xl">Contact Us</p>
+        <div class="flex contacts justify-center items-center contactBody w-[100%] h-[100%] gap-y-14">
+
+            <div class="contact-head flex flex-col justify-center items-center w-[100%] gap-4 mt-[3%]">
+                <p class="text-main font-bold text-5xl">Contact Us</p>
                 <p  class="w-[50%] text-center text-main text-xl">Welcome to our contacts page, where connecting with us is just a message away. Whether you have questions, need assistance, or want to learn more about our services, we're here for you. Feel free to contact us through any of the channels below:</p>
             </div>
 
@@ -152,9 +153,7 @@
 
 <style module>
     .parent {
-        scroll-snap-type: y mandatory;
-        overflow-y: scroll;
-        scroll-behavior: smooth;
+        scroll-padding-top: 8%;
     }
 
     .child {
