@@ -1,18 +1,17 @@
 <script>
 </script>
 
-<div class="body">
+<div class="flex flex-col justify-start items-center gap-5 pb-10 pt-5 ">
+  <div class="header flex flex-col items-center justify-center h-[10%] w-[100%] rounded-sm text-4xl gap-2">
+    <strong class="text-4xl text-mainParagraph tracking-widest ml-[10%]">Manage Schedule</strong>
+    <hr class="border-t-2 border-accent w-6/12 ml-[10%]"> 
+  </div>
 
-    <div class="header flex flex-col self-start rounded-3xl w-[100%] h-[100%] p-8 pb-14 justify-center gap-y-5 ">
-        <strong class="text-6xl text-mainParagraph tracking-widest ml-[9%]">Manage Schedule</strong>
-        <hr class="border-t-2 border-accent w-6/12 ml-[9%]"> 
-    </div>
+  <div class="flex flex-col justify-center  h-[80vh] w-[75%] rounded-xl  bg-white text-4xl gap-4 ml-5">
+    <h1 class="text-4xl text-center">SCHEDULE CONTENT</h1>
+  </div>
+  
 
-    <div class="content flex justify-center items-center row-span-2 w-[100%]">
-        <div class="flex justify-center items-center w-[80%] h-[90%] bg-mainParagraph  border-black border-2 shadow-leftbottom ml-[3%]">
-            <h1 class="text-4xl">staff schedule goes here</h1>
-        </div>
-    </div>
 </div>
 
 
