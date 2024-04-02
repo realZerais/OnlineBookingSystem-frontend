@@ -35,7 +35,6 @@
       password,
     });
 
-    console.log(registerData);
 
     try {   
       const response = await fetch('http://localhost:9000/user/signup', {

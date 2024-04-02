@@ -28,7 +28,7 @@ import TechnicianNav from "$components/nav/TechnicianNav.svelte"
       
 <style>
 main{
-  background-color: #004643;
+  background-color: white;
   width: 100%;
   grid-template-columns: 50px 1fr;
   grid-template-rows:1fr;

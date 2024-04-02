@@ -233,21 +233,7 @@
     .footer{
         grid-area: footer;
     }
-    ::-webkit-scrollbar {
-        width: 7px; /* Set the width of the scrollbar */
-       
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #f9bc60; /* Set the color of the thumb (the draggable part) */
-        border-radius: 5px; /* Optional: Add rounded corners to the thumb */
-        outline: 1px solid #014447;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: #014447;
-       
-    }
+   
     
 
     

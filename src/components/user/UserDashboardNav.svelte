@@ -3,8 +3,8 @@
   import userImage from "$public/user-sample-image.png"
  </script>
  
- <div class="flex justify-start col-span-1 row-span-2">
-     <div class="container absolute flex flex-col w-[7%] h-[100%] bg-main border-r-2 border-r-white ">
+ <div class="flex justify-start col-span-1 row-span-2 absolute top-0 left-0 z-10">
+     <div class="container flex flex-col w-[7%] h-[100%] bg-main border-r-2 border-r-white absolute top-0 left-0 z-10">
  
        <div class="flex flex-wrap justify-start px-2 py-4 items-center gap-x-4 mr-3.5">
          <img src={logo} alt="" class="w-14 h-14 ml-2"/>
@@ -122,7 +122,7 @@
  
      .container:hover{ 
        width: 16%;
-       position: absolute;
+       
      }
  
      

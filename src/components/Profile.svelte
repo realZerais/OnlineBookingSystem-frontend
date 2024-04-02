@@ -16,7 +16,7 @@
   
     <div class="header flex flex-col items-center justify-center h-[10%] w-[100%] rounded-sm text-4xl gap-2">
         <strong class="text-4xl text-mainParagraph tracking-widest ">PROFILE</strong>
-        <hr class="border-t-2 border-accent w-6/12 ml-[10%]"> 
+        <hr class="border-t-2 border-accent w-6/12 "> 
     </div>
     
     <!-- Content Container -->
