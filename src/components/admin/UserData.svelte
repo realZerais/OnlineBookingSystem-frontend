@@ -85,17 +85,7 @@
 
 
     }
-  
-//   onMount(async() =>{
-//     users = await fetchAllUser();
-  
-//     console.log(users)
-    
-   
-//   })
 
-
-  
 </script>
 
 <tr class="bg-white border-b">
