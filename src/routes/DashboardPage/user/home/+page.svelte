@@ -2,9 +2,9 @@
     import Home from "$components/user/Home.svelte";
 </script>  
 
-<div>
-    <Home/>
-</div>
+
+<Home/>
+
 
 
 

@@ -12,7 +12,7 @@
   })
 </script>
 
-<div class="flex flex-col justify-start items-center ml-12 gap-5 h-[100vh]">
+<div class="flex flex-col justify-start items-center gap-5 h-[100vh] w-[97%]">
   
     <div class="header flex flex-col items-center justify-center h-[10%] w-[100%] rounded-sm text-4xl gap-2">
         <strong class="text-4xl text-mainParagraph tracking-widest ">PROFILE</strong>

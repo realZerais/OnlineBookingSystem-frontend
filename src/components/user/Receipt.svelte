@@ -1,39 +1,12 @@
 <script>
-    import logo from "$public/logo-white.png"
 </script>
-<div class="flex flex-col justify-start items-center gap-5 pb-10 pt-5 ">
-    <div class="header flex flex-col items-center justify-center h-[10%] w-[100%] rounded-sm text-4xl gap-2">
-      <strong class="text-4xl text-mainParagraph tracking-widest ml-[10%]">RECEIPT</strong>
-      <hr class="border-t-2 border-accent w-6/12 ml-[10%]"> 
-    </div>
-  
-    <div class="flex flex-col justify-center  h-[80vh] w-[75%] rounded-xl  bg-white text-4xl gap-4 ml-5">
-      <h1 class="text-4xl text-center">RECEIPT CONTENT</h1>
-    </div>
-    
-  
+
+<div class="flex flex-col w-[93%] justify-start items-center"> 
+  <div class="w-[100%] text-center h-[10vh]  bg-blue-100">Receipt</div>
 </div>
-
-
 <style>
 
 
-    .header{
-        visibility: hidden;
-        margin-left: -20%;
-        animation: to-right .5s linear forwards;
-    }
-
-
-    @keyframes to-right {
-       0% {
-         visibility: hidden; /* Start with opacity 0 */
-       }
-       100% {
-         visibility: visible;
-         margin-left: 0%;
-       }
-     }
 
 
 </style>

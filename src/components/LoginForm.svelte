@@ -37,7 +37,7 @@
 
             fetchUser();
             
-            goto('/DashboardPage/user/home');
+            goto("/DashboardPage/" + role + "/home");
         }
 
         

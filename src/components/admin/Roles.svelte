@@ -15,12 +15,12 @@
    
   })
 </script>
-<div class="flex flex-col justify-start items-center">
+<div class="flex flex-col w-[93%] justify-start items-center">
   <div class="w-[100%] text-center h-10 bg-blue-100">MANAGE USERS</div>
 
-  <div class="flex items-center justify-center min-h-[450px] mb-4 ml-[10%]">
+  <div class="flex items-center justify-center min-h-[450px] mb-4">
   
-    <div class="overflow-x-auto overflow-y-auto relative shadow-md rounded-sm w-[90%] h-[85vh] mt-2">
+    <div class="overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[90%] h-[85vh] mt-2">
   
       <table class="min-w-full text-sm text-left text-primary">
         
@@ -32,7 +32,7 @@
               <th scope="col" class="py-3 px-6">USER ID</th>
               <th scope="col" class="py-3 px-6">PHONE NUMBER</th>
               <th scope="col" class="py-3 px-6">REGISTERED DATE</th>
-              <th scope="col" class="py-3 px-6 overflow-y-auto">EMAIL</th>
+              <th scope="col" class="py-3 px-6 ">EMAIL</th>
               <th scope="col" class="py-3 px-6">ROLE</th>
               <th scope="col" class="py-3 px-6"></th>
             </tr>

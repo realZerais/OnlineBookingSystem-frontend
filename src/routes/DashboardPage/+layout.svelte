@@ -10,7 +10,7 @@ import TechnicianNav from "$components/nav/TechnicianNav.svelte"
 </script>
 
 
-<main>
+<main class="w-[100%] bg-white flex">
 
   {#if $userRole == 'user'}
     <UserNav></UserNav>
@@ -26,12 +26,3 @@ import TechnicianNav from "$components/nav/TechnicianNav.svelte"
   
 </main>
       
-<style>
-main{
-  background-color: white;
-  width: 100%;
-  grid-template-columns: 50px 1fr;
-  grid-template-rows:1fr;
-}
-  
-</style>
