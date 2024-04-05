@@ -51,7 +51,7 @@
   }
 </script>
 
-<div class="flex justify-between items-center w-[100%] h-[15vh] border border-main rounded-md px-4">
+<div class="flex justify-between items-center w-[100%] h-[15vh] border border-main px-4 rounded-lg shadow-lg">
     <div class="h-[100%] p-4 w-1/6 ">
       <h1 class="block mb-2 text-sm font-medium text-black">id</h1>
       <p class="text-sm">{booking_id}</p>

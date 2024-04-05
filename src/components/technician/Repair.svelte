@@ -13,14 +13,14 @@
     
     
   })
-</script>
+</script> 
 
 
 <div class="flex flex-col w-[93%] justify-start items-center"> 
   <div class="w-[100%] text-center h-[10vh]  bg-blue-100">MANAGE REPAIR</div>
 
   <div class="flex flex-col justify-start items-start w-[80%] my-4  gap-2">
-    <div>REPAIRS</div>
+    <div class="text-xl text-gray-500 font-bold capitalize">Pending Repairs</div>
 
     {#each pendingBooks as pendingBook}
       <PendingRepairs
