@@ -29,6 +29,7 @@
         cellphone_model = {pendingBook.cellphone_model}
         issue_description = {pendingBook.issue_description}
         user_id = {pendingBook.user_id}
+        repair_status = {pendingBook.repair_status}
       />
     {/each}
   </div>

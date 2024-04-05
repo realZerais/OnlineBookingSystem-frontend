@@ -4,7 +4,7 @@
     import {logout} from "../../hooks/auth"
 </script>
    
-<div class="flex w-[7%] justify-start ">
+<div class="flex w-[7%]  justify-start ">
     <div class="container absolute flex flex-col w-[7%] h-[100%] bg-main border-r-2 border-r-white ">
 
       <div class="flex flex-wrap justify-start px-2 py-4 items-center gap-x-4 mr-3.5">

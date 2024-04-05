@@ -7,8 +7,46 @@
   export let cellphone_model;
   export let issue_description;
   export let user_id;
+  let repair_status = 'Repairing';
 
-  const handleApprove = () =>{
+  const handleStart = async () =>{
+
+    const editData = JSON.stringify({
+            
+      booking_id,
+      repair_status,
+
+    })
+
+    try {
+      const accessToken = getCookieValue('accessToken');
+
+      const response = await fetch('http://localhost:9000/booking/editPendingBook', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+        },
+        body: editData,
+      }); 
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        const {message} = errorData;
+        console.log(message);
+        alert(message);
+      }else{
+        const messageResponse = await response.json();
+        setTimeout(function(){
+          const {message} = messageResponse;
+          alert(message);
+          location.reload();
+        }, 1000); 
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
 
   }
 </script>
@@ -39,5 +77,5 @@
       <p class="text-sm">{issue_description}</p>
     </div>
     
-    <button on:click={handleApprove} class="text-sm py-2 px-6 rounded-lg text-black border border-main hover:bg-accent hover:text-main  ">approve</button>
+    <button on:click={handleStart} class="text-sm py-2 px-6 rounded-lg text-black border border-main hover:bg-accent hover:text-main  ">Start Fixing</button>
 </div>
