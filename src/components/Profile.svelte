@@ -2,88 +2,79 @@
   import { onMount } from "svelte";
   import {fetchUserData} from "../hooks/handleUser"
 
-  let data = '';
+  let user = '';
   let longDate = '';
 
   onMount(async ()=>{
-    data = await fetchUserData();
-    const date = new Date(data.registration_date);
+    user = await fetchUserData();
+    const date = new Date(user.registration_date);
     longDate = date.toLocaleDateString();
+
+    console.log(user);
   })
 </script>
 
-<div class="flex flex-col justify-start items-center gap-5 h-[100vh] w-[97%]">
+
+<div class="flex flex-col justify-start items-center w-[93%] ">
+  <div class="flex flex-col justify-start items-start w-[80%] my-4  gap-2 ">
+    <div class="text-4xl text-gray-500 font-bold capitalize">Profile</div>
+  </div>
+
+  <div class="flex flex-col justify-start items-start w-[80%] my-4  gap-2 shadow overflow-hidden sm:rounded-lg">
+    <div class="px-4 py-5 sm:px-6">
+      <h3 class="text-lg leading-6 font-medium text-gray-900 capitalize ">
+        {user.full_name}
+      </h3>
+      <p class="mt-1 max-w-2xl text-sm text-gray-500">
+        Account Details
+      </p>
+    </div>
+
+    
+    <div class="flex items-center bg-gray-50 px-4 py-5 w-[100%] h-[10vh]">
+      <dt class="w-1/2 text-sm font-medium text-gray-500">
+        Username
+      </dt>
+      <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
+        {user.username}
+      </dd>
+    </div>
+
+    <div class="flex items-center bg-white px-4 w-[100%] h-[10vh]">
+        <dt class="w-1/2 text-sm font-medium text-gray-500">
+          Role
+        </dt>
+        <dd class="w-1/2  mt-1 text-sm text-accent ">
+          {user.user_role}
+        </dd>
+    </div>
+
+    <div class="flex bg-gray-50 px-4 py-5 w-[100%]">
+        <dt class="w-1/2 text-sm font-medium text-gray-500">
+          Email address
+        </dt>
+        <dd class="w-1/2 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {user.email}
+        </dd>
+    </div>
+
+    <div class="flex bg-white px-4 py-5 w-[100%]">
+        <dt class="w-1/2  text-sm font-medium text-gray-500">
+          Phone Number
+        </dt>
+        <dd class="w-1/2  mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
+          {user.phone_number}
+        </dd>
+    </div>
+    <div class="flex bg-gray-50 px-4 py-5 w-[100%]">
+        <dt class=" w-1/2 text-sm font-medium text-gray-500">
+          Date Created
+        </dt>
+        <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
+          {user.registration_date}
+        </dd>
+    </div>
   
-    <div class="header flex flex-col items-center justify-center h-[10%] w-[100%] rounded-sm text-4xl gap-2">
-        <strong class="text-4xl text-mainParagraph tracking-widest ">PROFILE</strong>
-        <hr class="border-t-2 border-accent w-6/12 "> 
-    </div>
-    
-    <!-- Content Container -->
-    <div class="flex flex-col  h-[80%] w-[75%] rounded-xl  bg-white text-4xl gap-2 ml-5">
-      
-      <div class="w-[100%] bg-accent h-[30%] rounded-t-xl">
 
-      </div>
-
-      <!-- Info Container -->
-      <div class="h-[100%] w-[100%] flex flex-col justify-center items-center  p-5 gap-2 ">
-        <!-- Name Container -->
-        <div class="flex flex-col w-[100%] items-center justify-center gap-4 ">
-          <h1 class="text-5xl text-main"> {data.full_name}</h1>
-          <p class="text-md text-main"> ({data.username})</p>
-          
-        </div>
-        <!-- Contacts Container -->
-        <div class="flex h-[100%] w-[100%] justify-around items-center gap-4 ">
-          <div class="flex flex-col gap-4 ">
-            <button  disabled class="bg-accent h-[75px] w-[200px]  text-2xl font-medium text-center rounded-md">EMAIL</button>
-            <p class=" text-xl text-center text-main">{data.email}</p>
-            
-          </div>
-          <div class="flex flex-col gap-4 ">
-            <button  disabled class="bg-accent h-[75px] w-[200px] text-2xl font-medium text-center rounded-md">PHONE</button>
-            <p class=" text-xl text-center text-main">{data.phone_number}</p>
-          </div>
-          <div class="flex flex-col gap-4 ">
-            <button  disabled class="bg-accent h-[75px] w-[200px] text-2xl font-medium text-center rounded-md">ROLE</button>
-            <p class="  text-xl text-center text-main">{data.user_role}</p>
-          </div>
-          
-        </div>
-
-        <div class="flex w-[100%] justify-end  mr-[10%]">
-          <p class="text-xl text-main"> Date Created: {longDate}</p>
-        </div>
-        
-    
-      </div>
- 
-    </div>
-
+  </div>
 </div>
-
-
-<style>
-
-
-
-.header{
-  visibility: hidden;
-  margin-left: -20%;
-  animation: to-right .3s linear forwards;
-}
-
-
-@keyframes to-right {
-    0% {
-      visibility: hidden; /* Start with opacity 0 */
-    }
-    100% {
-      visibility: visible;
-      margin-left: 0%;
-    }
-  }
-
-
-</style>

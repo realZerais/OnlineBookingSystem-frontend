@@ -2,6 +2,7 @@
   import {fetchAllBook} from "../../hooks/handleBook"
   import { onMount } from "svelte";
   import RepairCount from "./RepairCount.svelte";
+import { userName } from "../../hooks/auth"
 
   let pendingBooks = [];
   let pendingCount = 0;
@@ -27,10 +28,15 @@
   })
 </script>
 
-<div class="flex flex-col justify-start items-start w-[93%] ">
-  <div class="w-[100%] text-center h-[10vh]  bg-blue-100">DASHBOARD</div>
+<div class="flex flex-col justify-start items-center w-[93%] ">
+  
+  <div class="flex flex-col justify-start items-start w-[80%] my-4 gap-2">
+    <div>Welcome !</div>
+    <div class="text-4xl text-gray-500 font-bold">Dashboard</div> 
+  </div>
 
-  <div class="flex justify-center w-[100%] ">
+
+  <div class="flex justify-between items-center w-[80%] my-4 ">
     <RepairCount
       title = "PENDING REPAIRS"
       pendingCount = {pendingCount}

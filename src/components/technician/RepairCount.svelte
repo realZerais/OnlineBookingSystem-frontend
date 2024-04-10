@@ -12,7 +12,7 @@
 
 </script>
 
-<div class="w-[30%] h-[25vh] bg-white flex flex-col items-start justify-start p-4 m-6 gap-4 rounded-lg shadow-md">
+<div class="w-[30%] h-[25vh] bg-white flex flex-col items-start justify-start p-4  gap-4 rounded-lg shadow-md">
   
   
     <div class="flex w-[100%] h-1/4  justify-start items-start text-xl text-gray-500 font-bold capitalize rounded-md">
