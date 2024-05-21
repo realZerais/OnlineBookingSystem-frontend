@@ -10,7 +10,7 @@ import TechnicianNav from "$components/nav/TechnicianNav.svelte"
 </script>
 
 
-<main class="w-[100%] bg-white flex">
+<main class="w-[100%] bg-slate100 flex">
 
   {#if $userRole == 'user'}
     <UserNav></UserNav>

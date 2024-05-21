@@ -2,7 +2,7 @@
   import { onMount } from "svelte";
   import {fetchAllUser} from "../../hooks/handleUser"
   import { getCookieValue } from "../../hooks/auth"
-  import UserData from "./userData.svelte";
+  import UserData from "./UserData.svelte";
   
   let users = [];
 

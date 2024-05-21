@@ -58,7 +58,7 @@
         document.cookie = `role=${role}; path=/`; //put the role to the cookie
       
         fetchUser();
-        goto('/DashboardPage/user/home');
+        goto('/DashboardPage/user/dashboard');
       }
 
     

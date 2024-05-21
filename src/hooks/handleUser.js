@@ -6,12 +6,6 @@ export const userStore = writable('');
 export const fetchUserData = async () => {
     try {
         const accessToken = getCookieValue('accessToken');
-
-
-        // if (accessToken == null) {
-        //     console.log("no token");
-        //     return
-        // }
         const apiUrl = 'http://localhost:9000/user/info';
 
         const response = await fetch(apiUrl, {

@@ -30,9 +30,9 @@ import { userName } from "../../hooks/auth"
 
 <div class="flex flex-col justify-start items-center w-[93%] ">
   
-  <div class="flex flex-col justify-start items-start w-[80%] my-4 gap-2">
-    <div>Welcome !</div>
-    <div class="text-4xl text-gray-500 font-bold">Dashboard</div> 
+  <div class="flex flex-col justify-start items-start w-[80%] my-4">
+    <div class="font-mono font-semibold text-slate-700">Welcome !</div>
+    <div class="text-2xl font-bold text-main">Dashboard</div> 
   </div>
 
 

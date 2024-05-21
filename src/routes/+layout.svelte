@@ -14,9 +14,4 @@
 
 </script>
 
-
-<!-- {$isAuthenticated}
-{$userName}
-{$userRole} -->
-
 <slot /> 
