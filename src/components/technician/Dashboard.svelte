@@ -48,7 +48,7 @@ import { userName } from "../../hooks/auth"
     />
 
     <RepairCount
-      title = "DONE REPAIRS"
+      title = "FINISH REPAIRS"
       doneCount = {doneCount}
     />
   </div>

@@ -29,8 +29,8 @@
       {repairingCount} Books
     </div>
 
-  {:else if title === "DONE REPAIRS"}
-    <div class="flex w-[100%] h-3/4  justify-start items-center text-4xl text-slate-100 font-semibold capitalize rounded-md">
+  {:else if title === "FINISH REPAIRS"}
+    <div class="flex w-[100%] h-3/4  justify-start items-center text-4xl text-accent font-bold capitalize rounded-md">
       {doneCount} Books
     </div>
   {/if}

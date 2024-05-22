@@ -20,7 +20,7 @@
 
   <div class="flex items-center justify-center min-h-[450px] mb-4">
   
-    <div class="overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[90%] h-[85vh] mt-2">
+    <div class="overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[85vh] mt-2">
   
       <table class="min-w-full text-sm text-left text-primary">
         
