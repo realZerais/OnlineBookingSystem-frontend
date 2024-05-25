@@ -122,10 +122,8 @@
 		
 		user = await fetchUserData();
 		user_id = user.user_id;
-		console.log(user)
-		
-   
-  
+		// console.log(user)
+
 		console.log("sched array on mount:" + scheduleArray)
 	})
 </script>
@@ -172,7 +170,7 @@
 							
 							data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`} 
 							
-							title="This day is booked! 🚫"
+							title="This day is booked! "
 							
 							
 						>
@@ -191,7 +189,7 @@
 							
 							
 							data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`} 
-							title="This day has passed! 🚫"
+							title="This day has passed! "
 					
 					
 						>

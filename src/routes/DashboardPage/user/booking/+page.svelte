@@ -3,14 +3,18 @@
 
     import {fetchAllBook} from "../../../../hooks/handleBook";
     import { onMount } from "svelte";
-    import { format, parseISO } from 'date-fns'
+    import { format } from 'date-fns';
+    import { writable } from "svelte/store";
 
-    let scheduleArray = [];
+    let scheduleArray = writable([]);
+    let allBooks = [];
 
     
     let books = [];
-	onMount(async() =>{
-		books = await fetchAllBook();
+
+    async function fetchAllBookData() {
+
+        books = await fetchAllBook();
 	
         // schedule = books;
 
@@ -18,16 +22,25 @@
             let dateString = e.booking_date;
             let parsedDate = new Date(dateString);
             const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-            scheduleArray.push(formattedDate)
+            allBooks.push(formattedDate)
          
         });
+
+        scheduleArray.set(allBooks);
         console.log("scheduleArray:", scheduleArray)
         // console.log(scheduleArray.includes('May_23_2024'))
         // console.log(schedule)
 
+   
+    }
 
+	onMount(async() =>{
+		
+        fetchAllBookData();
        
     });
+
+    
    
 
   
@@ -40,8 +53,18 @@
         <div class="text-2xl font-bold text-main">Booking</div> 
     </div>
 
-    <Calendar
-    scheduleArray = {scheduleArray}/>
+    {#await $scheduleArray}
+        <h1>
+            loading calendar...
+        </h1>
+    {:then $scheduleArray} 
+        <Calendar
+        scheduleArray = {$scheduleArray}/>
+    {:catch error}
+        <p>Error fetching data: {error.message}</p>
+    {/await}
+
+
 </div>
    
  
