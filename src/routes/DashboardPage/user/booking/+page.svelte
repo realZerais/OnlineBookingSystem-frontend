@@ -15,14 +15,14 @@
         // schedule = books;
 
         books.forEach(e => {
-            let inputDate = e.booking_date;
-            let parsedDate = parseISO(inputDate);
-            const formattedDate = format(parsedDate, 'MMMM_dd_yyyy');
-            const newDate = formattedDate.toString()
-            scheduleArray.push(newDate)
+            let dateString = e.booking_date;
+            let parsedDate = new Date(dateString);
+            const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+            scheduleArray.push(formattedDate)
          
         });
-        console.log("schedule", scheduleArray)
+        console.log("scheduleArray:", scheduleArray)
+        // console.log(scheduleArray.includes('May_23_2024'))
         // console.log(schedule)
 
 
@@ -40,7 +40,8 @@
         <div class="text-2xl font-bold text-main">Booking</div> 
     </div>
 
-    <Calendar/>
+    <Calendar
+    scheduleArray = {scheduleArray}/>
 </div>
    
  

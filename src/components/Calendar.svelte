@@ -1,20 +1,31 @@
 <script>
 	import Modal from '$components/Modal.svelte';
+    import { onMount } from 'svelte';
+	import { getCookieValue } from "../hooks/auth"
+	import { fetchUserData } from '../hooks/handleUser';
+
+	let user = '';
+	//props 
+	export let scheduleArray = [];
 
 
+
+
+	//modal
 	let showModal = false;
-	let selectedDate;
+	let booking_date;
+
+	
 
 	const selectDate = (e) =>{
         showModal = true;
-		selectedDate = e.target.dataset.dateid;
-		console.log(selectedDate)
+		booking_date = e.target.dataset.dateid;
     }
 
-	let schedule = ['May_23_2024'];
+	// let schedule = ['May_23_2024', 'May_1_2024', 'May_2_2024'];
 
 
-	console.log("sched ->" + schedule);
+	// console.log("schedules: " + schedule);
 
 
 	const date = new Date();
@@ -39,10 +50,13 @@
 	$: numberOfDays = new Date(year, monthIndex+1, 0).getDate();
 	
 	$: calendarCellsQty = numberOfDays + firstDayIndex;
+
 	
+
 	const goToNextMonth = () => {
 		if (monthIndex >= 11) {
 			year += 1;
+			
 			return monthIndex = 0;
 		}
 		return monthIndex += 1;
@@ -55,10 +69,65 @@
 		}
 		return monthIndex -= 1;
 	}
+
+	let issue_description;
+	let cellphone_model;
+	let user_id;
+
 	
-	// $: console.log(`${month}, ${today.dayNumber}, ${year}, FIRST DAY index is ${firstDayIndex}, MONTH index is ${monthIndex}, No. of days: ${numberOfDays}`)
+	
+	const handleSubmit = async() =>{
+		const accessToken = getCookieValue('accessToken');
 
+		const bookingData = JSON.stringify({
+			user_id,
+			booking_date,
+			cellphone_model,
+			issue_description
+		});
+	
 
+		try {   
+            const response = await fetch('http://localhost:9000/booking/addBook', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+					'Authorization': `Bearer ${accessToken}`
+                },
+                body: bookingData,
+			
+            }); 
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                const {message} = errorData;
+                console.log(message);
+                alert(message);
+            }else{
+                const messageResponse = await response.json();
+                setTimeout(function(){
+                    const {message} = messageResponse;
+                    alert(message);
+                    location.reload();
+                }, 1000); 
+            }
+
+            
+        } catch (error) {
+            console.error('Error:', error);
+        }
+	}
+
+	onMount(async ()=>{
+		
+		user = await fetchUserData();
+		user_id = user.user_id;
+		console.log(user)
+		
+   
+  
+		console.log("sched array on mount:" + scheduleArray)
+	})
 </script>
 
 <div class="w-[50%] h-[60%] shadow-lg">
@@ -87,21 +156,64 @@
 
 	<!-- DAYS -->
 	<div class="w-[100%] h-[67%] ">
-		<ul class="days w-[100%] h-[100%] rounded-b-lg">
+		<ul class="days w-[100%] h-[100%] rounded-b-lg grid grid-cols-7">
 			{#each Array(calendarCellsQty) as _, i}
 				{#if i < firstDayIndex || i >= numberOfDays+firstDayIndex  }
 					<button class="disable pointer-events-none">&nbsp;</button>
+
+				
+					
+
 				{:else}
-					<button class="text-main" class:active={i === today.dayNumber+(firstDayIndex-1) &&
-																monthIndex === today.month &&
-																year === today.year}
-					data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`}
-					on:click={selectDate}
-					class:has-appts={`${month}_${(i-firstDayIndex)+1}_${year}` in schedule}
-					>
-						{(i - firstDayIndex) + 1}
+					<!--TAKEN DAYS-->
+					{#if scheduleArray.includes(`${month} ${(i-firstDayIndex)+1}, ${year}`) }
 						
-					</button>
+						<button class="text-accent cursor-not-allowed disabled" 
+							
+							data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`} 
+							
+							title="This day is booked! 🚫"
+							
+							
+						>
+
+						{(i - firstDayIndex) + 1} <!--display the day-->
+					
+						</button>
+
+					<!--DAY HAVE PASSED-->
+					{:else if	(year < today.year) || 
+								((monthIndex < today.month && year <= today.year)) ||
+								((monthIndex <= today.month) && (year == today.year) && ((i - firstDayIndex) + 1) < today.dayNumber) 
+					
+					}
+						<button class="text-main opacity-25 cursor-not-allowed disabled m-0" 
+							
+							
+							data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`} 
+							title="This day has passed! 🚫"
+					
+					
+						>
+
+						{(i - firstDayIndex) + 1} <!--display the day-->
+			
+						</button>
+
+					<!--AVAILABLE DAYS-->
+					{:else}
+						<button class="text-main hover:opacity-50 " 
+							
+						
+							data-dateID={`${month} ${(i-firstDayIndex)+1}, ${year}`} 
+							on:click={selectDate}
+							
+						>
+
+						{(i - firstDayIndex) + 1} <!--display the day-->
+						
+						</button>
+					{/if}
 				{/if}
 			{/each}
 		</ul>
@@ -113,13 +225,47 @@
 <Modal bind:showModal>
 
 	<h2 slot="header" class="text-center text-sm font-medium">
-		{selectedDate}
+		{booking_date}
 	</h2>
+
+	<form on:submit={handleSubmit}>
+        <div class="grid gap-4 mb-4 sm:grid-cols-2">
+			
+			<div>
+				<label for="name" class="block mb-2 text-lg font-bold text-black">ISSUE</label>
+				<input type="text" bind:value={issue_description}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+			</div>
+
+			<div>
+				<label for="name" class="block mb-2 text-lg font-bold text-black">PHONE MODEL</label>
+				<input type="text" bind:value={cellphone_model}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+
+
+			</div>
+
+			
+            <!-- <div>
+                <label for="name" class="block mb-2 text-sm font-medium text-black">USERNAME</label>
+                <input type="text" bind:value={user.full_name}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+            </div> -->
+
+			<div class="flex items-center justify-between space-x-4">
+				<button type="submit"  class="text-black bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
+					Make Appointment
+				</button>
+				
+			</div>
+
+        </div>
+
+    
+    </form>
 
 </Modal>
 
 				
 <style>
+	
 	ul {list-style-type: none;}
 
 
@@ -155,39 +301,23 @@
 
 	.days button {
 		list-style-type: none;
-		display: inline-block;
+		/* display: inline-block; */
 		/* border: 1px solid black; */
 		padding: 9px;
-		width: 14.28%;
+		/* width: 14.28%; */
 		text-align: center;
 		font-size: 1.2rem;
-		color: #777;
-		cursor: pointer;
-	}
-	/* .days li {
-		list-style-type: none;
-		display: inline-block;
-		border: 1px solid black;
-		padding: 9px;
-		width: 11.6%;
-		text-align: center;
-		margin-bottom: 1px;
-		font-size: 1.2rem;
-		color: #777;
-		cursor: pointer;
-	} */
-
-	/* Highlight the "current" day */
-	.active {
-		padding: 5px;
-		background: #1abc9c;
-		color: white !important
-	}
-
-	.has-appts .days button {
-		color: red;
 		
 	}
+	
+
+	/* Highlight the "current" day */
+	/* .active {
+		padding: 5px;
+		background: #1abc9c;
+	} */
+
+
 </style>
 
 

@@ -33,8 +33,8 @@
     </div>
 
     
-    <div class="flex items-center bg-gray-50 px-4 py-5 w-[100%] h-[10vh]">
-      <dt class="w-1/2 text-sm font-medium text-gray-500">
+    <div class="flex items-center bg-secondary px-4 py-5 w-[100%] h-[10vh]">
+      <dt class="w-1/2 text-sm font-medium text-gray-800">
         Username
       </dt>
       <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
@@ -42,7 +42,7 @@
       </dd>
     </div>
 
-    <div class="flex items-center bg-white px-4 w-[100%] h-[10vh]">
+    <div class="flex items-center bg-white px-4 py-5 w-[100%] h-[10vh]">
         <dt class="w-1/2 text-sm font-medium text-gray-500">
           Role
         </dt>
@@ -51,8 +51,8 @@
         </dd>
     </div>
 
-    <div class="flex bg-gray-50 px-4 py-5 w-[100%]">
-        <dt class="w-1/2 text-sm font-medium text-gray-500">
+    <div class="flex items-center bg-secondary px-4 py-5 w-[100%] h-[10vh]">
+        <dt class="w-1/2 text-sm font-medium text-gray-800">
           Email address
         </dt>
         <dd class="w-1/2 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
@@ -68,8 +68,8 @@
           {user.phone_number}
         </dd>
     </div>
-    <div class="flex bg-gray-50 px-4 py-5 w-[100%]">
-        <dt class=" w-1/2 text-sm font-medium text-gray-500">
+    <div class="flex items-center bg-secondary px-4 py-5 w-[100%]  h-[10vh]">
+        <dt class=" w-1/2 text-sm font-medium text-gray-800">
           Date Created
         </dt>
         <dd class="w-1/2 mt-1 text-sm text-gray-900 ">

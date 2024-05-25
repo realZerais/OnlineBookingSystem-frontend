@@ -1,7 +1,20 @@
 <script lang="js">
-    import logo from "$public/logo-white.png"
-    import userImage from "$public/user-sample-image.png"
-    import {logout} from "../../hooks/auth"
+  import logo from "$public/logo-white.png"
+  import {logout} from "../../hooks/auth"
+
+  import { onMount } from "svelte";
+
+  import {fetchUserData} from "../../hooks/handleUser"
+
+  let user = '';
+  let longDate = '';
+
+  onMount(async ()=>{
+    user = await fetchUserData();
+    const date = new Date(user.registration_date);
+    longDate = date.toLocaleDateString();
+
+  })
 </script>
    
 <div class="flex w-[7%] h-[100vh] justify-start ">
@@ -75,17 +88,15 @@
 
       </div>
 
-      <div class="account relative flex flex-col justify-center items-center justify-end h-[100%] opacity-0">
-        <div class="flex h-[100%] ">
-              <img class="rounded-full w-16 h-16 bg-zinc-400 self-end border border-accent border-2" src={userImage} alt="">
-        </div>
+      <div class="account relative flex flex-col items-center justify-end h-[100%] opacity-0 mb-4">
+       
   
             <div class="self-center justify-self-center mb-1">
-              <strong class="text-sm text-mainParagraph">Marian Kent Manalo</strong>
+              <strong class="text-sm text-mainParagraph">{user.full_name}</strong>
             </div>     
             
             <div class="self-center">
-              <p class="text-xs text-mainParagraph">USER@gmail.com</p>
+              <p class="text-xs text-mainParagraph">{user.email}</p>  
             </div>        
           </div>
       

@@ -31,7 +31,6 @@
               <th scope="col" class="py-3 px-6">USER</th>
               <th scope="col" class="py-3 px-6">BOOKING DATE </th>
               <th scope="col" class="py-3 px-6">PHONE MODEL</th>
-           
               <th scope="col" class="py-3 px-6">ISSUE DESCRIPTION</th>
               <th scope="col" class="py-3 px-6 overflow-y-auto">REPAIR STATUS</th>
               <th scope="col" class="py-3 px-6"></th>
