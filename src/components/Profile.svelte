@@ -1,14 +1,17 @@
 <script>
   import { onMount } from "svelte";
   import {fetchUserData} from "../hooks/handleUser"
+  import { format } from 'date-fns';
 
   let user = '';
   let longDate = '';
 
   onMount(async ()=>{
     user = await fetchUserData();
-    const date = new Date(user.registration_date);
-    longDate = date.toLocaleDateString();
+    let dateString = user.registration_date;
+    let parsedDate = new Date(dateString);
+    const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+    user.registration_date = formattedDate;
 
     console.log(user);
   })
@@ -43,7 +46,7 @@
     </div>
 
     <div class="flex items-center bg-white px-4 py-5 w-[100%] h-[10vh]">
-        <dt class="w-1/2 text-sm font-medium text-gray-500">
+        <dt class="w-1/2 text-sm font-medium text-gray-800">
           Role
         </dt>
         <dd class="w-1/2  mt-1 text-sm text-accent ">
@@ -61,7 +64,7 @@
     </div>
 
     <div class="flex bg-white px-4 py-5 w-[100%]">
-        <dt class="w-1/2  text-sm font-medium text-gray-500">
+        <dt class="w-1/2  text-sm font-medium text-gray-800">
           Phone Number
         </dt>
         <dd class="w-1/2  mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">

@@ -115,7 +115,7 @@
             <div class="general w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
                 <p class="w-[70%] p-3 text-xl bg-main text-accent rounded-xl mb-[10%]">General Inquiries</p>
                 <p class="w-[80%] text-normal text-main rounded-xl">For general questions and information, please email us at</p>
-                <u class="text-lg text-main">info@yourcompany.com</u>
+                <u class="text-lg text-main">core1@gmail.com</u>
             </div>
 
             <div class="phone w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
@@ -142,7 +142,7 @@
         </div>
         
         <div class="flex flex-col justify-center items-center footer w-[100%] h-[100%]">
-            <p class="text-accent text-base">©2024 Manalo Gwapo. All rights reserved.</p>
+            <p class="text-accent text-base">©2024. All rights reserved.</p>
         </div>
         
        

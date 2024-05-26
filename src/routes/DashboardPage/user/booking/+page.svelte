@@ -1,7 +1,7 @@
 <script>
     import Calendar from "$components/Calendar.svelte";
 
-    import {fetchAllBook} from "../../../../hooks/handleBook";
+    import {fetchApproveAppointments} from '../../../../hooks/handleBook'
     import { onMount } from "svelte";
     import { format } from 'date-fns';
     import { writable } from "svelte/store";
@@ -14,7 +14,7 @@
 
     async function fetchAllBookData() {
 
-        books = await fetchAllBook();
+        books = await fetchApproveAppointments();
 	
         // schedule = books;
 

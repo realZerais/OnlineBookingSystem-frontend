@@ -3,20 +3,29 @@
   import {fetchAllUser} from "../../hooks/handleUser"
   import { getCookieValue } from "../../hooks/auth"
   import UserData from "./UserData.svelte";
+  import { format } from 'date-fns';
   
   let users = [];
 
   
   onMount(async() =>{
     users = await fetchAllUser();
-  
-    console.log(users)
+    users.forEach(e => {
+            let dateString = e.registration_date;
+            let parsedDate = new Date(dateString);
+            const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+            e.registration_date = formattedDate;
+         
+        });
+    // console.log(users)
     
    
   })
 </script>
 <div class="flex flex-col w-[93%] justify-start items-center">
-  <div class="w-[100%] text-center h-10 bg-blue-100">MANAGE USERS</div>
+  <div class="flex flex-col justify-start items-start w-[80%] my-4">
+    <div class="text-2xl font-bold text-main">MANAGE USERS</div> 
+  </div>
 
   <div class="flex items-center justify-center min-h-[450px] mb-4">
   

@@ -1,10 +1,10 @@
 <script>
-    import Home from "$components/admin/Home.svelte";
+    import Dashboard from "$components/admin/Dashboard.svelte";
     
 </script>  
 
 
-<Home/>
+<Dashboard/>
 
 
 <style>

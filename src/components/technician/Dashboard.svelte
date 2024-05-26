@@ -1,8 +1,8 @@
 <script>
-  import {fetchAllBook} from "../../hooks/handleBook"
+  import {fetchApproveAppointments} from "../../hooks/handleBook"
   import { onMount } from "svelte";
   import RepairCount from "./RepairCount.svelte";
-import { userName } from "../../hooks/auth"
+  import { userName } from "../../hooks/auth"
 
   let pendingBooks = [];
   let pendingCount = 0;
@@ -10,7 +10,7 @@ import { userName } from "../../hooks/auth"
   let doneCount = 0;
 
   onMount(async() =>{
-    pendingBooks = await fetchAllBook();
+    pendingBooks = await fetchApproveAppointments();
     console.log(pendingBooks);
 
     pendingBooks.forEach(e => {
@@ -31,12 +31,12 @@ import { userName } from "../../hooks/auth"
 <div class="flex flex-col justify-start items-center w-[93%] ">
   
   <div class="flex flex-col justify-start items-start w-[80%] my-4">
-    <div class="font-mono font-semibold text-slate-700">Welcome !</div>
+    <div class="font-mono font-semibold text-slate-700">Welcome {$userName}!</div>
     <div class="text-2xl font-bold text-main">Dashboard</div> 
   </div>
 
 
-  <div class="flex justify-between items-center w-[80%] my-4 ">
+  <div class="flex justify-start items-center w-[80%] my-4 gap-8">
     <RepairCount
       title = "PENDING REPAIRS"
       pendingCount = {pendingCount}
@@ -48,7 +48,7 @@ import { userName } from "../../hooks/auth"
     />
 
     <RepairCount
-      title = "FINISH REPAIRS"
+      title = "FINISHED REPAIRS"
       doneCount = {doneCount}
     />
   </div>

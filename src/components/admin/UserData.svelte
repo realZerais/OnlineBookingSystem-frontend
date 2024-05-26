@@ -86,6 +86,40 @@
 
     }
 
+    const handleDelete = async ()=>{
+        const deleteData =  JSON.stringify({
+            user_id
+        })
+        try {   
+            const accessToken = getCookieValue('accessToken');
+
+            const response = await fetch('http://localhost:9000/user/deleteUser', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: deleteData,
+            }); 
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                const {message} = errorData;
+                console.log(message);
+                alert(message);
+            }else{
+                const messageResponse = await response.json();
+                setTimeout(function(){
+                    const {message} = messageResponse;
+                    alert(message);
+                    location.reload();
+                }, 1000); 
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
 </script>
 
 <tr class="bg-white border-b">
@@ -151,7 +185,7 @@
             <button type="submit"  class="text-black bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">
                 Save Changes
             </button>
-            <button type="button" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
+            <button on:click={handleDelete} type="button" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:border-red-500 dark:text-red-500 dark:hover:text-white dark:hover:bg-red-600 dark:focus:ring-red-900">
                 Delete User
             </button>
         </div>

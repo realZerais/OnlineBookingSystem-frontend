@@ -2,11 +2,14 @@
 
   import { getCookieValue } from "../../hooks/auth"
 
+  //props
   export let booking_date;
   export let booking_id;
   export let cellphone_model;
   export let issue_description;
   export let user_id;
+
+  //locals
   let repair_status = 'Repairing';
 
   const handleStart = async () =>{

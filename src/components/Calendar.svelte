@@ -22,11 +22,6 @@
 		booking_date = e.target.dataset.dateid;
     }
 
-	// let schedule = ['May_23_2024', 'May_1_2024', 'May_2_2024'];
-
-
-	// console.log("schedules: " + schedule);
-
 
 	const date = new Date();
 	
@@ -240,12 +235,6 @@
 
 
 			</div>
-
-			
-            <!-- <div>
-                <label for="name" class="block mb-2 text-sm font-medium text-black">USERNAME</label>
-                <input type="text" bind:value={user.full_name}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-            </div> -->
 
 			<div class="flex items-center justify-between space-x-4">
 				<button type="submit"  class="text-black bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">

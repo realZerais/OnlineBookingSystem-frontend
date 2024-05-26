@@ -4,10 +4,11 @@
 
     export let booking_date;
     export let booking_id;
+    export let user_id;
     export let cellphone_model;
     export let issue_description;
     export let repair_status;
-    export let user_id;
+    export let appointment_status;
 
     let showModal = false;
 
@@ -41,6 +42,7 @@
             issue_description,
             repair_status,
             user_id,
+            appointment_status,
         })
 
         try {   
@@ -74,6 +76,41 @@
 
     }
 
+    const handleDelete = async() => {
+
+        const deleteData =  JSON.stringify({
+            booking_id
+        })
+        try {   
+            const accessToken = getCookieValue('accessToken');
+
+            const response = await fetch('http://localhost:9000/booking/deleteBook', {
+                method: 'DELETE',
+                headers: {
+                    'Content-Type': 'application/json',
+                    'Authorization': `Bearer ${accessToken}`
+                },
+                body: deleteData,
+            }); 
+
+            if (!response.ok) {
+                const errorData = await response.json();
+                const {message} = errorData;
+                console.log(message);
+                alert(message);
+            }else{
+                const messageResponse = await response.json();
+                setTimeout(function(){
+                    const {message} = messageResponse;
+                    alert(message);
+                    location.reload();
+                }, 1000); 
+            }
+        } catch (error) {
+            console.error('Error:', error);
+        }
+    }
+
 </script>
 
 <tr class="bg-white border-b">
@@ -83,6 +120,7 @@
     <td class="py-4 px-6">{cellphone_model}</td>
     <td class="py-4 px-6">{issue_description}</td>
     <td class="py-4 px-6"><span class=" rounded-full py-2 px-6 text-accent bg-main">{repair_status}</span></td>
+    <td class="py-4 px-6"><span class=" rounded-full py-2 px-6 text-accent bg-main">{appointment_status}</span></td>
     <td class="py-4 px-6"><button on:click={editBook} class="rounded-sm py-2 px-6 text-main bg-secondary">Edit</button></td>
     
 </tr>
@@ -127,14 +165,23 @@
                 </select>
             </div>
 
+            <div>
+                <label for="category" class="block mb-2 text-sm font-medium text-black ">APPOINTMENT STATUS</label>
+                <select bind:value={appointment_status} id="category" class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                    <option value="Pending">Pending</option>
+                    <option value="Approved">Approved</option>
+                    <option value="Rejected">Rejected</option>
+                </select>
+            </div>
+
         </div>
 
         <div class="flex items-center justify-between space-x-4">
             <button type="submit"  class="text-black bg-secondary hover:opacity-80 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
                 Save Changes
             </button>
-            <button type="button" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
-                Delete Booking
+            <button on:click={handleDelete} type="button" class="text-red-600 inline-flex items-center hover:text-white border border-red-600 hover:bg-red-600 focus:ring-4 focus:outline-none focus:ring-red-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center">
+                Delete Book
             </button>
         </div>
     </form>
