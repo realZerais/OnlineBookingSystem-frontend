@@ -1,38 +1,61 @@
 <script>
   import { onMount } from "svelte";
   import {fetchAllUser} from "../../hooks/handleUser"
-  import { getCookieValue } from "../../hooks/auth"
   import UserData from "./UserData.svelte";
   import { format } from 'date-fns';
-  
+  import { paginate, LightPaginationNav } from 'svelte-paginate'
+
+
   let users = [];
+  let items = [];
+  let currentPage = 1
+  let pageSize = 7
+  let paginatedItems = [];
+  
+
+  $: updatePaginatedItems = () => {
+    paginatedItems = paginate({ items, pageSize, currentPage });
+  };
+
+  $: {
+    updatePaginatedItems();
+  }
+
+ 
+
 
   
   onMount(async() =>{
     users = await fetchAllUser();
     users.forEach(e => {
-            let dateString = e.registration_date;
-            let parsedDate = new Date(dateString);
-            const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-            e.registration_date = formattedDate;
-         
-        });
-    // console.log(users)
+        let dateString = e.registration_date;
+        let parsedDate = new Date(dateString);
+        const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+        e.registration_date = formattedDate;
+      
+    });
+
+    items = users;
+    updatePaginatedItems();
+
+  
     
    
   })
+
+
 </script>
 <div class="flex flex-col w-[93%] justify-start items-center">
   <div class="flex flex-col justify-start items-start w-[80%] my-4">
     <div class="text-2xl font-bold text-main">MANAGE USERS</div> 
   </div>
 
-  <div class="flex items-center justify-center min-h-[450px] mb-4">
-  
-    <div class="overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[85vh] mt-2">
-  
+  <div class="flex  flex-col justify-center items-start min-h-[450px] w-[80%] mb-4">
+
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[85vh] mt-2">
+   
       <table class="min-w-full text-sm text-left text-primary">
-        
+          
           <thead class="text-xs text-white uppercase  bg-main ">
           
             <tr>
@@ -48,19 +71,38 @@
           </thead>
 
           <tbody>
-            {#each users as user}
-              <UserData 
-                username = {user.username} 
-                full_name = {user.full_name} 
-                user_id = {user.user_id}
-                phone_number = {user.phone_number} 
-                registration_date = {user.registration_date} 
-                email = {user.email}
-                user_role = {user.user_role}
-              />
-            {/each}
+            {#each paginatedItems as user}
+            <UserData 
+              username = {user.username} 
+              full_name = {user.full_name} 
+              user_id = {user.user_id}
+              phone_number = {user.phone_number} 
+              registration_date = {user.registration_date} 
+              email = {user.email}
+              user_role = {user.user_role}
+            />
+
+              
+           {/each}
+
+         
           </tbody>
+
+          
       </table>
+
+   
+      <LightPaginationNav
+        totalItems="{items.length}"
+        pageSize="{pageSize}"
+        currentPage="{currentPage}"
+        limit="{1}"
+        showStepOptions="{true}"
+        on:setPage="{(e) => currentPage = e.detail.page}"
+      />
+   
+     
+      
     </div>
 
   </div>
@@ -76,18 +118,5 @@
 
 
 <style>
-
-
-
-    @keyframes to-right {
-       0% {
-         visibility: hidden; /* Start with opacity 0 */
-       }
-       100% {
-         visibility: visible;
-         margin-left: 0%;
-       }
-     }
-
 
 </style>

@@ -9,6 +9,8 @@
     export let registration_date;
     export let email;
     export let user_role;
+
+    
     
     import Modal from '../../components/Modal.svelte';
 

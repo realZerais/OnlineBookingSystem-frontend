@@ -3,9 +3,22 @@
   import BookData from "./BookData.svelte"
   import { onMount } from "svelte";
   import { format } from 'date-fns';
+  import { paginate, LightPaginationNav } from 'svelte-paginate'
 
 
   let books = [];
+  let items = [];
+  let currentPage = 1
+  let pageSize = 7
+  let paginatedItems = [];
+
+  $: updatePaginatedItems = () => {
+    paginatedItems = paginate({ items, pageSize, currentPage });
+  };
+
+  $: {
+    updatePaginatedItems();
+  }
 
   onMount(async() =>{
     books = await fetchAllBook();
@@ -16,7 +29,9 @@
       e.booking_date = formattedDate;
       
     });
-    console.log(books)
+    items = books;
+    updatePaginatedItems();
+
     
     
   })
@@ -27,9 +42,9 @@
     <div class="text-2xl font-bold text-main">MANAGE BOOKINGS</div> 
   </div>
 
-  <div class="flex items-center justify-center min-h-[450px] mb-4">
+  <div class="flex  flex-col justify-center items-start min-h-[450px] w-[80%] mb-4">
   
-    <div class="overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[90%] h-[85vh] mt-2">
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[90%] h-[85vh] mt-2">
   
       <table class="min-w-full text-sm text-left text-primary">
         
@@ -48,7 +63,7 @@
           </thead>
 
           <tbody>
-            {#each books as book}
+            {#each paginatedItems as book}
               <BookData 
                 user_id = {book.user_id}
                 booking_id = {book.booking_id}
@@ -59,11 +74,22 @@
                 appointment_status = {book.appointment_status}
 
               />
+
+              
               
             {/each}
        
           </tbody>
       </table>
+
+      <LightPaginationNav
+        totalItems="{items.length}"
+        pageSize="{pageSize}"
+        currentPage="{currentPage}"
+        limit="{1}"
+        showStepOptions="{true}"
+        on:setPage="{(e) => currentPage = e.detail.page}"
+      />
     </div>
 
   </div>
