@@ -69,13 +69,13 @@
   <div class="flex  flex-col justify-center items-start min-h-[450px] w-[80%] mb-4">
 
     <div class="flex gap-4">
-      <input type="text" placeholder="username" class="border-2 border-secondary rounded-md" bind:value={searchTerm}>
+      <input type="text" placeholder="username" class="border-2 p-2 border-secondary rounded-md" bind:value={searchTerm}>
       <button on:click={searchUser} class="rounded-lg border-2 p-2 border-secondary hover:bg-accent">Search</button>
       <button on:click={()=>{location.reload();}} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
     </div>
 
 
-    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[87vh] mt-2">
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[86vh] mt-2">
    
       <table class="min-w-full text-sm text-left text-primary">
           
