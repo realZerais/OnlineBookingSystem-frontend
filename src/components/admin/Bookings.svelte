@@ -9,7 +9,7 @@
   let books = [];
   let items = [];
   let currentPage = 1
-  let pageSize = 7
+  let pageSize = 2;
   let paginatedItems = [];
 
   $: updatePaginatedItems = () => {
@@ -19,6 +19,14 @@
   $: {
     updatePaginatedItems();
   }
+
+  let searchTerm = "";
+
+  // $: searchedItems = books.filter((book) => {
+  //   return book.booking_id.includes(searchTerm);
+  // })
+
+  // $: console.log(searchedItems);
 
   onMount(async() =>{
     books = await fetchAllBook();
@@ -43,8 +51,8 @@
   </div>
 
   <div class="flex  flex-col justify-center items-start min-h-[450px] w-[80%] mb-4">
-  
-    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[90%] h-[85vh] mt-2">
+    <input type="text" placeholder="search" class="border-2" bind:value={searchTerm}>
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[100%] h-[80vh] mt-2">
   
       <table class="min-w-full text-sm text-left text-primary">
         

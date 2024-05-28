@@ -1,15 +1,16 @@
 <script>
   import { onMount } from "svelte";
   import {fetchAllUser} from "../../hooks/handleUser"
+  import {fetchSearchedUsers} from "../../hooks/handleUser"
   import UserData from "./UserData.svelte";
   import { format } from 'date-fns';
   import { paginate, LightPaginationNav } from 'svelte-paginate'
 
 
   let users = [];
-  let items = [];
+  $: items = users;
   let currentPage = 1
-  let pageSize = 7
+  let pageSize = 8
   let paginatedItems = [];
   
 
@@ -22,9 +23,24 @@
   }
 
  
-
+  let searchTerm = "";
 
   
+  const searchUser = async ()=>{
+    users = await fetchSearchedUsers(searchTerm);
+    users.forEach(e => {
+        let dateString = e.registration_date;
+        let parsedDate = new Date(dateString);
+        const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+        e.registration_date = formattedDate;
+      
+    });
+
+    console.log(users);
+    // items = users;
+  }
+
+
   onMount(async() =>{
     users = await fetchAllUser();
     users.forEach(e => {
@@ -35,7 +51,7 @@
       
     });
 
-    items = users;
+    // items = users;
     updatePaginatedItems();
 
   
@@ -52,14 +68,21 @@
 
   <div class="flex  flex-col justify-center items-start min-h-[450px] w-[80%] mb-4">
 
-    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[85vh] mt-2">
+    <div class="flex gap-4">
+      <input type="text" placeholder="username" class="border-2 border-secondary rounded-md" bind:value={searchTerm}>
+      <button on:click={searchUser} class="rounded-lg border-2 p-2 border-secondary hover:bg-accent">Search</button>
+      <button on:click={()=>{location.reload();}} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
+    </div>
+
+
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[87vh] mt-2">
    
       <table class="min-w-full text-sm text-left text-primary">
           
           <thead class="text-xs text-white uppercase  bg-main ">
           
             <tr>
-              <th scope="col" class="py-3 px-6">User</th>
+              <th scope="col" class="py-3 px-6">USERNAME</th>
               <th scope="col" class="py-3 px-6">FULL NAME</th>
               <th scope="col" class="py-3 px-6">USER ID</th>
               <th scope="col" class="py-3 px-6">PHONE NUMBER</th>
@@ -71,19 +94,26 @@
           </thead>
 
           <tbody>
-            {#each paginatedItems as user}
-            <UserData 
-              username = {user.username} 
-              full_name = {user.full_name} 
-              user_id = {user.user_id}
-              phone_number = {user.phone_number} 
-              registration_date = {user.registration_date} 
-              email = {user.email}
-              user_role = {user.user_role}
-            />
-
+            {#if users.length == 0}
+              <h1 class="font-semibold text-xl m-9">no user found...</h1>
               
-           {/each}
+            {:else}
+
+            {#each paginatedItems as user}
+              <UserData 
+                username = {user.username} 
+                full_name = {user.full_name} 
+                user_id = {user.user_id}
+                phone_number = {user.phone_number} 
+                registration_date = {user.registration_date} 
+                email = {user.email}
+                user_role = {user.user_role}
+              />
+
+            
+            {/each}
+            {/if}
+
 
          
           </tbody>
