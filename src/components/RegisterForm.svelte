@@ -7,7 +7,7 @@
   let phone_number = '';
   let password = '';
   let confirmPassword = '';
-
+  let user_role = '1';
   const validateForm = () => {
     if(password !== confirmPassword){
       alert("Password did not matched");
@@ -33,6 +33,7 @@
       email,
       phone_number,
       password,
+      user_role,
     });
 
 

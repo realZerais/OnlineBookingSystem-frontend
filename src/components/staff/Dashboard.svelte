@@ -8,16 +8,21 @@
   let pendingApts = [];
   let pendingCount = 0;
   let approvedCount = 0;
+  let rejectedCount = 0;
 
   onMount(async() =>{
     pendingApts = await fetchAllBook();
+    console.log(pendingApts)
 
     pendingApts.forEach(e => {
-      if(e.appointment_status == "Pending"){
+      if(e.appointment_status == "pending"){
         pendingCount++;
       }
-      else if(e.appointment_status == "Approved"){
+      else if(e.appointment_status == "approved"){
         approvedCount++;
+      }
+      else if(e.appointment_status == "rejected"){
+        rejectedCount++;
       }
     });
 
@@ -39,6 +44,11 @@
     <AppointmentCount
       title = "APPROVED APPOINTMENTS"
       approvedCount = {approvedCount}
+    />
+
+    <AppointmentCount
+      title = "REJECTED APPOINTMENTS"
+      rejectedCount = {rejectedCount}
     />
 
 

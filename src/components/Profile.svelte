@@ -4,16 +4,17 @@
   import { format } from 'date-fns';
 
   let user = '';
-  let longDate = '';
+
 
   onMount(async ()=>{
+
     user = await fetchUserData();
     let dateString = user.registration_date;
     let parsedDate = new Date(dateString);
     const formattedDate = format(parsedDate, 'MMMM d, yyyy');
     user.registration_date = formattedDate;
 
-    console.log(user);
+    // console.log(user);
   })
 </script>
 
@@ -25,7 +26,7 @@
     <div class="text-2xl font-bold text-main">Profile</div>
   </div>
 
-  <div class="flex flex-col justify-start items-start w-[80%] my-4  gap-2 shadow overflow-hidden sm:rounded-lg">
+  <div class="flex flex-col justify-start items-start w-[80%] my-4 shadow overflow-hidden sm:rounded-lg">
     <div class="px-4 py-5 sm:px-6">
       <h3 class="text-lg leading-6 font-medium text-gray-900 capitalize ">
         {user.full_name}
@@ -36,49 +37,61 @@
     </div>
 
     
-    <div class="flex items-center bg-secondary px-4 py-5 w-[100%] h-[10vh]">
-      <dt class="w-1/2 text-sm font-medium text-gray-800">
-        Username
+    <div class="flex items-center bg-main px-4 py-5 w-[100%]  h-[10vh]">
+      <dt class=" w-1/2 text-sm font-medium text-gray-200">
+        User ID
       </dt>
-      <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
-        {user.username}
+      <dd class="w-1/2 mt-1 text-sm text-gray-200 ">
+        {user.user_id}
       </dd>
     </div>
 
-    <div class="flex items-center bg-white px-4 py-5 w-[100%] h-[10vh]">
-        <dt class="w-1/2 text-sm font-medium text-gray-800">
-          Role
-        </dt>
-        <dd class="w-1/2  mt-1 text-sm text-accent ">
-          {user.user_role}
-        </dd>
-    </div>
-
-    <div class="flex items-center bg-secondary px-4 py-5 w-[100%] h-[10vh]">
-        <dt class="w-1/2 text-sm font-medium text-gray-800">
-          Email address
-        </dt>
-        <dd class="w-1/2 mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          {user.email}
-        </dd>
-    </div>
-
-    <div class="flex bg-white px-4 py-5 w-[100%]">
-        <dt class="w-1/2  text-sm font-medium text-gray-800">
-          Phone Number
-        </dt>
-        <dd class="w-1/2  mt-1 text-sm text-gray-900 sm:mt-0 sm:col-span-2">
-          {user.phone_number}
-        </dd>
-    </div>
-    <div class="flex items-center bg-secondary px-4 py-5 w-[100%]  h-[10vh]">
+    <div class="flex items-center bg-white px-4 py-5 w-[100%]  h-[10vh]">
         <dt class=" w-1/2 text-sm font-medium text-gray-800">
-          Date Created
+          Username
         </dt>
         <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
-          {user.registration_date}
+          {user.username}
         </dd>
     </div>
+
+    <div class="flex items-center bg-main px-4 py-5 w-[100%]  h-[10vh]">
+      <dt class=" w-1/2 text-sm font-medium text-gray-200">
+        User Role  
+      </dt>
+      <dd class="w-1/2 mt-1 text-sm text-accent ">
+        {user.user_role}
+      </dd>
+    </div>
+
+    <div class="flex items-center bg-white px-4 py-5 w-[100%]  h-[10vh]">
+      <dt class=" w-1/2 text-sm font-medium text-gray-800">
+        Phone Number
+      </dt>
+      <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
+        {user.phone_number}
+      </dd>
+    </div>
+
+    <div class="flex items-center bg-main px-4 py-5 w-[100%]  h-[10vh]">
+      <dt class=" w-1/2 text-sm font-medium text-gray-200">
+        Email Address   
+      </dt>
+      <dd class="w-1/2 mt-1 text-sm text-gray-200 ">
+        {user.email}
+      </dd>
+    </div>
+
+    <div class="flex items-center bg-white px-4 py-5 w-[100%]  h-[10vh]">
+      <dt class=" w-1/2 text-sm font-medium text-gray-800">
+        Registered On
+      </dt>
+      <dd class="w-1/2 mt-1 text-sm text-gray-900 ">
+        {user.registration_date}
+      </dd>
+    </div>
+
+    
   
 
   </div>

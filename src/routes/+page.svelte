@@ -5,6 +5,8 @@
     import Footer from '$components/Footer.svelte';
     import { onMount } from 'svelte';
 
+    import { userRole  } from "../hooks/auth";
+
 </script>
 
 <main class="w-[100%] h-[100vh] parent overflow-x-hidden">
@@ -23,9 +25,21 @@
             </div>  
             <p class="w-[80%]  h-[80%]  text-[1rem] text-mainHeadline  me-[20%] leading-snug">Explore cutting-edge solutions and personalized care plans tailored to guide your device on the path to recovery. From diagnostics to rehabilitation, we're here to support every step of your device's journey.</p> 
             
-            <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+            <!-- <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
                 Book Now
-            </a>
+            </a> -->
+
+            {#if $userRole == 'user'}
+                <a href="/DashboardPage/{$userRole}/booking/" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                    Book Now
+                </a>
+            {:else if ['admin', 'staff', 'technician'].includes($userRole) }
+                <br>
+            {:else}
+                <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                    Book Now
+                </a>
+            {/if}
         </div>
             
         <div class="flex justify-center items-center image w-[100%] h-[100%] ">

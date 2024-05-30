@@ -2,6 +2,7 @@
     export let title;
     export let pendingCount;
     export let approvedCount;
+    export let rejectedCount;
 
 </script>
 
@@ -20,6 +21,10 @@
   {:else if title === "APPROVED APPOINTMENTS"}
     <div class="flex w-[100%] h-3/4  justify-start items-center text-6xl  text-accent font-bold capitalize rounded-md">
       {approvedCount} 
+    </div>
+  {:else if title === "REJECTED APPOINTMENTS"}
+    <div class="flex w-[100%] h-3/4  justify-start items-center text-6xl  text-red-700 font-bold capitalize rounded-md">
+      {rejectedCount} 
     </div>
 
   {/if}

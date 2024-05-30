@@ -13,13 +13,13 @@
 
 	//modal
 	let showModal = false;
-	let booking_date;
+	let book_date;
 
 	
 
 	const selectDate = (e) =>{
         showModal = true;
-		booking_date = e.target.dataset.dateid;
+		book_date = e.target.dataset.dateid;
     }
 
 
@@ -76,7 +76,7 @@
 
 		const bookingData = JSON.stringify({
 			user_id,
-			booking_date,
+			book_date,
 			cellphone_model,
 			issue_description
 		});
@@ -218,7 +218,7 @@
 <Modal bind:showModal>
 
 	<h2 slot="header" class="text-center text-sm font-medium">
-		{booking_date}
+		{book_date}
 	</h2>
 
 	<form on:submit={handleSubmit}>
@@ -226,12 +226,31 @@
 			
 			<div>
 				<label for="name" class="block mb-2 text-lg font-bold text-black">ISSUE</label>
-				<input type="text" bind:value={issue_description}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+				<!-- <input type="text-area" bind:value={issue_description}  class="bg-main h-[20vh] border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"> -->
+				<textarea bind:value={issue_description} rows="5" class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5"></textarea>
 			</div>
 
 			<div>
 				<label for="name" class="block mb-2 text-lg font-bold text-black">PHONE MODEL</label>
-				<input type="text" bind:value={cellphone_model}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+				<select bind:value={cellphone_model} class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+					<option value="Apple">Apple</option>
+                    <option value="ASUS">ASUS</option>
+                    <option value="Cherry Mobile">Cherry Mobile</option>
+					<option value="Huawei">Huawei</option>
+                    <option value="Infinix">Infinix</option>
+                    <option value="LG">LG</option>
+					<option value="Motorola">Motorola</option>
+                    <option value="Nokia">Nokia</option>
+                    <option value="OPPO">OPPO</option>
+					<option value="Realme">Realme</option>
+                    <option value="Samsung">Samsung</option>
+                    <option value="Tecno">Tecno</option>
+					<option value="Torque">Torque</option>
+					<option value="Vivo">Vivo</option>
+					<option value="Xiaomi">Xiaomi</option>
+                    <option value="Other">Other</option>
+				</select>
+
 
 
 			</div>

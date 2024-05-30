@@ -1,24 +1,48 @@
 <script>
-  import {fetchApproveAppointments} from '../../hooks/handleBook';
+  import {fetchNonPendingAppointments} from '../../hooks/handleBook';
   import { onMount } from "svelte";
   import { format } from 'date-fns';
-  import { writable } from "svelte/store";
+  import { paginate, LightPaginationNav } from 'svelte-paginate'
+  import LogsData from './LogsData.svelte';
+  
 
 
   let books = [];
 
+  $: items = books;
+  let currentPage = 1
+  let pageSize = 8;
+  let paginatedItems = [];
+
+  $: updatePaginatedItems = () => {
+    paginatedItems = paginate({ items, pageSize, currentPage });
+  };
+
+  $: {
+    updatePaginatedItems();
+  }
 
   onMount(async() =>{
-    books = await fetchApproveAppointments();
+    books = await fetchNonPendingAppointments();
+
+    console.log(books)
     books.forEach(e => {
-      let dateString = e.booking_date;
+      let dateString = e.book_date;
       let parsedDate = new Date(dateString);
       const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-      e.booking_date = formattedDate;
+      e.book_date = formattedDate;
       
     });
+
+    updatePaginatedItems();
     
   })
+
+  let showModal = false;
+
+  const viewRemark = async () =>{
+      showModal = true;
+  }
 
 </script>
 
@@ -35,9 +59,9 @@
 
 
   <!--LOGS TABLE-->
-  <div class="flex items-center justify-center min-h-[450px] mb-4">
+  <div class="flex items-center justify-center min-h-[450px] w-[80%] mb-4">
   
-    <div class="overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[100%] h-[75vh] mt-2">
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[100%] h-[79vh] mt-2">
   
       <table class="min-w-full text-sm text-left text-primary">
         
@@ -55,22 +79,36 @@
         </thead>
 
         <tbody>
-          {#each books as book}
-            <tr class="bg-white border-b">
-              <td class="py-4 px-6 ">{book.booking_id}</td>
-              <td class="py-4 px-6">{book.user_id}</td>
-              <td class="py-4 px-6">{book.booking_date}</td>
-              <td class="py-4 px-6">{book.cellphone_model}</td>
-              <td class="py-4 px-6">{book.issue_description}</td>
-              <td class="py-4 px-6"><span class=" rounded-full py-2 px-6 text-accent bg-main">{book.appointment_status}</span></td>
-            </tr>
+          {#each paginatedItems as book}
+            <LogsData
+              book_id = {book.book_id }
+              user_id = {book.user_id }
+              book_date = {book.book_date }
+              cellphone_model = {book.cellphone_model }
+              issue_description = {book.issue_description }
+              appointment_status = {book.appointment_status }
+              remark = {book.remark }
+            />
+           
+
+            
           {/each}
         </tbody>
 
       </table>
+      
+      <LightPaginationNav
+        totalItems="{items.length}"
+        pageSize="{pageSize}"
+        currentPage="{currentPage}"
+        limit="{1}"
+        showStepOptions="{true}"
+        on:setPage="{(e) => currentPage = e.detail.page}"
+      />
     </div>
 
   </div>
 
 
 </div>
+

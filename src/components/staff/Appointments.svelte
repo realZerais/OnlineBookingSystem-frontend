@@ -2,18 +2,20 @@
   import { onMount } from "svelte";
   import {fetchPendingAppointments} from "../../hooks/handleBook"
   import PendingAppointments from "./PendingAppointments.svelte";
+
   import { format } from 'date-fns';
 
   let pendingApts = [];
+
 
   onMount(async() =>{
     pendingApts = await fetchPendingAppointments();
 
     pendingApts.forEach(e => {
-        let dateString = e.booking_date;
+        let dateString = e.book_date;
         let parsedDate = new Date(dateString);
         const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-        e.booking_date = formattedDate;
+        e.book_date = formattedDate;
          
     });
 
@@ -40,17 +42,18 @@
     <div class="flex flex-col justify-start items-start w-[80%] my-4 gap-2">
       {#each pendingApts as pendingApt}
         <PendingAppointments
-          booking_date = {pendingApt.booking_date}
-          booking_id = {pendingApt.booking_id}
+          username = {pendingApt.username}
+          book_date = {pendingApt.book_date}
+          book_id = {pendingApt.book_id}
           cellphone_model = {pendingApt.cellphone_model}
           issue_description = {pendingApt.issue_description}
-          user_id = {pendingApt.user_id}
-          repair_status = {pendingApt.repair_status}
         />
       {/each}
     </div>
     {/if}
 </div>
+
+
 <style>
 
 

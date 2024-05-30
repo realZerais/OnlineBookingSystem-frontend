@@ -2,13 +2,13 @@
     import { getCookieValue } from "../../hooks/auth"
     import Modal from '../../components/Modal.svelte';
 
-    export let booking_date;
-    export let booking_id;
-    export let user_id;
+    export let book_date;
+    export let book_id;
     export let cellphone_model;
     export let issue_description;
     export let repair_status;
     export let appointment_status;
+    export let username;
 
     let showModal = false;
 
@@ -18,7 +18,7 @@
 
     const validateDone = () => {
   
-        if (!booking_date || !booking_id || !cellphone_model || !issue_description || !repair_status || !user_id) {
+        if (!book_date || !book_id || !cellphone_model || !issue_description || !repair_status || !user_id) {
             alert('Please fill in all fields correctly.');
             return false;
         }
@@ -114,9 +114,9 @@
 </script>
 
 <tr class="bg-white border-b">
-    <td class="py-4 px-6 ">{booking_id}</td>
-    <td class="py-4 px-6">{user_id}</td>
-    <td class="py-4 px-6">{booking_date}</td>
+    <td class="py-4 px-6 ">{book_id}</td>
+    <td class="py-4 px-6">{username}</td>
+    <td class="py-4 px-6">{book_date}</td>
     <td class="py-4 px-6">{cellphone_model}</td>
     <td class="py-4 px-6">{issue_description}</td>
     <td class="py-4 px-6"><span class=" rounded-full py-2 px-6 text-accent bg-main">{repair_status}</span></td>
@@ -136,12 +136,12 @@
         <div class="grid gap-4 mb-4 sm:grid-cols-2">
             <div>
                 <label for="name" class="block mb-2 text-sm font-medium text-black">BOOKED BY USER</label>
-                <input type="text" bind:value={user_id}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                <input type="text" bind:value={username}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             </div>
 
             <div>
                 <label for="name" class="block mb-2 text-sm font-medium text-black">BOOKING DATE</label>
-                <input type="text" bind:value={booking_date}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
+                <input type="text" bind:value={book_date}  class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
             </div>
 
             <div>
@@ -159,18 +159,18 @@
             <div>
                 <label for="category" class="block mb-2 text-sm font-medium text-black ">REPAIR STATUS</label>
                 <select bind:value={repair_status} id="category" class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                    <option value="Pending">Pending</option>
-                    <option value="Repairing">Repairing</option>
-                    <option value="Done">Done</option>
+                    <option value="Pending">pending</option>
+                    <option value="Repairing">repairing</option>
+                    <option value="Done">completed</option>
                 </select>
             </div>
 
             <div>
                 <label for="category" class="block mb-2 text-sm font-medium text-black ">APPOINTMENT STATUS</label>
                 <select bind:value={appointment_status} id="category" class="bg-main border border-secondary text-white text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5">
-                    <option value="Pending">Pending</option>
-                    <option value="Approved">Approved</option>
-                    <option value="Rejected">Rejected</option>
+                    <option value="Pending">pending</option>
+                    <option value="Approved">approved</option>
+                    <option value="Rejected">rejected</option>
                 </select>
             </div>
 

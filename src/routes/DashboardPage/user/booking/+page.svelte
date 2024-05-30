@@ -1,7 +1,7 @@
 <script>
     import Calendar from "$components/Calendar.svelte";
 
-    import {fetchApproveAppointments} from '../../../../hooks/handleBook'
+    import {fetchApprovedAppointment} from '../../../../hooks/handleBook'
     import { onMount } from "svelte";
     import { format } from 'date-fns';
     import { writable } from "svelte/store";
@@ -14,12 +14,12 @@
 
     async function fetchAllBookData() {
 
-        books = await fetchApproveAppointments();
+        books = await fetchApprovedAppointment();
 	
         // schedule = books;
 
         books.forEach(e => {
-            let dateString = e.booking_date;
+            let dateString = e.book_date;
             let parsedDate = new Date(dateString);
             const formattedDate = format(parsedDate, 'MMMM d, yyyy');
             allBooks.push(formattedDate)

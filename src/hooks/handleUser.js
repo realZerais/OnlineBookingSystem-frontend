@@ -1,12 +1,15 @@
 import { getCookieValue } from '../hooks/auth'
 import { writable } from 'svelte/store';
 
+
+
 export const userStore = writable('');
 
 export const fetchUserData = async () => {
+    const apiUrl = `http://localhost:9000/user/userInfo`;
+
     try {
         const accessToken = getCookieValue('accessToken');
-        const apiUrl = 'http://localhost:9000/user/info';
 
         const response = await fetch(apiUrl, {
             method: 'GET',
