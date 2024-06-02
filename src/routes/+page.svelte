@@ -5,6 +5,8 @@
     import Footer from '$components/Footer.svelte';
     import { onMount } from 'svelte';
 
+    import { userRole  } from "../hooks/auth";
+
 </script>
 
 <main class="w-[100%] h-[100vh] parent overflow-x-hidden">
@@ -23,9 +25,21 @@
             </div>  
             <p class="w-[80%]  h-[80%]  text-[1rem] text-mainHeadline  me-[20%] leading-snug">Explore cutting-edge solutions and personalized care plans tailored to guide your device on the path to recovery. From diagnostics to rehabilitation, we're here to support every step of your device's journey.</p> 
             
-            <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+            <!-- <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
                 Book Now
-            </a>
+            </a> -->
+
+            {#if $userRole == 'user'}
+                <a href="/DashboardPage/{$userRole}/booking/" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                    Book Now
+                </a>
+            {:else if ['admin', 'staff', 'technician'].includes($userRole) }
+                <br>
+            {:else}
+                <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
+                    Book Now
+                </a>
+            {/if}
         </div>
             
         <div class="flex justify-center items-center image w-[100%] h-[100%] ">
@@ -115,7 +129,7 @@
             <div class="general w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
                 <p class="w-[70%] p-3 text-xl bg-main text-accent rounded-xl mb-[10%]">General Inquiries</p>
                 <p class="w-[80%] text-normal text-main rounded-xl">For general questions and information, please email us at</p>
-                <u class="text-lg text-main">info@yourcompany.com</u>
+                <u class="text-lg text-main">core1@gmail.com</u>
             </div>
 
             <div class="phone w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
@@ -142,7 +156,7 @@
         </div>
         
         <div class="flex flex-col justify-center items-center footer w-[100%] h-[100%]">
-            <p class="text-accent text-base">©2024 Manalo Gwapo. All rights reserved.</p>
+            <p class="text-accent text-base">©2024. All rights reserved.</p>
         </div>
         
        
@@ -161,9 +175,6 @@
         scroll-snap-align: center;
     }
 
-    .nav{
-        grid-area: nav;
-    }
 
     .hero{
         grid-area: hero;
@@ -236,21 +247,7 @@
     .footer{
         grid-area: footer;
     }
-    ::-webkit-scrollbar {
-        width: 7px; /* Set the width of the scrollbar */
-       
-    }
-
-    ::-webkit-scrollbar-thumb {
-        background-color: #f9bc60; /* Set the color of the thumb (the draggable part) */
-        border-radius: 5px; /* Optional: Add rounded corners to the thumb */
-        outline: 1px solid #014447;
-    }
-
-    ::-webkit-scrollbar-track {
-        background-color: #014447;
-       
-    }
+   
     
 
     
