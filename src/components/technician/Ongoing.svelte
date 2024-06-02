@@ -9,10 +9,10 @@
   onMount(async() =>{
     repairingBooks = await fetchRepairingBook();
     repairingBooks.forEach(e => {
-        let dateString = e.booking_date;
+        let dateString = e.book_date;
         let parsedDate = new Date(dateString);
         const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-        e.booking_date = formattedDate;
+        e.book_date = formattedDate;
         
       });
     console.log(repairingBooks)
@@ -37,8 +37,8 @@
       <OngoingRepairs
     
     
-        booking_date = {repairingBook.booking_date}
-        booking_id = {repairingBook.booking_id}
+        book_date = {repairingBook.book_date}
+        book_id = {repairingBook.book_id}
         cellphone_model = {repairingBook.cellphone_model}
         issue_description = {repairingBook.issue_description}
         user_id = {repairingBook.user_id}

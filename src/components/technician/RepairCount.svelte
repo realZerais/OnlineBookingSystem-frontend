@@ -6,7 +6,7 @@
   
   export let pendingCount;
   export let repairingCount;
-  export let doneCount;
+  export let completedCount;
 
     
 
@@ -29,9 +29,9 @@
       {repairingCount} 
     </div>
 
-  {:else if title === "FINISHED REPAIRS"}
+  {:else if title === "COMPLETED REPAIRS"}
     <div class="flex w-[100%] h-3/4  justify-start items-center text-6xl text-accent font-bold capitalize rounded-md">
-      {doneCount} 
+      {completedCount} 
     </div>
   {/if}
 </div>

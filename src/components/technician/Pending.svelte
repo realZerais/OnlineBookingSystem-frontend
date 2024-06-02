@@ -2,18 +2,18 @@
   import { onMount } from "svelte";
   import PendingRepairs from "./PendingRepairs.svelte";
   import { format } from 'date-fns';
-  import {fetchPendingBook} from "../../hooks/handleBook"
+  import {fetchPendingRepairs} from "../../hooks/handleBook"
 
   let pendingBooks = [];
 
   onMount(async() =>{
-    pendingBooks = await fetchPendingBook();
+    pendingBooks = await fetchPendingRepairs();
 
     pendingBooks.forEach(e => {
-        let dateString = e.booking_date;
+        let dateString = e.book_date;
         let parsedDate = new Date(dateString);
         const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-        e.booking_date = formattedDate;
+        e.book_date = formattedDate;
         
       });
     // console.log(pendingBooks)
@@ -38,11 +38,12 @@
 
       {#each pendingBooks as pendingBook}
         <PendingRepairs
-          booking_date = {pendingBook.booking_date}
-          booking_id = {pendingBook.booking_id}
+          book_date = {pendingBook.book_date}
+          book_id = {pendingBook.book_id}
           cellphone_model = {pendingBook.cellphone_model}
           issue_description = {pendingBook.issue_description}
-          user_id = {pendingBook.user_id}
+          username = {pendingBook.username}
+          remark = {pendingBook.remark}
         />
       {/each}
     {/if}

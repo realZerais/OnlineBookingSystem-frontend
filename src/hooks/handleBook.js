@@ -34,80 +34,44 @@ export const fetchAllBook = async () => {
     }
 }
 
+export const fetchSearchedBooks = async (book_id) => {
+    try {
+        const accessToken = getCookieValue('accessToken');
+
+        const apiUrl = `http://localhost:9000/booking/search/${book_id}`;
+
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            const { error } = errorData;
+            console.log(error);
+            alert(error);
+            // throw new Error('Network response was not ok');
+        }
+
+        // Handle the data
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+    }
+}
+
 export const fetchPendingBook = async () => {
     try {
         const accessToken = getCookieValue('accessToken');
 
         const apiUrl = 'http://localhost:9000/booking/pendingBooks';
-
-        const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            const { error } = errorData;
-            console.log(error);
-            alert(error);
-            // throw new Error('Network response was not ok');
-        }
-
-        // Handle the data
-        const data = await response.json();
-        return data;
-
-    } catch (error) {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-    }
-
-}
-
-export const fetchRepairingBook = async () => {
-    try {
-        const accessToken = getCookieValue('accessToken');
-
-        const apiUrl = 'http://localhost:9000/booking/repairingBooks';
-
-        const response = await fetch(apiUrl, {
-            method: 'GET',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${accessToken}`
-            },
-
-        });
-
-        if (!response.ok) {
-            const errorData = await response.json();
-            const { error } = errorData;
-            console.log(error);
-            alert(error);
-            // throw new Error('Network response was not ok');
-        }
-
-        // Handle the data
-        const data = await response.json();
-        return data;
-
-    } catch (error) {
-        // Handle errors
-        console.error('There was a problem with the fetch operation:', error);
-    }
-
-}
-
-
-export const fetchDoneBook = async () => {
-    try {
-        const accessToken = getCookieValue('accessToken');
-
-        const apiUrl = 'http://localhost:9000/booking/completeBooks';
 
         const response = await fetch(apiUrl, {
             method: 'GET',
@@ -241,11 +205,11 @@ export const fetchNonPendingAppointments = async () => {
 
 }
 
-export const fetchSearchedBooks = async (book_id) => {
+export const fetchPendingRepairs = async () => {
     try {
         const accessToken = getCookieValue('accessToken');
 
-        const apiUrl = `http://localhost:9000/booking/search/${book_id}`;
+        const apiUrl = 'http://localhost:9000/booking/getAllPendingRepairs';
 
         const response = await fetch(apiUrl, {
             method: 'GET',
@@ -272,4 +236,77 @@ export const fetchSearchedBooks = async (book_id) => {
         // Handle errors
         console.error('There was a problem with the fetch operation:', error);
     }
+
 }
+
+
+export const fetchRepairingBook = async () => {
+    try {
+        const accessToken = getCookieValue('accessToken');
+
+        const apiUrl = 'http://localhost:9000/booking/getAllRepairingBooks';
+
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            const { error } = errorData;
+            console.log(error);
+            alert(error);
+            // throw new Error('Network response was not ok');
+        }
+
+        // Handle the data
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+    }
+
+}
+
+
+export const fetchDoneBook = async () => {
+    try {
+        const accessToken = getCookieValue('accessToken');
+
+        const apiUrl = 'http://localhost:9000/booking/completeBooks';
+
+        const response = await fetch(apiUrl, {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${accessToken}`
+            },
+
+        });
+
+        if (!response.ok) {
+            const errorData = await response.json();
+            const { error } = errorData;
+            console.log(error);
+            alert(error);
+            // throw new Error('Network response was not ok');
+        }
+
+        // Handle the data
+        const data = await response.json();
+        return data;
+
+    } catch (error) {
+        // Handle errors
+        console.error('There was a problem with the fetch operation:', error);
+    }
+
+}
+
+

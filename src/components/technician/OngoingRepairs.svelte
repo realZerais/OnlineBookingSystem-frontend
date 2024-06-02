@@ -2,8 +2,8 @@
 
     import { getCookieValue } from "../../hooks/auth"
   
-    export let booking_date;
-    export let booking_id;
+    export let book_date;
+    export let book_id;
     export let cellphone_model;
     export let issue_description;
     export let user_id;
@@ -14,7 +14,7 @@
   
       const editData = JSON.stringify({
               
-        booking_id,
+        book_id,
         repair_status,
   
       })
@@ -55,7 +55,7 @@
   <div class="flex justify-between items-center w-[100%] h-[15vh] border border-main px-4 rounded-lg shadow-lg">
       <div class="h-[100%] p-4 w-1/6 ">
         <h1 class="block mb-2 text-sm font-medium text-black">id</h1>
-        <p class="text-sm">{booking_id}</p>
+        <p class="text-sm">{book_id}</p>
       </div>
   
       <div class="h-[100%] p-4 w-1/6">
@@ -70,7 +70,7 @@
   
       <div class="h-[100%] p-4 w-1/6">
         <h1 class="block mb-2 text-sm font-medium text-black">date</h1>
-        <p class="text-sm">{booking_date}</p>
+        <p class="text-sm">{book_date}</p>
       </div>
   
       <div class="h-[100%] p-4 w-1/6">

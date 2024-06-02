@@ -1,5 +1,5 @@
 <script>
-  import {fetchApproveAppointments} from "../../hooks/handleBook"
+  import {fetchApprovedAppointment} from "../../hooks/handleBook"
   import { onMount } from "svelte";
   import RepairCount from "./RepairCount.svelte";
   import { userName } from "../../hooks/auth"
@@ -7,23 +7,25 @@
   let pendingBooks = [];
   let pendingCount = 0;
   let repairingCount = 0;
-  let doneCount = 0;
+  let completedCount = 0;
 
   onMount(async() =>{
-    pendingBooks = await fetchApproveAppointments();
+    pendingBooks = await fetchApprovedAppointment();
     console.log(pendingBooks);
 
     pendingBooks.forEach(e => {
-      if(e.repair_status == "Pending"){
+      if(e.repair_status_id == 1){
         pendingCount++;
       }
-      else if(e.repair_status == "Repairing"){
+      else if(e.repair_status_id == 2){
         repairingCount++;
       }
-      else if(e.repair_status == "Done"){
-        doneCount++;
+      else if(e.repair_status_id == 3){
+        completedCount++;
       }
     });
+
+  
 
   })
 </script>
@@ -48,8 +50,8 @@
     />
 
     <RepairCount
-      title = "FINISHED REPAIRS"
-      doneCount = {doneCount}
+      title = "COMPLETED REPAIRS"
+      completedCount = {completedCount}
     />
   </div>
   
