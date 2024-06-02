@@ -29,7 +29,7 @@
 
   let showModal = false;
 
-  $: console.log(showModal)
+  // $: console.log(showModal)
 
   const viewBook = async () =>{
     showStart = false;

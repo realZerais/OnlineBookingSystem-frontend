@@ -275,7 +275,7 @@ export const fetchRepairingBook = async () => {
 }
 
 
-export const fetchDoneBook = async () => {
+export const fetchCompletedBooks = async () => {
     try {
         const accessToken = getCookieValue('accessToken');
 

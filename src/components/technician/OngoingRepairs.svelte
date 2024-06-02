@@ -13,26 +13,39 @@
   
 
   //locals
-  let repair_status = 'Done';
-  let showModal = false;
-  let showLog = false;
   let bookProgress = '';
+  let progress_description;
+
+  let showLog = false;
+  let showModal = false;
+  
+  function getCurrentDateTimeFormatted() {
+    const now = new Date();
+    const formattedDateTime = format(now, 'MMMM d, yyyy HH:mm:ss');
+    return formattedDateTime;
+  }
+
+  let progress_time = getCurrentDateTimeFormatted();
+
+ 
 
 
-
-  const handleStart = async () =>{
+  const update = async () =>{
+    let repair_status = 'repairing';
 
     const editData = JSON.stringify({
             
       book_id,
       repair_status,
+      progress_description,
+      progress_time
 
     })
 
     try {
       const accessToken = getCookieValue('accessToken');
 
-      const response = await fetch('http://localhost:9000/booking/editRepairingBook', {
+      const response = await fetch('http://localhost:9000/booking/updateRepairingBook', {
         method: 'PATCH',
         headers: {
             'Content-Type': 'application/json',
@@ -61,9 +74,54 @@
 
   }
 
+  const complete = async()=>{
+    let repair_status = 'completed';
+    progress_description = 'The phone is done and ready to be retrieved';
+    
+    const editData = JSON.stringify({
+            
+      book_id,
+      repair_status,
+      progress_description,
+      progress_time
+
+    })
+
+    try {
+      const accessToken = getCookieValue('accessToken');
+
+      const response = await fetch('http://localhost:9000/booking/updateRepairingBook', {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${accessToken}`
+        },
+        body: editData,
+      }); 
+
+      if (!response.ok) {
+        const errorData = await response.json();
+        const {message} = errorData;
+        console.log(message);
+        alert(message);
+      }else{
+        const messageResponse = await response.json();
+        setTimeout(function(){
+          const {message} = messageResponse;
+          alert(message);
+          location.reload();
+        }, 1000); 
+      }
+      
+    } catch (error) {
+      console.error('Error:', error);
+    }
+  }
+
   const handleLogs = async() =>{
-    showModal = true;
     showLog = true;
+    showModal = true;
+    
 
     bookProgress = await fetchBookProgress(book_id);
     bookProgress.forEach(e => {
@@ -77,9 +135,17 @@
   }
 
   const handleUpdate = ()=>{
-    showModal = true;   
     showLog = false;
-    
+    showModal = true;    
+  }
+
+  const handleClose = () =>{
+    showModal = false; 
+    // showLog = false;
+  
+
+    // console.log(showLog, showModal)
+  
   }
 
   
@@ -117,11 +183,35 @@
     </div>
 </div>
 
-{#if showLog}
+
+{#if !showLog }  <Modal bind:showModal>
+  <h2 slot="header" class="text-center text-sm font-medium">
+    Update Repair
+  </h2>
+
+
+  <div class="grid gap-4 mb-4 sm:grid-cols-1">
+    <div class="h-[40vh]">
+      <label for="name" class="block mb-2 text-sm font-medium text-black">Progress Description:</label>
+      <textarea bind:value={progress_description} rows="5" class="text-slate-900 p-2 font-semibold border border-main rounded-sm focus:ring-primary-600 focus:border-primary-600 block w-full h-[80%]"></textarea>
+    </div>
+  </div>
+
+<div class="flex justify-between">
+  <div>
+    <button on:click={update} class="text-sm py-2 px-6 rounded-lg border-black text-main border bg-secondary hover:bg-accent hover:text-main">Update</button>
+    <button on:click={complete} class="text-sm py-2 px-6 rounded-lg border-black text-main border bg-accent hover:opacity-50 hover:text-main">Complete</button>
+  </div>
+ 
+    <button on:click={handleClose} class="text-sm py-2 px-6 rounded-lg text-white border border-black bg-red-700 hover:bg-red-900">CLOSE</button>
+  </div>
+</Modal>
+  
+{:else }
 <Modal bind:showModal>
   <h2 slot="header" class="text-center text-sm font-medium">
-		Book Progress logs
-	</h2>
+    Book Progress logs
+  </h2>
 
   
     {#each bookProgress as progress}
@@ -132,21 +222,16 @@
         </div>
         <div>
 
-          <h1>{progress.progress_description}</h1>
+          <h1 class="text-slate-600">{progress.progress_description}</h1>
         </div>
 
       </div>
-      <hr>
 
       
     {/each}
 
   
 </Modal>
-{:else}
-<Modal bind:showModal>
-  <h2 slot="header" class="text-center text-sm font-medium">
-		Update Book
-	</h2>
-</Modal>
 {/if}
+
+

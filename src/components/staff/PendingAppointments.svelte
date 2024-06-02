@@ -172,8 +172,9 @@
     </div>
   </div>
 
-
+  <div class="flex justify-center">
     <button on:click={handleReject} class="text-sm py-2 px-6 rounded-lg text-white border border-black bg-red-700 hover:bg-red-900">REJECT</button>
+  </div>
 
 
 </RejectModal>
