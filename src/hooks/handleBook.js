@@ -209,7 +209,7 @@ export const fetchPendingRepairs = async () => {
     try {
         const accessToken = getCookieValue('accessToken');
 
-        const apiUrl = 'http://localhost:9000/booking/getAllPendingRepairs';
+        const apiUrl = 'http://localhost:9000/booking/getAllPendingRepairs';    
 
         const response = await fetch(apiUrl, {
             method: 'GET',

@@ -22,7 +22,7 @@
 </script> 
 
 
-<div class="flex flex-col justify-start items-center w-[93%] ">
+<div class="flex flex-col justify-start items-center w-[93%]  ">
   <div class="flex flex-col justify-start items-start w-[80%] my-4  gap-2 ">
     <div class="text-2xl font-bold text-main">Ongoing Repairs</div>
   </div>
@@ -41,8 +41,7 @@
         book_id = {repairingBook.book_id}
         cellphone_model = {repairingBook.cellphone_model}
         issue_description = {repairingBook.issue_description}
-        user_id = {repairingBook.user_id}
-        repair_status = {repairingBook.repair_status}
+        username = {repairingBook.username}
         />
       {/each}
     {/if}
