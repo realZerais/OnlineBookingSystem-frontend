@@ -1,5 +1,6 @@
 <script>
   import {fetchNonPendingAppointments} from '../../hooks/handleBook';
+
   import { onMount } from "svelte";
   import { format } from 'date-fns';
   import { paginate, LightPaginationNav } from 'svelte-paginate'
@@ -89,6 +90,8 @@
               appointment_status = {book.appointment_status }
               remark = {book.remark }
             />
+
+            
            
 
             
