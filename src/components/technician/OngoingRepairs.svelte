@@ -3,6 +3,8 @@
   import { getCookieValue } from "../../hooks/auth";
   import {fetchBookProgress} from "../../hooks/handleProgress"
   import { parseISO, format } from 'date-fns';
+  import { toast } from '@zerodevx/svelte-toast'
+  import {fail} from '../../lib/index'
 
   //props
   export let book_date;
@@ -10,6 +12,7 @@
   export let cellphone_model;
   export let issue_description;
   export let username;
+  export let handleDelete;
   
 
   //locals
@@ -17,8 +20,10 @@
   let progress_description;
 
   let showLog = false;
+  let showUpdate = false;
   let showModal = false;
-  
+
+
   function getCurrentDateTimeFormatted() {
     const now = new Date();
     const formattedDateTime = format(now, 'MMMM d, yyyy HH:mm:ss');
@@ -26,6 +31,39 @@
   }
 
   let progress_time = getCurrentDateTimeFormatted();
+
+
+  const handleUpdate = ()=>{
+    showLog = false;
+    showUpdate = true;
+    showModal = true;    
+  }
+
+  const handleClose = () =>{
+    showUpdate = false;
+    showModal = false; 
+    showLog = false;
+  
+  }
+
+  const handleLogs = async() =>{
+    showLog = true;
+    showUpdate = false;
+    showModal = true;
+    
+
+    bookProgress = await fetchBookProgress(book_id);
+    bookProgress.forEach(e => {
+        let dateString = e.progress_time;
+        const parsedDate = parseISO(dateString);
+        const formattedDate = format(parsedDate, 'MMMM d, yyyy h:mm aa');
+        e.progress_time = formattedDate;
+        
+      });
+    console.log(bookProgress)
+  }
+  
+
 
  
 
@@ -58,19 +96,19 @@
         const errorData = await response.json();
         const {message} = errorData;
         console.log(message);
-        alert(message);
+        toast.push(`Operation failed! error: ${message}`, {theme: $fail});
       }else{
         const messageResponse = await response.json();
-        setTimeout(function(){
-          const {message} = messageResponse;
-          alert(message);
-          location.reload();
-        }, 1000); 
+        const {message} = messageResponse;
+        toast.push(`Repair Updated!  ${message}`); 
       }
       
     } catch (error) {
       console.error('Error:', error);
+      toast.push(`Operation failed! error: ${error.message}`, {theme: $fail});
     }
+
+    handleClose();
 
   }
 
@@ -103,50 +141,24 @@
         const errorData = await response.json();
         const {message} = errorData;
         console.log(message);
-        alert(message);
+        toast.push(`Operation failed! error: ${message}`, {theme: $fail});
       }else{
         const messageResponse = await response.json();
-        setTimeout(function(){
-          const {message} = messageResponse;
-          alert(message);
-          location.reload();
-        }, 1000); 
+        const {message} = messageResponse;
+        toast.push(`Repair Completed!  ${message}`); 
+        handleDelete(book_id)
       }
       
     } catch (error) {
       console.error('Error:', error);
+      toast.push(`Operation failed! error: ${error.message}`, {theme: $fail});
     }
+
+    handleClose();
   }
 
-  const handleLogs = async() =>{
-    showLog = true;
-    showModal = true;
-    
-
-    bookProgress = await fetchBookProgress(book_id);
-    bookProgress.forEach(e => {
-        let dateString = e.progress_time;
-        const parsedDate = parseISO(dateString);
-        const formattedDate = format(parsedDate, 'MMMM d, yyyy h:mm aa');
-        e.progress_time = formattedDate;
-        
-      });
-    console.log(bookProgress)
-  }
-
-  const handleUpdate = ()=>{
-    showLog = false;
-    showModal = true;    
-  }
-
-  const handleClose = () =>{
-    showModal = false; 
-    // showLog = false;
   
 
-    // console.log(showLog, showModal)
-  
-  }
 
   
 </script>
@@ -184,7 +196,32 @@
 </div>
 
 
-{#if !showLog }  <Modal bind:showModal>
+{#if showLog }  
+<Modal bind:showModal>
+  <h2 slot="header" class="text-center text-sm font-medium">
+    Book Progress logs
+  </h2>
+
+  
+  {#each bookProgress as progress}
+  
+    <div class="flex justify-around my-4">
+      <div>
+        <h1>{progress.progress_time}</h1>
+      </div>
+      <div>
+
+        <h1 class="text-slate-600">{progress.progress_description}</h1>
+      </div>
+
+    </div>
+
+    
+  {/each}
+</Modal>
+  
+{:else if showUpdate}
+<Modal bind:showModal>
   <h2 slot="header" class="text-center text-sm font-medium">
     Update Repair
   </h2>
@@ -206,32 +243,8 @@
     <button on:click={handleClose} class="text-sm py-2 px-6 rounded-lg text-white border border-black bg-red-700 hover:bg-red-900">CLOSE</button>
   </div>
 </Modal>
-  
-{:else }
-<Modal bind:showModal>
-  <h2 slot="header" class="text-center text-sm font-medium">
-    Book Progress logs
-  </h2>
-
-  
-    {#each bookProgress as progress}
-    
-      <div class="flex justify-around my-4">
-        <div>
-          <h1>{progress.progress_time}</h1>
-        </div>
-        <div>
-
-          <h1 class="text-slate-600">{progress.progress_description}</h1>
-        </div>
-
-      </div>
-
-      
-    {/each}
-
-  
-</Modal>
 {/if}
+
+
 
 

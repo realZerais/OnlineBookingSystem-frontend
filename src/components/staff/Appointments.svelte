@@ -71,7 +71,7 @@
           book_id = {pendingApt.book_id}
           cellphone_model = {pendingApt.cellphone_model}
           issue_description = {pendingApt.issue_description}
-          handleDelete={handleDelete}
+          handleDelete = {handleDelete}
         />
       {/each}
     </div>

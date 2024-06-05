@@ -2,7 +2,6 @@
 
   import Modal from '../../components/Modal.svelte';
   import RejectModal from '../../components/Modal.svelte'
-
   import { getCookieValue } from "../../hooks/auth"
   import { toast } from '@zerodevx/svelte-toast'
   import {fail} from '../../lib/index'
@@ -136,6 +135,7 @@
     
     } catch (error) {
       console.error('Error:', error);
+      toast.push(`Operation failed! error: ${error.message}`, {theme: $fail});
     }
 
     closeModal();

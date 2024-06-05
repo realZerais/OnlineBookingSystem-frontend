@@ -3,6 +3,8 @@
   import { getCookieValue } from "../../hooks/auth"
   import Modal from '../../components/Modal.svelte';
   import { format } from 'date-fns';
+  import { toast } from '@zerodevx/svelte-toast'
+  import {fail} from '../../lib/index'
 
   //props
   export let book_date;
@@ -11,6 +13,7 @@
   export let issue_description;
   export let username;
   export let remark;
+  export let handleDelete;
 
   //locals
   let repair_status = 'repairing';
@@ -80,20 +83,20 @@
         const errorData = await response.json();
         const {message} = errorData;
         console.log(message);
-        alert(message);
+        toast.push(`Operation failed! error: ${message}`, {theme: $fail});
+        
       }else{
         const messageResponse = await response.json();
-        setTimeout(function(){
-          const {message} = messageResponse;
-          alert(message);
-          location.reload();
-        }, 1000); 
+        const {message} = messageResponse;
+        toast.push(`Repair Started!  ${message}`); 
+        handleDelete(book_id)
       }
       
     } catch (error) {
       console.error('Error:', error);
+      toast.push(`Operation failed! error: ${error.message}`, {theme: $fail});
     }
-
+    closeModal();
   }
 </script>
 
