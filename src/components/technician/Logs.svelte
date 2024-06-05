@@ -1,11 +1,15 @@
 <script>
   import {fetchCompletedBooks} from '../../hooks/handleBook';
+  import {fetchBookProgress} from "../../hooks/handleProgress"
   import { onMount } from "svelte";
-  import { format } from 'date-fns';
+  import { format, parseISO } from 'date-fns';
   import { paginate, LightPaginationNav } from 'svelte-paginate'
+  import Modal from '../../components/Modal.svelte';
+
 
 
   let books = [];
+  let bookProgress = [];
   $: items = books;
   let currentPage = 1
   let pageSize = 8;
@@ -18,6 +22,9 @@
   $: {
     updatePaginatedItems();
   }
+
+  let showLog = false;
+  let showModal = false;
   
   onMount(async() =>{
     books = await fetchCompletedBooks();
@@ -31,6 +38,24 @@
     
     updatePaginatedItems();
   })
+
+  const handleLogs = async(book_Id) =>{
+    showLog = true;
+    showModal = true;
+
+    let prID = book_Id
+    
+
+    bookProgress = await fetchBookProgress(prID);
+    bookProgress.forEach(e => {
+        let dateString = e.progress_time;
+        const parsedDate = parseISO(dateString);
+        const formattedDate = format(parsedDate, 'MMMM d, yyyy h:mm aa');
+        e.progress_time = formattedDate;
+        
+      });
+    console.log(bookProgress)
+  }
   
   </script>
   
@@ -58,6 +83,7 @@
               <th scope="col" class="py-3 px-6">BOOKING DATE </th>
               <th scope="col" class="py-3 px-6">PHONE MODEL</th>
               <th scope="col" class="py-3 px-6">ISSUE DESCRIPTION</th>
+              <th scope="col" class="py-3 px-6">Progress Logs</th>
               <th scope="col" class="py-3 px-6 overflow-y-auto">REPAIR STATUS</th>
               <th scope="col" class="py-3 px-6"></th>
             </tr>
@@ -75,7 +101,11 @@
                     <td class="py-4 px-6">{book.book_date}</td>
                     <td class="py-4 px-6">{book.cellphone_model}</td>
                     <td class="py-4 px-6">{book.issue_description}</td>
+                    <td><button on:click={handleLogs(book.book_id)} class="text-sm py-2 px-6 rounded-lg text-black border border-black hover:bg-accent hover:text-main  ">View Logs</button></td>
+         
+
                     <td class="py-4 px-6"><span class=" rounded-full py-2 px-6 text-accent bg-main">{book.repair_status }</span></td>
+
                 </tr>
                 {/each}
             </tbody>
@@ -99,3 +129,28 @@
   
   </div>
   
+
+  <Modal bind:showModal>
+    <h2 slot="header" class="text-center text-sm font-medium">
+      Book Progress logs
+    </h2>
+  
+    
+      {#each bookProgress as progress}
+      
+        <div class="flex justify-around my-4">
+          <div>
+            <h1>{progress.progress_time}</h1>
+          </div>
+          <div>
+  
+            <h1 class="text-slate-600">{progress.progress_description}</h1>
+          </div>
+  
+        </div>
+  
+        
+      {/each}
+  
+    
+  </Modal>

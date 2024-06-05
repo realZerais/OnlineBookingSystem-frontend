@@ -6,7 +6,7 @@
   
 
   let books = '';
-  let bookCount = '';
+  let bookCount = 0;
 
   let user = '';
 

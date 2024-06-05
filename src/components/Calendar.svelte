@@ -4,6 +4,9 @@
 	import { getCookieValue } from "../hooks/auth"
 	import { fetchUserData } from '../hooks/handleUser';
 
+	import { toast } from '@zerodevx/svelte-toast'
+  	import {fail} from '../lib/index'
+
 	let user = '';
 	//props 
 	export let scheduleArray = [];
@@ -13,14 +16,21 @@
 
 	//modal
 	let showModal = false;
+	let showBookModal = false;
 	let book_date;
 
 	
 
 	const selectDate = (e) =>{
+		showBookModal = true;
         showModal = true;
 		book_date = e.target.dataset.dateid;
     }
+
+	const closeModal = () =>{
+		showModal = false;
+		showBookModal = false;
+	}
 
 
 	const date = new Date();
@@ -35,13 +45,13 @@
 	
 	const monthNames = [ "January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
 	let monthIndex = date.getMonth();
-	// const currentMonth = date.toLocaleString('en-US', { month: 'long' })
+
 	$: month = monthNames[monthIndex];
 	
 	let year = date.getFullYear();
 	
 	$: firstDayIndex = new Date(year, monthIndex, 1).getDay();
-	// const currentDay = date.getDate();
+
 	$: numberOfDays = new Date(year, monthIndex+1, 0).getDate();
 	
 	$: calendarCellsQty = numberOfDays + firstDayIndex;
@@ -71,7 +81,8 @@
 
 	
 	
-	const handleSubmit = async() =>{
+	const handleSubmit = async(event) =>{
+		event.preventDefault();
 		const accessToken = getCookieValue('accessToken');
 
 		const bookingData = JSON.stringify({
@@ -97,19 +108,22 @@
                 const errorData = await response.json();
                 const {message} = errorData;
                 console.log(message);
-                alert(message);
+				closeModal();
+                toast.push(message, {theme: $fail});
             }else{
                 const messageResponse = await response.json();
-                setTimeout(function(){
-                    const {message} = messageResponse;
-                    alert(message);
-                    location.reload();
-                }, 1000); 
+				const {message} = messageResponse;
+				closeModal();
+                toast.push(message); 
             }
 
             
         } catch (error) {
             console.error('Error:', error);
+			toast.push(error, {theme: $fail});
+			closeModal();
+        }finally {
+            closeModal();
         }
 	}
 
@@ -117,9 +131,7 @@
 		
 		user = await fetchUserData();
 		user_id = user.user_id;
-		// console.log(user)
 
-		console.log("sched array on mount:" + scheduleArray)
 	})
 </script>
 
@@ -215,6 +227,7 @@
 
 </div>
 	
+{#if showBookModal}
 <Modal bind:showModal>
 
 	<h2 slot="header" class="text-center text-sm font-medium">
@@ -268,6 +281,8 @@
     </form>
 
 </Modal>
+{/if}
+
 
 				
 <style>

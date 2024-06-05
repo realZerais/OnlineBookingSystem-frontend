@@ -1,5 +1,6 @@
 <script>
   import {fetchNonPendingAppointments} from '../../hooks/handleBook';
+  import {fetchSearchedBooks} from '../../hooks/handleBook'
   import { onMount } from "svelte";
   import { format } from 'date-fns';
   import { paginate, LightPaginationNav } from 'svelte-paginate'
@@ -22,6 +23,26 @@
     updatePaginatedItems();
   }
 
+  
+
+  
+  let searchTerm = "";
+
+  const searchBook = async ()=>{
+    books = await fetchSearchedBooks(searchTerm);
+    books.forEach(e => {
+        let dateString = e.book_date ;
+        let parsedDate = new Date(dateString);
+        const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+        e.book_date = formattedDate;
+      
+    });
+
+    console.log(users);
+    items = books;
+  }
+
+
   onMount(async() =>{
     books = await fetchNonPendingAppointments();
 
@@ -38,28 +59,26 @@
     
   })
 
-  let showModal = false;
 
-  const viewRemark = async () =>{
-      showModal = true;
-  }
 
 </script>
 
 <div class="flex flex-col w-[93%] justify-start items-center"> 
   <div class="flex flex-col justify-start items-start w-[80%] my-4">
    
-    <div class="text-2xl font-bold text-main">Logs</div> 
+    <div class="text-2xl font-bold text-main">Appointment Logs</div> 
   </div>
-  
-  <div class="flex flex-row justify-center items-start w-[80%] my-4">
-   
-    <div class="text-xl font-semibold text-main">Appointments</div> 
-  </div>
+
 
 
   <!--LOGS TABLE-->
-  <div class="flex items-center justify-center min-h-[450px] w-[80%] mb-4">
+  <div class="flex flex-col items-start justify-center min-h-[450px] w-[80%] mb-4">
+
+    <div class="flex gap-4">
+      <input type="number" placeholder="book id" class="border-2 p-2 border-secondary rounded-md " bind:value={searchTerm}>
+      <button  on:click={searchBook} class="rounded-lg border-2 p-2 border-secondary hover:bg-accent">Search</button>
+      <button on:click={()=>{location.reload();}} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
+    </div>
   
     <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[100%] h-[79vh] mt-2">
   
@@ -89,9 +108,6 @@
               appointment_status = {book.appointment_status }
               remark = {book.remark }
             />
-           
-
-            
           {/each}
         </tbody>
 
@@ -112,3 +128,14 @@
 
 </div>
 
+
+
+<style>
+input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+      -webkit-appearance: none;
+      margin: 0;
+}
+  
+  
+  </style>
