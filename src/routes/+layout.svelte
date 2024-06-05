@@ -6,6 +6,13 @@
   import { SvelteToast } from '@zerodevx/svelte-toast'
 
 
+  onMount(async()=>{
+    
+    await fetchUser();
+    if(!$isAuthenticated){
+      goto('/');
+    }
+  })
 </script>
 
 <SvelteToast />

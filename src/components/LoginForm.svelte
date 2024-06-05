@@ -38,8 +38,12 @@
             document.cookie = `role=${role}; path=/`; //put the role to the cookie
 
             await fetchUser();
-        
-            goto(`/DashboardPage/${role}/dashboard`);
+            if(role == 'user'){
+                goto(`/DashboardPage/user`);
+            }else{
+                goto(`/DashboardPage/${role}/dashboard`);
+            }
+            
             toast.push('Logged in successfully!');
         }
         

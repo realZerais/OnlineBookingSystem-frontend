@@ -135,21 +135,21 @@
 	})
 </script>
 
-<div class="w-[50%] h-[60%] shadow-lg">
+<div class="col-span-1 lg:col-span-2 shadow-md h-[70vh] bg-white border-main border-2 rounded-md">
 	<!-- MONTH -->
-	<div class="month w-[100%] rounded-t-lg  bg-main p-10 text-center">
+	<div class="month w-[100%] rounded-t-sm bg-secondary  p-5 text-center ">
 		<ul class="p-0 m-0">
-			<button class="prev text-accent text-2xl" on:click={goToPrevMonth}>&#10094;</button>
-			<button class="next text-accent text-2xl" on:click={goToNextMonth}>&#10095;</button>
-			<li class="text-white text-lg uppercase tracking-widest ">{month}<br>
-				<span class="text-white text-lg uppercase tracking-widest">{year}</span>
+			<button class="prev text-main text-2xl" on:click={goToPrevMonth}>&#10094;</button>
+			<button class="next text-main text-2xl" on:click={goToNextMonth}>&#10095;</button>
+			<li class="text-slate-700 text-lg uppercase tracking-widest ">{month}<br>
+				<span class="text-slate-700 text-lg uppercase tracking-widest">{year}</span>
 			</li>
 		</ul>
 	</div>
 
 	<!-- WEEKDAYS -->
 
-	<ul class="weekdays m-0 py-5 px-0  bg-zinc-00 ">
+	<ul class="weekdays m-0 py-5  bg-zinc-00 grid grid-cols-7 bg-main text-white">
 		<li>Su</li>
 		<li>Mo</li>
 		<li>Tu</li>
@@ -160,8 +160,8 @@
 	</ul>
 
 	<!-- DAYS -->
-	<div class="w-[100%] h-[67%] ">
-		<ul class="days w-[100%] h-[100%] rounded-b-lg grid grid-cols-7">
+	<div class="w-[100%] h-[100%] ">
+		<ul class="days w-[100%]  rounded-b-md grid grid-cols-7">
 			{#each Array(calendarCellsQty) as _, i}
 				{#if i < firstDayIndex || i >= numberOfDays+firstDayIndex  }
 					<button class="disable pointer-events-none">&nbsp;</button>
@@ -307,16 +307,16 @@
 	/* Weekdays (Mon-Sun) */
 
 	.weekdays li {
-		display: inline-block;
-		width: 13.6%;
-		color: #666;
+		/* display: inline-block; */
+		/* width: 13.6%; */
+		/* color: #666; */
 		text-align: center;
 	}
 
 	/* Days (1-31) */
 	.days {
 		padding: 10px 0;
-		background: #eee;
+		/* background: #eee; */
 		margin: 0;
 	}
 

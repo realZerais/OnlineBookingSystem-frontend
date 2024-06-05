@@ -64,8 +64,10 @@
 
         await fetchUser();
 
-        goto(`/DashboardPage/${role}/dashboard`);
+        goto(`/DashboardPage/user`);
         toast.push('Registered successfully!');
+
+        
       }
         
     } catch (error) {
