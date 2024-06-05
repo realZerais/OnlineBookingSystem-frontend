@@ -42,6 +42,22 @@
     items = books;
   }
 
+  const reset = async() =>{
+    searchTerm = "";
+    books = await fetchNonPendingAppointments();
+
+    console.log(books)
+    books.forEach(e => {
+      let dateString = e.book_date;
+      let parsedDate = new Date(dateString);
+      const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+      e.book_date = formattedDate;
+      
+    });
+
+    updatePaginatedItems();
+  }
+
 
   onMount(async() =>{
     books = await fetchNonPendingAppointments();
@@ -77,7 +93,7 @@
     <div class="flex gap-4">
       <input type="number" placeholder="book id" class="border-2 p-2 border-secondary rounded-md " bind:value={searchTerm}>
       <button  on:click={searchBook} class="rounded-lg border-2 p-2 border-secondary hover:bg-accent">Search</button>
-      <button on:click={()=>{location.reload();}} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
+      <button on:click={reset} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
     </div>
   
     <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto  shadow-md rounded-sm w-[100%] h-[79vh] mt-2">
@@ -97,6 +113,10 @@
           </tr>
         </thead>
 
+        {#if paginatedItems.length == 0}
+          <div class="text-lg font-semibold text-main">No Appointments...</div> 
+        {/if}
+        
         <tbody>
           {#each paginatedItems as book}
             <LogsData
