@@ -10,7 +10,7 @@
   let users = [];
   $: items = users;
   let currentPage = 1
-  let pageSize = 8
+  let pageSize = 6
   let paginatedItems = [];
   
 
@@ -25,7 +25,6 @@
  
   let searchTerm = "";
 
-  
   const searchUser = async ()=>{
     users = await fetchSearchedUsers(searchTerm);
     users.forEach(e => {
@@ -39,7 +38,21 @@
     console.log(users);
     // items = users;
   }
+  
+  const reset = async() =>{
+    searchTerm = "";
+    users = await fetchAllUser();
+    users.forEach(e => {
+        let dateString = e.registration_date;
+        let parsedDate = new Date(dateString);
+        const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+        e.registration_date = formattedDate;
+      
+    });
 
+    // items = users;
+    updatePaginatedItems();
+  }
 
   onMount(async() =>{
     users = await fetchAllUser();
@@ -71,11 +84,11 @@
     <div class="flex gap-4">
       <input type="text" placeholder="username" class="border-2 p-2 border-secondary rounded-md" bind:value={searchTerm}>
       <button on:click={searchUser} class="rounded-lg border-2 p-2 border-secondary hover:bg-accent">Search</button>
-      <button on:click={()=>{location.reload();}} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
+      <button on:click={reset} class="rounded-lg border-2 p-2 border-accent hover:bg-secondary">Reset</button>
     </div>
 
 
-    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[86vh] mt-2">
+    <div class="flex flex-col justify-between overflow-x-auto overflow-y-auto shadow-md rounded-sm w-[100%] h-[80vh] mt-2">
    
       <table class="min-w-full text-sm text-left text-primary">
           
