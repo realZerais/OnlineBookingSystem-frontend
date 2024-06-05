@@ -9,107 +9,117 @@
 
 </script>
 
-<main class="w-[100%] h-[100vh] parent overflow-x-hidden">
+<main class="hide-scrollbar md:scrollbar w-[100%] h-[100vh] parent overflow-x-hidden m-0 p-0">
     
     <LandingNavbar/>
 
-    <section id="s1" class="s1 grid child h-[100vh]">
-        
-        
+    <section id="s1" class="s1 grid child h-[85vh] md:h-screen">
 
-        <div class="hero relative flex flex-col w-[100%] h-[100%] justify-center items-center mb-[10%] ml-[15%] leading-none">
-            <div class="flex flex-col justify-end w-[100%] h-[70%] text-[3.8rem] font-bold text-mainHeadline tracking-normal leading-none pb-5">      
-                <p>Your Device's</p>
-                <p>Journey to Recovery</p>
-                <p>Starts Here.</p>
+        <div class="hero relative flex flex-col w-[100%] h-[100%] justify-center items-start ml-[15%] leading-none mt-4">
+            <div class="justify-end w-[100%] md:w-[95%] h-[70%] md:h-[60%] md:text-6xl text-4xl font-bold text-mainHeadline tracking-normal leading-none">      
+                <p class="font-poppins ">Your Device's Journey to Recovery Starts Here.</p>
+
             </div>  
-            <p class="w-[80%]  h-[80%]  text-[1rem] text-mainHeadline  me-[20%] leading-snug">Explore cutting-edge solutions and personalized care plans tailored to guide your device on the path to recovery. From diagnostics to rehabilitation, we're here to support every step of your device's journey.</p> 
+            <p class="md:block hidden w-[100%] md:w-[80%] h-[90%] text-xs md:text-base text-mainHeadline leading-snug">Explore cutting-edge solutions and personalized care plans tailored to guide your device on the path to recovery. From diagnostics to rehabilitation, we're here to support every step of your device's journey.</p> 
             
+            <p class="md:hidden w-[100%] md:w-[80%] h-[90%] text-xs md:text-base text-mainHeadline leading-snug">Discover cutting-edge solutions and personalized care plans for your device's recovery. From diagnostics to rehabilitation, we support every step of the journey.</p>
+
             <!-- <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
                 Book Now
             </a> -->
 
-            {#if $userRole == 'user'}
-                <a href="/DashboardPage/{$userRole}/booking/" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
-                    Book Now
-                </a>
-            {:else if ['admin', 'staff', 'technician'].includes($userRole) }
-                <br>
-            {:else}
-                <a href="/login/register" class="absolute bottom-[20%] left-[0] me[10%] cursor-pointer  bg-accent text-accentParagrah text-2xl font-bold p-5 rounded-lg hover:brightness-110 active:border-b-[2px] active:brightness-90 active:translate-y-[2px]" >
-                    Book Now
-                </a>
-            {/if}
+            <div class="flex items-start h-[100%]">
+                {#if $userRole == 'user'}
+                    <a href="/DashboardPage/{$userRole}/booking/" class="md:absolute md:bottom-[25%] left-[0] cursor-pointer transition-all bg-accent text-accentParagrah md:text-lg text-base font-bold px-6 py-3 rounded-lg border-secondary" >
+                        Book Now
+                    </a>
+                {:else if ['admin', 'staff', 'technician'].includes($userRole) }
+                    <br>
+                {:else}
+                    <a href="/login/register" class="md:absolute md:bottom-[25%] left-[0] cursor-pointer transition-all bg-accent text-accentParagrah md:text-lg text-base font-bold px-6 py-3 rounded-lg border-secondary">
+                        Book Now
+                    </a>
+                {/if}
+            </div>
         </div>
             
-        <div class="flex justify-center items-center image w-[100%] h-[100%] ">
-            <img class=" w-[65%] mb-[8%]" src="public\repair-04.png" alt="character repairing">
+        <div class=" flex justify-center items-center image w-[100%] h-[100%] ">
+            <img class="hidden md:block w-[65%] mb-[8%]" src="public\repair-04.png" alt="character repairing">
         </div>
  
     </section>
 
-    <section id="s2" class="s2 flex justify-center items-center  child h-[100vh] p-12">
+    <section id="s2" class="s2 flex justify-center items-center child h-screen  p-5 md:p-12 ">
 
-        <div class="flex justify-start pt-[5%] pr-[5%]">
-            <img class="w-[90%]" alt="" src="./public/about.png" />
+        <div class="flex justify-start pt-[5%] pr-[5%] ">
+            <img class="hidden md:block w-[90%]" alt="" src="./public/about.png" />
         </div>
 
-        <div class="flex welcome flex-col items-start w-[100%] h-[100%] justify-center">
-            <p class="text-accent self-start text-5xl font-bold mb-[5%]">Welcome To Our Website</p>
-            <p class="text-white text-lg mb-[3%]">At CORE1, we lead your devices on a transformative journey with a commitment to innovation and personalized care. Standing at the forefront of technology wellness, our seasoned professionals leverage cutting-edge solutions to restore optimal functionality and guide your devices toward flourishing in their continued use. Our personalized care philosophy sets us apart, redefining device recovery for an elevated technology experience.</p>
-            <div class=" border-[3px] border-solid border-white">
-                <p class="text-lg p-3 text-accent text-center font-bold">Discover a new standard of care at CORE1—where your devices receive the attention they deserve, and you embark on a seamless journey of technological empowerment.</p>
+        <div class="flex p-3 md:p-0 welcome flex-col items-center md:items-start w-[100vw] md:w-[100%] h-[60%] justify-center ">
+
+          
+            <div class="md:flex gap-x-3 w-[100%] mt-[30%] md:mt-[5%]">
+                <p class=" text-accent md:self-start text-5xl text-start md:text-5xl font-bold">Welcome To</p>
+                <p class="text-accent md:self-start text-5xl text-end md:text-5xl font-bold mb-[5%]">Our Website</p>
+            </div>
+
+            <img class="md:hidden w-[75%]" alt="" src="./public/about.png" />
+
+            <p class="hidden md:block md:text-start text-justify p-7 md:p-0 text-white text-xs md:text-base mb-[3%]">At CORE1, we lead your devices on a transformative journey with a commitment to innovation and personalized care. Standing at the forefront of technology wellness, our seasoned professionals leverage cutting-edge solutions to restore optimal functionality and guide your devices toward flourishing in their continued use. Our personalized care philosophy sets us apart, redefining device recovery for an elevated technology experience.</p>
+            <div class="m-7 md:m-5 border-[3px] border-solid  border-accent md:border-white">
+                <p class="text-sm md:text-lg p-3 text-white md:text-accent text-center font-bold">Discover a new standard of care at CORE1—where your devices receive the attention they deserve, and you embark on a seamless journey of technological empowerment.</p>
             </div>
         </div>
 
     </section>
+
     
         
-    <section id="s3" class="s3 flex items-center  child h-[100vh] gap-y-[7%]">
+    <section id="s3" class="s3 flex items-center  child w-screen md:h-screen h-[180vh] md:gap-y-[7%] pb-[30%] md:p-2">
     
-        <div class="w-[100%] head flex justify-center mt-[5%]">
+        <div class="w-[100%] head flex justify-center mt-[5%] text-center mb-14 ">
             <p class="text-white justify items-center text-5xl font-bold">Why Choose CORE1?</p>
         </div>
 
-        <div class="flex justify-between w-[100%] h-[100%] gap-x-7 p-5">
+        <div class="flex md:flex-row flex-col md:items-start items-center justify-evenly w-[100%] h-[100%] md:gap-x-7 ">
             
-            <div class="flex flex-col justify-center items-center w-[80%] h-[70%] border  border-accent rounded-xl p-5">
-
-                <div class="w-[50%] bg-red-400 rounded-full ">
-                    <img alt="" src="./public/expertise.png"/>
+            <div class="flex flex-col justify-start items-center w-[60%] md:w-[80%] h-[20%] md:h-[70%] border  border-accent rounded-xl p-5 md:p-10">
+                
+                <div class="w-[50%] md:w-[50%] bg-yellow-400 rounded-full ">
+                    <img class="w-[100%]" alt="" src="./public/expertise.png"/>
                 </div>
-                <p class="text-lg text-accent front-bakbak font-bold mb-[15%]">EXPERTISE</p>
-                <p class="text-center text-base text-white">Our team comprises seasoned professionals passionate about technology.</p> 
+                <p class="text-base text-center md:text-lg text-accent front-bakbak font-bold mb-[15%]">EXPERTISE</p>
+                <p class="text-center text-xs md:text-base text-white">Our team comprises seasoned professionals passionate about technology.</p> 
                 
             </div>
 
-            <div class="flex bg-accent flex-col justify-center items-center w-[80%] h-[70%] border border-accent rounded-xl p-5">
+            <div class="flex flex-col justify-start items-center w-[60%] md:w-[80%] h-[20%] md:h-[70%] bg-accent border border-accent rounded-xl p-5 md:p-10">
                 
-                <div class="w-[50%] bg-blue-400 rounded-full ">
+                <div class="w-[50%] md:w-[50%] bg-blue-400 rounded-full ">
                     <img class="w-[100%]" alt="" src="./public/innovation.png"/>
                 </div>
-                <p class="text-lg text-main front-bakbak font-bold mb-[15%]">INNOVATION</p>
-                <p class="text-center text-base text-black">Stay ahead with state-of-the-art diagnostics and cutting-edge rehabilitation.</p>
+                <p class="text-base text-center md:text-lg text-main front-bakbak font-bold mb-[15%]">INNOVATION</p>
+                <p class="text-center text-xs md:text-base text-main">Stay ahead with state-of-the-art diagnostics and cutting-edge rehabilitation.</p>
                 
             </div>
 
-            <div class="flex flex-col justify-center items-center w-[80%] h-[70%] border  border-accent rounded-xl p-5">
+            <div class="flex flex-col justify-start items-center w-[60%] md:w-[80%] h-[20%] md:h-[70%] bg-main border border-accent rounded-xl p-5 md:p-10">
                 
                 <div class="w-[50%] bg-yellow-400 rounded-full ">
                     <img alt="" src="./public/care.png"/>
                 </div>
-                <p class="text-lg text-accent front-bakbak font-bold mb-[15%]">PERSONALIZED CARE</p>
-                <p class="text-center text-base text-white">Every recovery plan is uniquely crafted to meet your device's specific needs.</p>
+                <p class="text-base text-center md:text-lg text-accent  front-bakbak font-bold mb-[15%]">PERSONALIZED CARE</p>
+                <p class="text-center text-xs md:text-base text-white">Every recovery plan is uniquely crafted to meet your device's specific needs.</p>
                 
             </div>
 
-            <div class="flex bg-accent flex-col justify-center items-center w-[80%] h-[70%] border  border-accent rounded-xl p-5">
+            <div class="flex flex-col justify-start items-center w-[60%] md:w-[80%] h-[20%] md:h-[70%] bg-accent border border-accent rounded-xl p-5 md:p-10">
                 
                 <div class="w-[50%] bg-green-400 rounded-full ">
                     <img alt="" src="./public/customer.png"/>
                 </div>
-                <p class="text-center text-lg text-main front-bakbak font-bold mb-[15%]">CUSTOMER-CENTERED</p>
-                <p class="text-center text-base text-black">Your satisfaction is our top priority; we're here for you at every step.</p>
+                <p class="text-center text-base text-center md:text-lg text-main front-bakbak font-bold mb-[15%]">CUSTOMER-CENTERED</p>
+                <p class="text-center text-xs md:text-base text-main">Your satisfaction is our top priority; we're here for you at every step.</p>
                 
             </div>
 
@@ -117,36 +127,36 @@
 
     </section>
 
-    <section id="s4" class="s4 child h-[100vh] w-[100%] flex">
+    <section id="s4" class="s4 child h-screen md:h-screen w-screen flex">
 
-        <div class="flex contacts justify-center items-center contactBody w-[100%] h-[100%] gap-y-14">
+        <div class="flex flex-col contacts md:grid md:grid-rows-[200px, 1fr] md:grid-cols-4 justify-start md:justify-center items-center contactBody w-[100%] h-[100%] gap-y-5 md:gap-y-14">
 
-            <div class="contact-head flex flex-col justify-center items-center w-[100%] gap-4 mt-[3%]">
-                <p class="text-main font-bold text-5xl">Contact Us</p>
-                <p  class="w-[50%] text-center text-main text-xl">Welcome to our contacts page, where connecting with us is just a message away. Whether you have questions, need assistance, or want to learn more about our services, we're here for you. Feel free to contact us through any of the channels below:</p>
+            <div class="contact-head flex flex-col self-start justify-center items-center w-screen md:mt-[3%] text-center mb-[10%] md:mb-0">
+                <p class=" text-main font-bold text-5xl ">Contact Us</p>
+                <p  class="hidden md:block w-[50%] text-center text-main md:text-xl">Welcome to our contacts page, where connecting with us is just a message away. Whether you have questions, need assistance, or want to learn more about our services, we're here for you. Feel free to contact us through any of the channels below:</p>
             </div>
 
-            <div class="general w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
-                <p class="w-[70%] p-3 text-xl bg-main text-accent rounded-xl mb-[10%]">General Inquiries</p>
-                <p class="w-[80%] text-normal text-main rounded-xl">For general questions and information, please email us at</p>
-                <u class="text-lg text-main">core1@gmail.com</u>
+            <div class="general w-[100%] h-[15%] md:h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
+                <p class="w-[50%] md:w-[70%] p-2 md:p-3 text-lg md:text-xl bg-main text-accent rounded-xl mb-[5%] md:mb-[10%]">General Inquiries</p>
+                <p class="hidden md:block w-[80%] text-main rounded-xl">For general questions and information, please email us at</p>
+                <u class="text-base md:text-lg text-main">info@yourcompany.com</u>
             </div>
 
-            <div class="phone w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
-                <p class="w-[70%] p-3 text-xl bg-main text-accent rounded-xl mb-[10%]">Phone</p>
-                <p class="w-[75%] text-normal text-main rounded-xl">Prefer speaking with us directly? Give us a call at</p>
-                <u class="text-lg text-main">  +63 955 327 5351.</u>
+            <div class="phone w-[100%] h-[15%] md:h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
+                <p class="w-[50%] md:w-[70%] p-2 md:p-3 text-lg md:text-xl bg-main text-accent rounded-xl mb-[5%] md:mb-[10%]">Phone</p>
+                <p class="hidden md:block w-[75%] text-base text-main rounded-xl">Prefer speaking with us directly? Give us a call at</p>
+                <u class="text-base md:text-lg text-main">  +63 955 327 5351.</u>
             </div>
 
-            <div class="visit w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
-                <p class="w-[70%] p-3 text-xl bg-main text-accent rounded-xl mb-[10%]">Visit Us</p>
-                <p class="w-[75%] text-normal text-main rounded-xl">If you're in the area, we'd love to meet you in person.</p>
-                <u class="text-lg text-main">Evermall, Governor Perdices St 6200 Dumaguete City, Philippines.</u>
+            <div class="visit w-[100%] h-[15%] md:h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
+                <p class="w-[50%] md:w-[70%] p-2 md:p-3 text-lg md:text-xl bg-main text-accent rounded-xl mb-[5%] md:mb-[10%]">Visit Us</p>
+                <p class="hidden md:block w-[75%] text-base text-main rounded-xl">If you're in the area, we'd love to meet you in person.</p>
+                <u class="text-base md:text-lg text-main">Evermall, Governor Perdices St 6200 Dumaguete City, Philippines.</u>
             </div>
 
-            <div class="social w-[100%] h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
-                <p class="w-[70%] p-3 text-xl bg-main text-accent rounded-xl mb-[10%]">Social Media</p>
-                <p class="w-[75%] text-normal text-main rounded-xl">Connect with us on social media for updates, tips, and community engagement. Find us on</p>
+            <div class="social w-[100%] h-[15%] md:h-[100%] flex flex-col justify-start items-center text-center p-5 leading-none">
+                <p class="w-[50%] md:w-[70%] p-2 md:p-3 text-lg md:text-xl bg-main text-accent rounded-xl ">Social Media</p>
+                <p class="hidden md:block w-[75%] text-base text-main rounded-xl">Connect with us on social media for updates, tips, and community engagement. Find us on</p>
                 <div class="flex gap-3 mt-[2%]">
                     <a href="https://www.instagram.com"><svg class="instagram w-8 h-8 fill-main" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512"><style>svg{fill:#fafafa}</style><path d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"/></svg></a>
                     <a href="https://www.facebook.com/core1cellphoneandaccessories"><svg class="facebook w-8 h-8 fill-main" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 512 512"><style>svg{fill:#ffffff}</style><path d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"/></svg></a>
@@ -156,11 +166,12 @@
         </div>
         
         <div class="flex flex-col justify-center items-center footer w-[100%] h-[100%]">
-            <p class="text-accent text-base">©2024. All rights reserved.</p>
+            <p class="text-accent text-base">©2024 All rights reserved.</p>
         </div>
         
        
     </section>
+
     
 
 </main>
@@ -216,7 +227,7 @@
     }
 
     .s4{
-        background-image: url('./public/s4.png');
+        background-image: url('./public/s4.2.png');
         background-repeat: no-repeat;
         background-size: cover;
         background-position: center;
@@ -229,9 +240,6 @@
     }
 
     .contacts{
-        display: grid;
-        grid-template-columns: repeat(4, 1fr);
-        grid-template-rows: 200px 1fr;
         grid-template-areas: 
         "contact-head contact-head contact-head contact-head"
         "general phone visit social"
@@ -247,7 +255,8 @@
     .footer{
         grid-area: footer;
     }
-   
+
+    
     
 
     

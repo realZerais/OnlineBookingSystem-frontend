@@ -4,7 +4,7 @@
 
 
 <main class="grid w-[100%] h-[100vh]">
-    <div class="big relative">
+    <div class="hidden md:block big relative">
         <div class="flex flex-col slant absolute w-[100%] h-[100%] ">
 
                 <div class="flex flex-col w-[100%] h-[90vh] justify-center items-center leading-none">

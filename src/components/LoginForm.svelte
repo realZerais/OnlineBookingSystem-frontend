@@ -53,8 +53,8 @@
     }
 </script>
 
-<div class="flex w-[80%] h-[80vh] relative flex-col p-4 text-black  gap-y-4" >
-    <a href="/"><svg class="w-7 h-7 absolute top-[-3%] left-[-10%] fill-mainParagraph hover:fill-accent" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
+<div class="flex w-screen md:w-[80%] md:h-screen relative flex-col p-4 text-black gap-y-1  md:gap-y-4 pt-0"  >
+    <a href="/"><svg class="w-7 h-7 md:absolute top-[-3%] left-[-10%] fill-mainParagraph hover:fill-accent" xmlns="http://www.w3.org/2000/svg" height="1em" viewBox="0 0 448 512">
         <path d="M9.4 233.4c-12.5 12.5-12.5 32.8 0 45.3l160 160c12.5 12.5 32.8 12.5 45.3 0s12.5-32.8 0-45.3L109.2 288 416 288c17.7 0 32-14.3 32-32s-14.3-32-32-32l-306.7 0L214.6 118.6c12.5-12.5 12.5-32.8 0-45.3s-32.8-12.5-45.3 0l-160 160z"/>
     </svg>
     </a>
@@ -63,7 +63,7 @@
         <img class="w-14 h-14" src="../../public/logo-white.png" alt=""/>
     </div>
 
-    <div class="text-center text-3xl text-mainParagraph font-bold">LOGIN</div>
+    <div class="text-center text-2xl text-mainParagraph font-bold">LOGIN</div>
 
     <form class="flex flex-col gap-3 mt-10">
         <div class="block relative"> 
@@ -85,7 +85,9 @@
     </form>
 
     
-    <div class="flex absolute justify-center items-center text-white bottom-0 left-[47%]">or</div>
+    <div class="flex md:absolute justify-center items-center text-white bottom-0 left-[47%] mt-20">or</div>
+
+    
     
 </div>
 
