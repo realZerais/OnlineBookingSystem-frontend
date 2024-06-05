@@ -1,9 +1,11 @@
 <script>
     import { goto } from '$app/navigation';
-    import { fetchUser } from '../hooks/auth';
+    import { fetchUser, isAuthenticated} from '../hooks/auth';
+    import { toast } from '@zerodevx/svelte-toast'
+    import {fail} from '../lib/index'
 
-  let username = '';
-  let password = '';
+    let username = '';
+    let password = '';
   
   const handleSubmit = async () =>{
 
@@ -27,7 +29,7 @@
             const errorData = await response.json();
             const {message} = errorData;
             console.log(message);
-            alert(message);
+            toast.push(message, {theme: $fail});
         }else{
             const { accessToken, username, role } = await response.json();
 
@@ -35,22 +37,22 @@
             document.cookie = `username=${username}; path=/`; //put the username to the cookie
             document.cookie = `role=${role}; path=/`; //put the role to the cookie
 
-            fetchUser();
-            
-            
-            goto(`/DashboardPage/${role}/dashboard`);
-        }
-
+            await fetchUser();
         
-
+            goto(`/DashboardPage/${role}/dashboard`);
+            toast.push('Logged in successfully!');
+        }
         
     } catch (error) {
         console.error('Error:', error);
+        toast.push(error.message, {theme: $fail});
     }
 
 
 
     }
+
+
 </script>
 
 <div class="flex w-[80%] h-[80vh] relative flex-col p-4 text-black  gap-y-4" >
