@@ -13,7 +13,7 @@
 
             const date = new Date(bookDatas.booking_date);
             bookDatas.booking_date = date.toLocaleDateString();
-            console.log(bookDatas.booking_date);
+            // console.log(bookDatas.booking_date);
         }
         
        

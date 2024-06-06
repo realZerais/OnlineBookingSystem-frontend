@@ -38,7 +38,7 @@
       
     });
 
-    console.log(users);
+    // console.log(users);
     items = books;
   }
 
@@ -46,7 +46,7 @@
     searchTerm = "";
     books = await fetchNonPendingAppointments();
 
-    console.log(books)
+    // console.log(books)
     books.forEach(e => {
       let dateString = e.book_date;
       let parsedDate = new Date(dateString);
@@ -62,7 +62,7 @@
   onMount(async() =>{
     books = await fetchNonPendingAppointments();
 
-    console.log(books)
+    // console.log(books)
     books.forEach(e => {
       let dateString = e.book_date;
       let parsedDate = new Date(dateString);

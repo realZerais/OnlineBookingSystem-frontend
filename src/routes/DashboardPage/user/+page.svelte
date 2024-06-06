@@ -7,6 +7,7 @@
     import {fetchAllUserBooks} from "../../../hooks/handleBook"
     import {fetchAllBook} from "../../../hooks/handleBook"
 
+
     import { writable } from "svelte/store";
 
     import { onMount } from "svelte";
@@ -17,16 +18,16 @@
     //COMPONENTS
     import Calendar from "$components/Calendar.svelte";
     import BookCount from "$components/user/BookCount.svelte";
-    import BookLogs from "$components/user/BookLogs.svelte";
+    // import BookLogs from "$components/user/BookLogs.svelte";
     import RecentAppointments from "$components/user/RecentAppointments.svelte";
     import RepairLogs from "../../../components/user/RepairLogs.svelte";
+    import UserBooks from "../../../components/user/UserBooks.svelte";
 
 
     const scheduleArray = writable([]);
 
     let books = [];
     let userBooks = [];
-
     let recentBook = [];
 
 
@@ -41,7 +42,7 @@
         userBooks = await fetchAllUserBooks($userName);
 
 
-        
+        // console.log(userBooks)
     
         scheduleArray.set([]);
         books.forEach(e => {
@@ -63,8 +64,9 @@
             // }else{
             //     recentBook = [];
             // }
-            
         });
+
+        // console.log(userBooks);
 
         recentBook = userBooks[0];
     };
@@ -148,63 +150,37 @@
             
         </section>
 
-        <!-- Book Count Section -->
+        <!-- Book Count and Repair Logs Section -->
         <section class="col-span-1 lg:col-span-1 flex flex-col justify-between gap-2">
             <BookCount/>
             <RepairLogs/>
         </section>
 
-        <!-- Profile Section -->
-        <!-- <section class="col-span-1 lg:col-span-2 bg-white p-4 shadow-md h-[50%]">
-            <div class="flex items-center">
-                
-                <h2 class="text-lg font-bold">USER</h2>
-                
-            </div>
-            <div class="mt-4">
-                <h2 class="text-3xl font-bold">9:00 AM</h2>
-                <p class="text-gray-500">ONGOING OR RECENT BOOK</p>
-            </div>
-        </section> -->
 
         
+        <section class="col-span-1 lg:col-span-1 flex flex-col gap-2">
 
-        <section class="col-span-1 lg:col-span-5 ">
-            <BookLogs/>
+        </section>
+
+        <section class="col-span-1 lg:col-span-3 flex flex-col gap-2">
+            <div class="flex flex-col justify-center items-start w-[100%] mt-2">
+                <div class="font-mono font-semibold text-slate-700 text-xl">Book Logs</div>
+            </div>
+            {#each userBooks as userBook}
+                <UserBooks
+                    book_date = {userBook.book_date}
+                    book_id = {userBook.book_id}
+                    cellphone_model = {userBook.cellphone_model}
+                    issue_description = {userBook.issue_description}
+                    appointment_status = {userBook.appointment_status}
+                    repair_status = {userBook.repair_status}
+                />
+            {/each}
         </section>
         <!-- Booking Records Section -->
-        <!-- <section class="col-span-2 bg-white p-4 shadow-md">
-            <h2 class="text-xl font-bold mb-4">Book Records</h2>
-            <div class="overflow-x-auto">
-                <table class="w-full table-auto border-collapse">
-                    <thead>
-                        <tr class="bg-gray-200">
-                            <th class="border p-2">Book ID</th>
-                            <th class="border p-2">Date</th>
-                            <th class="border p-2">Issue</th>
-                            <th class="border p-2">Status</th>
-                            <th class="border p-2">Search</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-            </div>
-        </section> -->
+       
         
 
-        
-
-        
-
-        <!-- Sidebar Section -->
-        <!-- <aside class="bg-white p-4 shadow-md">
-            <h2 class="text-xl font-bold mb-4">Suggested Dates</h2>
-            <div class="space-y-2">
-                <div class="p-2 bg-gray-100 border">Date 1</div>
-                <div class="p-2 bg-gray-100 border">Date 2</div>
-                <div class="p-2 bg-gray-100 border">Date 3</div>
-            </div>
-        </aside> -->
     </div>
+
 </div>

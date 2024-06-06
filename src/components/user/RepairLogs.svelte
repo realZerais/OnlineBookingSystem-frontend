@@ -19,8 +19,6 @@
             e.progress_time = formattedDate;
             
         });
-
-        console.log(allUserBookProgress);
     }
     
     onMount(allUserProgress);

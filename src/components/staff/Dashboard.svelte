@@ -12,7 +12,7 @@
 
   onMount(async() =>{
     pendingApts = await fetchAllBook();
-    console.log(pendingApts)
+    // console.log(pendingApts)
 
     pendingApts.forEach(e => {
       if(e.appointment_status == "pending"){

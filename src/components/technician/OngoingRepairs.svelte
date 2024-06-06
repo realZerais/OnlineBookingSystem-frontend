@@ -60,7 +60,7 @@
         e.progress_time = formattedDate;
         
       });
-    console.log(bookProgress)
+    // console.log(bookProgress)
   }
   
 

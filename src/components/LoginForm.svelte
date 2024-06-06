@@ -14,7 +14,7 @@
         password,
     });
 
-    console.log(loginData);
+
 
     try {   
         const response = await fetch('http://localhost:9000/user/login', {
@@ -28,7 +28,7 @@
         if (!response.ok) {
             const errorData = await response.json();
             const {message} = errorData;
-            console.log(message);
+        
             toast.push(message, {theme: $fail});
         }else{
             const { accessToken, username, role } = await response.json();

@@ -1,6 +1,7 @@
 // auth.js
 import { writable } from 'svelte/store';
 import { goto } from '$app/navigation';
+import { toast } from '@zerodevx/svelte-toast'
 
 export const isAuthenticated = writable(false);
 export const userName = writable('no user');
@@ -55,6 +56,7 @@ export const logout = () => {
   userRole.set('no role');
   isAuthenticated.set(false);
   clearCookies();
+  toast.push('Successfully Logged Out!');
   goto('/login');
 };
 

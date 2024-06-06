@@ -11,7 +11,7 @@
 
   onMount(async() =>{
     pendingBooks = await fetchApprovedAppointment();
-    console.log(pendingBooks);
+    // console.log(pendingBooks);
 
     pendingBooks.forEach(e => {
       if(e.repair_status_id == 1){

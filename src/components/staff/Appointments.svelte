@@ -24,7 +24,7 @@
 
   
 
-  $: console.log(pendingApts)
+  // $: console.log(pendingApts)
   const handleDelete = ( bookID) => {
     pendingApts = pendingApts.filter(pendingApt => pendingApt.book_id != bookID)
   }
