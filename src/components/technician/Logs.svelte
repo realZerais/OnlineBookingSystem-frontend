@@ -13,7 +13,7 @@
   let bookProgress = [];
   $: items = books;
   let currentPage = 1
-  let pageSize = 6;
+  let pageSize = 7;
   let paginatedItems = [];
 
   $: updatePaginatedItems = () => {
@@ -42,7 +42,7 @@
         e.progress_time = formattedDate;
         
       });
-    console.log(bookProgress)
+    // console.log(bookProgress)
   }
 
   let searchTerm = "";
@@ -57,7 +57,7 @@
       
     });
 
-    console.log(users);
+    // console.log(users);
     items = books;
   }
 

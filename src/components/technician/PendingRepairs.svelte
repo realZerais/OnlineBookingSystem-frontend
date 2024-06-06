@@ -65,7 +65,7 @@
 
     })
 
-    console.log(editData);
+    // console.log(editData);
 
     try {
       const accessToken = getCookieValue('accessToken');

@@ -1,6 +1,9 @@
 <script>
   import { goto } from '$app/navigation';
   import { fetchUser } from '../hooks/auth';
+  import { toast } from '@zerodevx/svelte-toast'
+  import {fail} from '../lib/index'
+
   let username = '';
   let full_name = '';
   let email = '';
@@ -8,13 +11,14 @@
   let password = '';
   let confirmPassword = '';
   let user_role = '1';
+
   const validateForm = () => {
     if(password !== confirmPassword){
-      alert("Password did not matched");
+      toast.push('Please fill in all fields and ensure passwords match.', {theme: $fail});
       return false;
     }
     else if (!username || !full_name || !email || !phone_number ||!password || password !== confirmPassword) {
-      alert('Please fill in all fields and ensure passwords match.');
+      toast.push('Please fill in all fields and ensure passwords match.', {theme: $fail});
       return false;
     }
     else{
@@ -50,23 +54,25 @@
         const errorData = await response.json();
         const {message} = errorData;
         console.log(message);
-        alert(message);
+        toast.push(message, {theme: $fail});
       }else{
         const { accessToken, username, role } = await response.json();
 
         document.cookie = `accessToken=${accessToken}; path=/`; //put the accessToken to the cookie
         document.cookie = `username=${username}; path=/`; //put the username to the cookie
         document.cookie = `role=${role}; path=/`; //put the role to the cookie
-      
-        fetchUser();
-        goto('/DashboardPage/user/dashboard');
+
+        await fetchUser();
+
+        goto(`/DashboardPage/user`);
+        toast.push('Registered successfully!');
+
+        
       }
-
-    
-
         
     } catch (error) {
       console.error('Error:', error);
+      toast.push(error.message, {theme: $fail});
     }
 
 

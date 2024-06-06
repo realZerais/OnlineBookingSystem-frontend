@@ -9,18 +9,19 @@
 
 	let user = '';
 	//props 
-	export let scheduleArray = [];
+	export let scheduleArray;
+	export let loadBooksAndSchedule;
 
 
-
-
+	let bookLimit = 5;
 	//modal
 	let showModal = false;
 	let showBookModal = false;
 	let book_date;
 
 	
-
+	// console.log(loadBooksAndSchedule);
+	
 	const selectDate = (e) =>{
 		showBookModal = true;
         showModal = true;
@@ -82,6 +83,7 @@
 	
 	
 	const handleSubmit = async(event) =>{
+
 		event.preventDefault();
 		const accessToken = getCookieValue('accessToken');
 
@@ -110,11 +112,13 @@
                 console.log(message);
 				closeModal();
                 toast.push(message, {theme: $fail});
+				
             }else{
                 const messageResponse = await response.json();
 				const {message} = messageResponse;
 				closeModal();
                 toast.push(message); 
+				loadBooksAndSchedule();
             }
 
             
@@ -135,33 +139,36 @@
 	})
 </script>
 
-<div class="w-[50%] h-[60%] shadow-lg">
+{#await scheduleArray}
+	<div>Loading...</div>
+{:then scheduleArray} 
+<div class="col-span-1 lg:col-span-2 shadow-md h-[70vh] bg-white border-main border-2 rounded-md">
 	<!-- MONTH -->
-	<div class="month w-[100%] rounded-t-lg  bg-main p-10 text-center">
+	<div class="month w-[100%] rounded-t-sm bg-secondary  p-5 text-center ">
 		<ul class="p-0 m-0">
-			<button class="prev text-accent text-2xl" on:click={goToPrevMonth}>&#10094;</button>
-			<button class="next text-accent text-2xl" on:click={goToNextMonth}>&#10095;</button>
-			<li class="text-white text-lg uppercase tracking-widest ">{month}<br>
-				<span class="text-white text-lg uppercase tracking-widest">{year}</span>
+			<button class="prev text-main text-2xl" on:click={goToPrevMonth}>&#10094;</button>
+			<button class="next text-main text-2xl" on:click={goToNextMonth}>&#10095;</button>
+			<li class="text-slate-700 text-lg uppercase tracking-widest ">{month}<br>
+				<span class="text-slate-700 text-lg uppercase tracking-widest">{year}</span>
 			</li>
 		</ul>
 	</div>
 
 	<!-- WEEKDAYS -->
 
-	<ul class="weekdays m-0 py-5 px-0  bg-zinc-00 ">
-		<li>Su</li>
-		<li>Mo</li>
-		<li>Tu</li>
-		<li>We</li>
-		<li>Th</li>
-		<li>Fr</li>
-		<li>Sa</li>
+	<ul class="weekdays m-0 py-5  bg-zinc-00 grid grid-cols-7 bg-main text-white">
+		<li>Sun</li>
+		<li>Mon</li>
+		<li>Tue</li>
+		<li>Wed</li>
+		<li>Thu</li>
+		<li>Fri</li>
+		<li>Sat</li>
 	</ul>
 
 	<!-- DAYS -->
-	<div class="w-[100%] h-[67%] ">
-		<ul class="days w-[100%] h-[100%] rounded-b-lg grid grid-cols-7">
+	<div class="w-[100%] h-[100%] ">
+		<ul class="days w-[100%]  rounded-b-md grid grid-cols-7">
 			{#each Array(calendarCellsQty) as _, i}
 				{#if i < firstDayIndex || i >= numberOfDays+firstDayIndex  }
 					<button class="disable pointer-events-none">&nbsp;</button>
@@ -171,13 +178,16 @@
 
 				{:else}
 					<!--TAKEN DAYS-->
-					{#if scheduleArray.includes(`${month} ${(i-firstDayIndex)+1}, ${year}`) }
+					{#if scheduleArray.includes(`${month} ${(i-firstDayIndex)+1}, ${year}`) &&
+
+						(scheduleArray.filter(element => element === `${month} ${(i-firstDayIndex)+1}, ${year}`).length >= bookLimit) 
+					}
 						
 						<button class="text-accent cursor-not-allowed disabled" 
 							
 							data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`} 
 							
-							title="This day is booked! "
+							title="This day is fully booked! "
 							
 							
 						>
@@ -189,7 +199,8 @@
 					<!--DAY HAVE PASSED-->
 					{:else if	(year < today.year) || 
 								((monthIndex < today.month && year <= today.year)) ||
-								((monthIndex <= today.month) && (year == today.year) && ((i - firstDayIndex) + 1) < today.dayNumber) 
+								((monthIndex <= today.month) && (year == today.year) && ((i - firstDayIndex) + 1) < today.dayNumber) ||
+								(i - firstDayIndex +1) == today.dayNumber
 					
 					}
 						<button class="text-main opacity-25 cursor-not-allowed disabled m-0" 
@@ -226,6 +237,8 @@
 	
 
 </div>
+{/await}
+
 	
 {#if showBookModal}
 <Modal bind:showModal>
@@ -307,16 +320,16 @@
 	/* Weekdays (Mon-Sun) */
 
 	.weekdays li {
-		display: inline-block;
-		width: 13.6%;
-		color: #666;
+		/* display: inline-block; */
+		/* width: 13.6%; */
+		/* color: #666; */
 		text-align: center;
 	}
 
 	/* Days (1-31) */
 	.days {
 		padding: 10px 0;
-		background: #eee;
+		/* background: #eee; */
 		margin: 0;
 	}
 

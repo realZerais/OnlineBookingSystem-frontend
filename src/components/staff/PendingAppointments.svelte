@@ -16,7 +16,7 @@
 
   let remark;
     
-  $: console.log(remark);
+  // $: console.log(remark);
 
   let showModal = false;
   let showRejectModal = false;
