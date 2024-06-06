@@ -35,10 +35,11 @@ export const fetchAllBook = async () => {
 }
 
 export const fetchAllUserBooks = async (usr) => {
+    console.log(usr);
     try {
         const accessToken = getCookieValue('accessToken');
 
-        const apiUrl = `http://localhost:9000/booking/getAllUserBook/user`;
+        const apiUrl = 'http://localhost:9000/booking/getAllUserBook/'+usr;
 
         const response = await fetch(apiUrl, {
             method: 'GET',

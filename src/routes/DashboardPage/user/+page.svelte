@@ -2,8 +2,11 @@
 
     import {logout} from "../../../hooks/auth"
     import {userName} from "../../../hooks/auth"
+    import {fetchUser} from "../../../hooks/auth"
 
     import {fetchAllUserBooks} from "../../../hooks/handleBook"
+    import {fetchAllBook} from "../../../hooks/handleBook"
+
 
     import { onMount } from "svelte";
     import { format } from 'date-fns';
@@ -21,14 +24,16 @@
     const scheduleArray = writable([]);
 
     let books = [];
-
+    let userBooks = [];
     const gotoProfile = ()=>{
         goto('/DashboardPage/user/profile')
     }
     const loadBooksAndSchedule = async () => {
-        
-        console.log("called");
-        books = await fetchAllUserBooks(userName);
+        fetchUser();
+
+        books = await fetchAllBook();
+        userBooks = await fetchAllUserBooks($userName);
+
         scheduleArray.set([]);
         books.forEach(e => {
             let dateString = e.book_date;
