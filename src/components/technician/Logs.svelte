@@ -13,7 +13,7 @@
   let bookProgress = [];
   $: items = books;
   let currentPage = 1
-  let pageSize = 6;
+  let pageSize = 7;
   let paginatedItems = [];
 
   $: updatePaginatedItems = () => {

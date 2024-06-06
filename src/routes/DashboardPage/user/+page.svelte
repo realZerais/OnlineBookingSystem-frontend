@@ -3,11 +3,10 @@
     import {logout} from "../../../hooks/auth"
     import {userName} from "../../../hooks/auth"
 
-    import {fetchApprovedAppointment} from '../../../hooks/handleBook'
+    import {fetchAllUserBooks} from "../../../hooks/handleBook"
 
     import { onMount } from "svelte";
     import { format } from 'date-fns';
-    import { writable } from "svelte/store";
     import { goto } from "$app/navigation";
     
 
@@ -15,45 +14,31 @@
     import Calendar from "$components/Calendar.svelte";
     import BookCount from "$components/user/BookCount.svelte";
     import BookLogs from "$components/user/BookLogs.svelte";
+    import { writable } from "svelte/store";
+    import OngoingRepairs from "$components/user/OngoingRepairs.svelte";
 
 
-    let scheduleArray = writable([]);
-    let allBooks = [];
+    const scheduleArray = writable([]);
 
-
-     
     let books = [];
-
-    async function fetchAllBookData() {
-
-        books = await fetchApprovedAppointment();
-	
-        // schedule = books;
-
-        books.forEach(e => {
-            let dateString = e.book_date;
-            let parsedDate = new Date(dateString);
-            const formattedDate = format(parsedDate, 'MMMM d, yyyy');
-            allBooks.push(formattedDate)
-         
-        });
-
-        scheduleArray.set(allBooks);
-        console.log("scheduleArray:", scheduleArray)
-        // console.log(scheduleArray.includes('May_23_2024'))
-        // console.log(schedule)
-
-   
-    }
 
     const gotoProfile = ()=>{
         goto('/DashboardPage/user/profile')
     }
-    onMount(async() =>{
+    const loadBooksAndSchedule = async () => {
         
-        fetchAllBookData();
-        
-    });
+        console.log("called");
+        books = await fetchAllUserBooks(userName);
+        scheduleArray.set([]);
+        books.forEach(e => {
+            let dateString = e.book_date;
+            let parsedDate = new Date(dateString);
+            const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+            scheduleArray.update(arr => [...arr, formattedDate]);
+        });
+    };
+
+    onMount(loadBooksAndSchedule);
 
 </script>
 
@@ -76,31 +61,35 @@
     <div class="grid grid-cols-1 lg:grid-cols-5 gap-8">
 
         <!--Calendar Section col-span-2-->
+
+
         <Calendar 
-        scheduleArray = {$scheduleArray}/>
+        scheduleArray = {$scheduleArray}
+        loadBooksAndSchedule = {loadBooksAndSchedule}/>
 
-        <!-- Suggested Dates Section -->
+
+      
+        
+
+
+        <!-- Ongoing Repairs and Notice Section -->
         <section class="col-span-1 lg:col-span-2 bg-white gap-2 flex flex-col justify-between">
-            <div class="flex flex-col justify-start items-start p-4 border-main border-2 rounded-lg shadow-lg h-[50%]">
+            <div class="flex flex-col justify-start items-start p-4 border-slate-800 bg-accent border-2 rounded-lg shadow-lg">
                 
-                <h2 class="text-lg font-bold">Suggested Dates</h2>
+                <h2 class="text-2xl font-bold text-red-700">NOTICE !</h2>
                 <div class="mt-4">
-                    <h2 class="text-3xl font-bold">9:00 AM</h2>
-                    <p class="text-gray-500">ONGOING OR RECENT BOOK</p>
+                    <h2 class="text-3xl font-bold text-black">8:00 AM - 12:00 PM</h2>
+                    <p class="text-black">STAGING OF REPAIRS WILL ONLY BE CATERED ON THIS TIME </p>
+                </div>
+
+                <div class="mt-4">
+                    <h2 class="text-3xl font-bold text-black">1:00 PM - 5:00 PM</h2>
+                    <p class="text-black">STAGING OF REPAIRS FOR WALK-INS WILL ONLY BE CATERED ON THIS TIME </p>
                 </div>
                 
             </div>
 
-            <div class="flex flex-col justify-start items-start p-4 border-main border-2 rounded-lg shadow-lg h-[50%]">
-                
-                <h2 class="text-lg font-bold">Ongoing Books</h2>
-                <div class="mt-4">
-                    <h2 class="text-3xl font-bold">9:00 AM</h2>
-                    <p class="text-gray-500">ONGOING OR RECENT BOOK</p>
-                </div>
-                
-            </div>
-            
+            <OngoingRepairs/>
 
             
         </section>

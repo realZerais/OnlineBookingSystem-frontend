@@ -9,18 +9,19 @@
 
 	let user = '';
 	//props 
-	export let scheduleArray = [];
+	export let scheduleArray;
+	export let loadBooksAndSchedule;
 
 
-
-
+	let bookLimit = 5;
 	//modal
 	let showModal = false;
 	let showBookModal = false;
 	let book_date;
 
 	
-
+	// console.log(loadBooksAndSchedule);
+	
 	const selectDate = (e) =>{
 		showBookModal = true;
         showModal = true;
@@ -82,6 +83,7 @@
 	
 	
 	const handleSubmit = async(event) =>{
+
 		event.preventDefault();
 		const accessToken = getCookieValue('accessToken');
 
@@ -110,11 +112,13 @@
                 console.log(message);
 				closeModal();
                 toast.push(message, {theme: $fail});
+				
             }else{
                 const messageResponse = await response.json();
 				const {message} = messageResponse;
 				closeModal();
                 toast.push(message); 
+				loadBooksAndSchedule();
             }
 
             
@@ -132,9 +136,13 @@
 		user = await fetchUserData();
 		user_id = user.user_id;
 
+		console.log("schedule array ->>>" + scheduleArray);
 	})
 </script>
 
+{#await scheduleArray}
+	<div>Loading...</div>
+{:then scheduleArray} 
 <div class="col-span-1 lg:col-span-2 shadow-md h-[70vh] bg-white border-main border-2 rounded-md">
 	<!-- MONTH -->
 	<div class="month w-[100%] rounded-t-sm bg-secondary  p-5 text-center ">
@@ -150,13 +158,13 @@
 	<!-- WEEKDAYS -->
 
 	<ul class="weekdays m-0 py-5  bg-zinc-00 grid grid-cols-7 bg-main text-white">
-		<li>Su</li>
-		<li>Mo</li>
-		<li>Tu</li>
-		<li>We</li>
-		<li>Th</li>
-		<li>Fr</li>
-		<li>Sa</li>
+		<li>Sun</li>
+		<li>Mon</li>
+		<li>Tue</li>
+		<li>Wed</li>
+		<li>Thu</li>
+		<li>Fri</li>
+		<li>Sat</li>
 	</ul>
 
 	<!-- DAYS -->
@@ -171,7 +179,10 @@
 
 				{:else}
 					<!--TAKEN DAYS-->
-					{#if scheduleArray.includes(`${month} ${(i-firstDayIndex)+1}, ${year}`) }
+					{#if scheduleArray.includes(`${month} ${(i-firstDayIndex)+1}, ${year}`) &&
+
+						(scheduleArray.filter(element => element === `${month} ${(i-firstDayIndex)+1}, ${year}`).length >= bookLimit) 
+					}
 						
 						<button class="text-accent cursor-not-allowed disabled" 
 							
@@ -226,6 +237,8 @@
 	
 
 </div>
+{/await}
+
 	
 {#if showBookModal}
 <Modal bind:showModal>
