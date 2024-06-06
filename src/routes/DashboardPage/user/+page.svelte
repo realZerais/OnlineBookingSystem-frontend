@@ -8,6 +8,7 @@
     import {fetchAllBook} from "../../../hooks/handleBook"
 
 
+
     import { onMount } from "svelte";
     import { format } from 'date-fns';
     import { goto } from "$app/navigation";
@@ -18,13 +19,17 @@
     import BookCount from "$components/user/BookCount.svelte";
     import BookLogs from "$components/user/BookLogs.svelte";
     import { writable } from "svelte/store";
-    import OngoingRepairs from "$components/user/OngoingRepairs.svelte";
+    import RecentAppointments from "$components/user/RecentAppointments.svelte";
 
 
     const scheduleArray = writable([]);
 
     let books = [];
     let userBooks = [];
+
+    let recentBook = [];
+
+
     const gotoProfile = ()=>{
         goto('/DashboardPage/user/profile')
     }
@@ -34,16 +39,42 @@
         books = await fetchAllBook();
         userBooks = await fetchAllUserBooks($userName);
 
+
+        
+    
         scheduleArray.set([]);
         books.forEach(e => {
             let dateString = e.book_date;
             let parsedDate = new Date(dateString);
             const formattedDate = format(parsedDate, 'MMMM d, yyyy');
             scheduleArray.update(arr => [...arr, formattedDate]);
+            e.book_date = formattedDate;
         });
+
+        userBooks.forEach(e => {
+            let dateString = e.book_date;
+            let parsedDate = new Date(dateString);
+            const formattedDate = format(parsedDate, 'MMMM d, yyyy');
+            e.book_date = formattedDate;
+
+            if(e.appointment_status == 'pending'){
+                recentBook = e;
+            }else{
+                recentBook = [];
+            }
+        });
+
+        
+
+        
+        console.log(recentBook);
     };
 
+
     onMount(loadBooksAndSchedule);
+
+
+
 
 </script>
 
@@ -77,7 +108,7 @@
         
 
 
-        <!-- Ongoing Repairs and Notice Section -->
+        <!-- Recent Appointments and Notice Section -->
         <section class="col-span-1 lg:col-span-2 bg-white gap-2 flex flex-col justify-between">
             <div class="flex flex-col justify-start items-start p-4 border-slate-800 bg-accent border-2 rounded-lg shadow-lg">
                 
@@ -94,7 +125,26 @@
                 
             </div>
 
-            <OngoingRepairs/>
+            
+            <div class="flex flex-col justify-start items-start p-4 border-main border-2 rounded-lg shadow-lg h-[50%]">
+                            
+                <h2 class="text-xl font-bold">Recent Appointment</h2>
+
+                {#if recentBook.length == 0}
+                    <div>no recent books</div>
+                {:else}
+                    <RecentAppointments
+                        book_date = {recentBook.book_date}
+                        issue_description = {recentBook.issue_description}
+                        remark = {recentBook.remark}
+                        appointment_status = {recentBook.appointment_status}
+                    />
+                {/if}
+               
+                
+            </div>
+
+         
 
             
         </section>

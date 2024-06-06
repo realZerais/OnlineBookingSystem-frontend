@@ -136,7 +136,6 @@
 		user = await fetchUserData();
 		user_id = user.user_id;
 
-		console.log("schedule array ->>>" + scheduleArray);
 	})
 </script>
 

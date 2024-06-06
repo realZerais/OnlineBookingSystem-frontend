@@ -35,7 +35,6 @@ export const fetchAllBook = async () => {
 }
 
 export const fetchAllUserBooks = async (usr) => {
-    console.log(usr);
     try {
         const accessToken = getCookieValue('accessToken');
 

@@ -12,12 +12,7 @@
   onMount(async() =>{
     user = await fetchUserData();
     // console.log(user);
-    books = await fetchUserBooks(user.user_id);
-    
-
-    console.log(books);
-
-    
+    books = await fetchUserBooks(user.user_id);  
 
     books.forEach(e => {
       bookCount++;

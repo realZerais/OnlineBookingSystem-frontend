@@ -20,7 +20,6 @@
       
     });
 
-    console.log(books)
     
   })
 </script>
