@@ -9,12 +9,20 @@
 
 <div class="flex flex-col justify-start">
 
-    <div class="text-2xl font-bold">
+    <div class="text-xl font-bold">
         {book_date}
     </div>
 
     <div>
-        appointment_status :  <span class="text-accent">{appointment_status}</span>
+        appointment status :  
+        {#if appointment_status == 'pending'}
+            <span class="text-accent">{appointment_status}</span>
+        {:else if appointment_status == 'rejected'}
+            <span class="text-red-700">{appointment_status}</span>
+        {:else if appointment_status == 'approved'}
+            <span class="text-main">{appointment_status}</span>
+        {/if}
+        
     </div>
 
     <div>

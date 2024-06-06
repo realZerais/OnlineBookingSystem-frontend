@@ -7,7 +7,7 @@
     import {fetchAllUserBooks} from "../../../hooks/handleBook"
     import {fetchAllBook} from "../../../hooks/handleBook"
 
-
+    import { writable } from "svelte/store";
 
     import { onMount } from "svelte";
     import { format } from 'date-fns';
@@ -18,8 +18,8 @@
     import Calendar from "$components/Calendar.svelte";
     import BookCount from "$components/user/BookCount.svelte";
     import BookLogs from "$components/user/BookLogs.svelte";
-    import { writable } from "svelte/store";
     import RecentAppointments from "$components/user/RecentAppointments.svelte";
+    import RepairLogs from "../../../components/user/RepairLogs.svelte";
 
 
     const scheduleArray = writable([]);
@@ -33,6 +33,7 @@
     const gotoProfile = ()=>{
         goto('/DashboardPage/user/profile')
     }
+
     const loadBooksAndSchedule = async () => {
         fetchUser();
 
@@ -57,17 +58,15 @@
             const formattedDate = format(parsedDate, 'MMMM d, yyyy');
             e.book_date = formattedDate;
 
-            if(e.appointment_status == 'pending'){
-                recentBook = e;
-            }else{
-                recentBook = [];
-            }
+            // if(e.appointment_status == 'pending' ){
+            //     recentBook = e;
+            // }else{
+            //     recentBook = [];
+            // }
+            
         });
 
-        
-
-        
-        console.log(recentBook);
+        recentBook = userBooks[0];
     };
 
 
@@ -126,9 +125,9 @@
             </div>
 
             
-            <div class="flex flex-col justify-start items-start p-4 border-main border-2 rounded-lg shadow-lg h-[50%]">
+            <div class="flex flex-col justify-start items-start p-4 gap-8 border-main border-2 rounded-lg shadow-lg h-[50%]">
                             
-                <h2 class="text-xl font-bold">Recent Appointment</h2>
+                <h2 class="text-2xl font-bold">Recent Appointment</h2>
 
                 {#if recentBook.length == 0}
                     <div>no recent books</div>
@@ -152,17 +151,7 @@
         <!-- Book Count Section -->
         <section class="col-span-1 lg:col-span-1 flex flex-col justify-between gap-2">
             <BookCount/>
-            <div class="bg-white p-4 shadow-md h-[70%] border-2 border-main rounded-md">
-                <div class="flex items-center">
-                
-                    <h2 class="text-lg font-bold">USER</h2>
-                    
-                </div>
-                <div class="mt-4">
-                    <h2 class="text-3xl font-bold">9:00 AM</h2>
-                    <p class="text-gray-500">ONGOING OR RECENT BOOK</p>
-                </div>
-            </div>
+            <RepairLogs/>
         </section>
 
         <!-- Profile Section -->

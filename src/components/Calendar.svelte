@@ -187,7 +187,7 @@
 							
 							data-dateID={`${month}_${(i-firstDayIndex)+1}_${year}`} 
 							
-							title="This day is booked! "
+							title="This day is fully booked! "
 							
 							
 						>
@@ -199,7 +199,8 @@
 					<!--DAY HAVE PASSED-->
 					{:else if	(year < today.year) || 
 								((monthIndex < today.month && year <= today.year)) ||
-								((monthIndex <= today.month) && (year == today.year) && ((i - firstDayIndex) + 1) < today.dayNumber) 
+								((monthIndex <= today.month) && (year == today.year) && ((i - firstDayIndex) + 1) < today.dayNumber) ||
+								(i - firstDayIndex +1) == today.dayNumber
 					
 					}
 						<button class="text-main opacity-25 cursor-not-allowed disabled m-0" 

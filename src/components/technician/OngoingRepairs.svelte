@@ -70,6 +70,7 @@
 
   const update = async () =>{
     let repair_status = 'repairing';
+    progress_time = getCurrentDateTimeFormatted();
 
     const editData = JSON.stringify({
             
@@ -115,6 +116,7 @@
   const complete = async()=>{
     let repair_status = 'completed';
     progress_description = 'The phone is done and ready to be retrieved';
+    progress_time = getCurrentDateTimeFormatted();
     
     const editData = JSON.stringify({
             
