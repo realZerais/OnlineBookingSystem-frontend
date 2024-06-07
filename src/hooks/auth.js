@@ -3,6 +3,7 @@ import { writable } from 'svelte/store';
 import { goto } from '$app/navigation';
 import { toast } from '@zerodevx/svelte-toast'
 
+
 export const isAuthenticated = writable(false);
 export const userName = writable('no user');
 export const userRole = writable('no role');
@@ -35,9 +36,33 @@ export const fetchUser = async () => {
     if (isAuthenticatedLocally) {
       userName.set(getCookieValue("username"));
       userRole.set(getCookieValue("role"));
+    }else{
+      
+
+      toast.push('Please log in.', {
+        theme: {
+          '--toastColor': '#b91c1c',
+          '--toastBackground': '#abd1c6',
+          '--toastBarBackground': '#f9bc60'
+        },
+      });
+      // goto('/login');
+      setTimeout(() => {
+        window.location.href = '/login';
+      }, 3000);
     }
   } catch (error) {
     console.error(error);
+    isAuthenticated.set(false);
+    userName.set(null);
+    userRole.set(null);
+    toast.push('An error occurred. Please try again.', {
+      theme: {
+        '--toastColor': '#b91c1c',
+        '--toastBackground': '#abd1c6',
+        '--toastBarBackground': '#f9bc60'
+      },
+    });
   }
 };
 

@@ -1,24 +1,5 @@
 <script>
-  import {fetchUserBooks} from '../../hooks/handleUser'
-  import {fetchUserData} from '../../hooks/handleUser'
-  import { onMount } from 'svelte';
-  
-
-  let books = '';
-  let bookCount = 0;
-
-  let user = '';
-
-  onMount(async() =>{
-    user = await fetchUserData();
-    // console.log(user);
-    books = await fetchUserBooks(user.user_id);  
-
-    books.forEach(e => {
-      bookCount++;
-    });
-
-  })
+  export let bookCount;
 </script>
 
 

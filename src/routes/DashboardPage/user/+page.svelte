@@ -36,7 +36,9 @@
     }
 
     const loadBooksAndSchedule = async () => {
-        fetchUser();
+        // await fetchUser();
+
+        // console.log($userName);
 
         books = await fetchAllBook();
         userBooks = await fetchAllUserBooks($userName);
@@ -69,6 +71,8 @@
         // console.log(userBooks);
 
         recentBook = userBooks[0];
+
+        console.log(userBooks.length)
     };
 
 
@@ -131,7 +135,7 @@
                             
                 <h2 class="text-2xl font-bold">Recent Appointment</h2>
 
-                {#if recentBook.length == 0}
+                {#if !recentBook}
                     <div>no recent books</div>
                 {:else}
                     <RecentAppointments
@@ -152,7 +156,9 @@
 
         <!-- Book Count and Repair Logs Section -->
         <section class="col-span-1 lg:col-span-1 flex flex-col justify-between gap-2">
-            <BookCount/>
+            <BookCount
+                bookCount = {userBooks.length}
+            />
             <RepairLogs/>
         </section>
 

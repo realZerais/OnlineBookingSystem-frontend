@@ -1,6 +1,27 @@
 <script>
-	import '../../app.css'
+
     
+    import { goto } from "$app/navigation";
+    import { onMount } from "svelte";
+    import {isAuthenticated, fetchUser} from '../../hooks/auth'; 
+    import { toast } from '@zerodevx/svelte-toast'
+    import {fail} from '../../lib/index'
+
+
+
+
+
+    onMount(async()=>{
+        // await fetchUser();
+
+        if( $isAuthenticated){
+            // console.log($isAuthenticated)
+            toast.push('Already Logged In!', {theme: $fail});
+            goto('/');
+        }
+    
+
+    })
 </script>
 
 
