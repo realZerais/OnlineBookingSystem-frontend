@@ -11,6 +11,14 @@
   /* Set the width of the scrollbar */
 }
 
+body,
+html {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+  overflow: hidden;
+}
+
 ::-webkit-scrollbar-thumb {
   background-color: #f9bc60;
   /* Set the color of the thumb (the draggable part) */

@@ -8,6 +8,9 @@ export default {
       },
       fontFamily: {
         bakbak: ["Bakbak One"],
+        sans: ["Poppins", "sans-serif"],
+        raleway: ["Raleway", "sans-serif"],
+        serif: ["Barlow", "serif"],
       },
       colors: {
         neon: "#4DF100",
@@ -35,7 +38,29 @@ export default {
       },
     },
   },
-  plugins: [],
+  plugins: [
+    function ({ addUtilities }) {
+      addUtilities({
+        /* Custom scrollbar styles */
+        ".scrollbar::-webkit-scrollbar": {
+          width: "7px",
+          display: "block",
+        },
+        ".scrollbar::-webkit-scrollbar-thumb": {
+          backgroundColor: "#f9bc60",
+          borderRadius: "5px",
+          outline: "1px solid #014447",
+        },
+        ".scrollbar::-webkit-scrollbar-track": {
+          backgroundColor: "#014447",
+        },
+        /* Utility to hide the scrollbar */
+        ".hide-scrollbar::-webkit-scrollbar": {
+          display: "none",
+        },
+      });
+    },
+  ],
 };
 
 //https://www.happyhues.co/palettes/10
